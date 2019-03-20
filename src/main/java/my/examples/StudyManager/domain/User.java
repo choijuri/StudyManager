@@ -1,5 +1,8 @@
 package my.examples.StudyManager.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,6 +11,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "user")
+@Getter
+@Setter
 public class User {
     @Id
     private String userId;

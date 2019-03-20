@@ -15,3 +15,9 @@ public class Curriculum {
     private Long curriculumId;
     private String curriculumContent;
 }
+
+/*
+| curriculum_id      | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| study_id           | bigint(20) unsigned | NO   | MUL | NULL    |                |
+| curriculum_content | longtext            | NO   |     | NULL    |                |
+ */

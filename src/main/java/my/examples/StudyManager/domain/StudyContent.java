@@ -1,10 +1,15 @@
 package my.examples.StudyManager.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "study_content")
+@Getter
+@Setter
 public class StudyContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

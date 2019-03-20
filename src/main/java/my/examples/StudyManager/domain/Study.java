@@ -18,3 +18,11 @@ public class Study {
     private String studyInformation;
     private Date regdate;
 }
+
+/*
+| study_id          | bigint(20) unsigned | NO   | PRI | NULL              | auto_increment    |
+| study_name        | varchar(255)        | NO   |     | NULL              |                   |
+| study_information | varchar(255)        | NO   |     | NULL              |                   |
+| regdate           | datetime            | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| category_id       | bigint(20) unsigned | NO   | MUL | NULL              |                   |
+ */

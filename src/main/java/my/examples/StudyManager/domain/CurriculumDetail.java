@@ -20,3 +20,9 @@ public class CurriculumDetail {
     private Long curriculumDetailId;
     private String curriculumContent;
 }
+
+/*
+| curriculum_detail_id      | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| curriculum_id             | bigint(20) unsigned | NO   | MUL | NULL    |                |
+| curriculum_detail_content | longtext            | NO   |     | NULL    |                |
+ */

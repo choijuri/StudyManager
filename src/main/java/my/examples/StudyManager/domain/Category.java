@@ -18,3 +18,8 @@ public class Category {
     private String categoryName;
 
 }
+
+/*
+| category_id   | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| category_name | varchar(45)         | NO   |     | NULL    |                |
+ */
