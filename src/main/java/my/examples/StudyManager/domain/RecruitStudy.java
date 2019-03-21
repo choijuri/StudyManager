@@ -16,7 +16,7 @@ public class RecruitStudy {
     @Column(length = 45)
     private String recruitName;
     private String location;
-    private int recruitNumbeer;
+    private int recruitNumber;
     private String recruitContent;
 
     @ManyToOne

@@ -73,122 +73,122 @@ INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(2,'mj123
 INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(3,'jh123@gmail.com','하나의 프로세스를 다수의 실행 단위로 구분하여 자원을 공유하고 자원의 생성과 관리의 중복성을 최소화하여 수행능력을 향상시키는 것으로 쓰레드간 스택영역을 비공유하고 데이터와 힙 영역을 공유하여 데이터 교환에 용이하다. 하지만 공유하는 자원에 대해 동시에 접근하는 부분은 동기화를 통해 작업 처리순서나 접근에 대헤 컨트롤 해야하며 과도한 락이 걸릴 경우 성능이 저하될 가능성이 크기 때문에 동기화를 해야 할 공유자원에 대한 많은 고민이 필요하다.');
 INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(4,'urstory@gmail.com','장점: 프로세스를 생성하는 것보다 쓰레드를 생성하는 것이 더 경제적이다, 응답성이 좋다, 자원 공유를 효율적으로 할 수 있다, 작업이 분리되어 코드가 간결해진다. 단점: 동기화에 주의해야한다(synchronization), 교착상태 (dead-lock)이 발생하지 않도록 해야한다, 각 쓰레드가 고르게 실행되도록 해야한다.');
 
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(5 'mj123@gmail.com', 'import java.util.Stack;
-
-class Solution {
-       public int solution(String arrangement) {
-        int answer = 0;
-        Stack arr = new Stack();
-        int stick = 0;
-
-        for (int i = 0; i < arrangement.length(); i++) {
-            if (arrangement.charAt(i) == ''('') {
-                if (arrangement.charAt(i + 1) != '')'') {
-                    arr.push(arrangement.charAt(i));
-                    stick++;
-                } else {
-                    answer += arr.size();
-                }
-            } else if (arrangement.charAt(i) == '')'') {
-                if(arrangement.charAt(i-1) =='')''){
-                    if (arr.size() != 0) {
-                        arr.pop();
-                    }
-                }
-            }
-        }
-        answer += stick;
-        return answer;
-    }
-}');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(6, 'sj123@gmail.com', 'class Solution {
-    public int[] solution(int[] prices) {
-        int[] answer = new int[prices.length];
-        for(int i = 0; i < prices.length - 1; i++){
-            answer[i] = 1;
-            for(int j = i + 1; j < prices.length - 1; j++){
-                if(prices[i] > prices[j]){
-                   break;
-                }else{
-                   answer[i] += 1;
-                }
-            }
-        }
-        return answer;
-}
-}');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(7, 'mj123@gmail.com','import java.util.*;
-
-class Solution {
-       public String solution(String[] participant, String[] completion) {
-        String answer = "";
-
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < participant.length; i++){
-            if(!map.containsKey(participant[i])){
-                map.put(participant[i],1);
-            }else {
-                map.replace(participant[i],map.get(participant[i]) + 1);
-            }
-        }
-
-        for (int i = 0; i < completion.length; i++){
-            if (map.get(completion[i]) == 1){
-                map.remove(completion[i]);
-            } else {
-                map.replace(completion[i],map.get(completion[i]) - 1);
-            }
-        }
-        for(String s : map.keySet()){
-           answer = s;
-        }
-        return answer;
-    }
-}');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(8, 'mj123@gmail.com', 'import java.util.Arrays;
-
-class Solution {
-    public boolean solution(String[] phone_book) {
-        boolean answer = true;
-        Arrays.sort(phone_book);
-        for (int i = 0; i < phone_book.length; i++) {
-            for (int j = i + 1; j < phone_book.length; j++) {
-                if (phone_book[j].length() >= phone_book[i].length()){
-                    if (phone_book[j].substring(0, phone_book[i].length()).equals(phone_book[i])) {
-                        answer = false;
-                        return answer;
-                    }
-                }
-            }
-        }
-        return answer;
-    }
-}');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(9, 'yw123@gmail.com', 'import java.util.*;
-
-class Solution {
- public String solution(int[] numbers) {
-        String answer = "";
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < numbers.length; i++) {
-            list.add(String.valueOf(numbers[i]));
-        }
-
-        Collections.sort(list, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return (o2+o1).compareTo(o1+o2);
-            }
-        });
-        if (list.get(0).equals("0")){
-            return "0";
-        }
-        for (int i = 0; i < list.size(); i++){
-            answer += list.get(i);
-        }
-        return answer;
-    }
-}');
+-- INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(5 'mj123@gmail.com', 'import java.util.Stack;
+--
+-- class Solution {
+--        public int solution(String arrangement) {
+--         int answer = 0;
+--         Stack arr = new Stack();
+--         int stick = 0;
+--
+--         for (int i = 0; i < arrangement.length(); i++) {
+--             if (arrangement.charAt(i) == ''('') {
+--                 if (arrangement.charAt(i + 1) != '')'') {
+--                     arr.push(arrangement.charAt(i));
+--                     stick++;
+--                 } else {
+--                     answer += arr.size();
+--                 }
+--             } else if (arrangement.charAt(i) == '')'') {
+--                 if(arrangement.charAt(i-1) =='')''){
+--                     if (arr.size() != 0) {
+--                         arr.pop();
+--                     }
+--                 }
+--             }
+--         }
+--         answer += stick;
+--         return answer;
+--     }
+-- }');
+-- INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(6, 'sj123@gmail.com', 'class Solution {
+--     public int[] solution(int[] prices) {
+--         int[] answer = new int[prices.length];
+--         for(int i = 0; i < prices.length - 1; i++){
+--             answer[i] = 1;
+--             for(int j = i + 1; j < prices.length - 1; j++){
+--                 if(prices[i] > prices[j]){
+--                    break;
+--                 }else{
+--                    answer[i] += 1;
+--                 }
+--             }
+--         }
+--         return answer;
+-- }
+-- }');
+-- INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(7, 'mj123@gmail.com','import java.util.*;
+--
+-- class Solution {
+--        public String solution(String[] participant, String[] completion) {
+--         String answer = "";
+--
+--         Map<String, Integer> map = new HashMap<>();
+--         for (int i = 0; i < participant.length; i++){
+--             if(!map.containsKey(participant[i])){
+--                 map.put(participant[i],1);
+--             }else {
+--                 map.replace(participant[i],map.get(participant[i]) + 1);
+--             }
+--         }
+--
+--         for (int i = 0; i < completion.length; i++){
+--             if (map.get(completion[i]) == 1){
+--                 map.remove(completion[i]);
+--             } else {
+--                 map.replace(completion[i],map.get(completion[i]) - 1);
+--             }
+--         }
+--         for(String s : map.keySet()){
+--            answer = s;
+--         }
+--         return answer;
+--     }
+-- }');
+-- INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(8, 'mj123@gmail.com', 'import java.util.Arrays;
+--
+-- class Solution {
+--     public boolean solution(String[] phone_book) {
+--         boolean answer = true;
+--         Arrays.sort(phone_book);
+--         for (int i = 0; i < phone_book.length; i++) {
+--             for (int j = i + 1; j < phone_book.length; j++) {
+--                 if (phone_book[j].length() >= phone_book[i].length()){
+--                     if (phone_book[j].substring(0, phone_book[i].length()).equals(phone_book[i])) {
+--                         answer = false;
+--                         return answer;
+--                     }
+--                 }
+--             }
+--         }
+--         return answer;
+--     }
+-- }');
+-- INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(9, 'yw123@gmail.com', 'import java.util.*;
+--
+-- class Solution {
+--  public String solution(int[] numbers) {
+--         String answer = "";
+--         List<String> list = new ArrayList<>();
+--         for (int i = 0; i < numbers.length; i++) {
+--             list.add(String.valueOf(numbers[i]));
+--         }
+--
+--         Collections.sort(list, new Comparator<String>() {
+--             @Override
+--             public int compare(String o1, String o2) {
+--                 return (o2+o1).compareTo(o1+o2);
+--             }
+--         });
+--         if (list.get(0).equals("0")){
+--             return "0";
+--         }
+--         for (int i = 0; i < list.size(); i++){
+--             answer += list.get(i);
+--         }
+--         return answer;
+--     }
+-- }');
 
 -- INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(10);
 -- INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(11);
@@ -212,18 +212,18 @@ INSERT INTO comment(study_content_id, comment_content, writer) VALUES(1,'내용�
 
 
 --message
-INSERT INTO message(message_id , user_id, sender , message_content) 
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
 VALUES(1, 'jh123@gmail.com', 'yw123@gmail.com' , '참가를 요청합니다.');
-INSERT INTO message(message_id , user_id, sender , message_content)
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
 VALUES(2, 'jh123@gmail.com', 'yw123@gmail.com' , '받아주세요!!');
-INSERT INTO message(message_id , user_id, sender , message_content) 
-VALUES(3, 'jh123@gmail.com', 'yw123@gmail.com' , '답장 기다릴게요';
-INSERT INTO message(message_id , user_id, sender , message_content) 
-VALUES(1, 'sj123@gmail.com', 'mj123@gmail.com' , '안녕하세요! 스터디 내용 문의 드리고 싶어서 연락드려요! 혹시 위치는 그쪽 지역밖에 안되는 건가요??');
-INSERT INTO message(message_id , user_id, sender , message_content) 
-VALUES(1 , 'mj123@gmail.com', 'sj123@gmail.com' , '이미 모집된 인원이 있어 위치변경은 힘들 것 같은데…저 혼자 바꾸고 통보하기 민감한 내용이라 어려울 것 같습니다~~');
-INSERT INTO message(message_id , user_id, sender , message_content) 
-VALUES(2, 'sj123@gmail.com', 'mj123@gmail.com' , '네 알겠습니다. ');
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
+VALUES(3, 'jh123@gmail.com', 'yw123@gmail.com' , '답장 기다릴게요');
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
+VALUES(4, 'sj123@gmail.com', 'mj123@gmail.com' , '안녕하세요! 스터디 내용 문의 드리고 싶어서 연락드려요! 혹시 위치는 그쪽 지역밖에 안되는 건가요??');
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
+VALUES(5 , 'mj123@gmail.com', 'sj123@gmail.com' , '이미 모집된 인원이 있어 위치변경은 힘들 것 같은데…저 혼자 바꾸고 통보하기 민감한 내용이라 어려울 것 같습니다~~');
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
+VALUES(6, 'sj123@gmail.com', 'mj123@gmail.com' , '네 알겠습니다. ');
 
 
 --recruitStudy

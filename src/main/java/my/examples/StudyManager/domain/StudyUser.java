@@ -16,7 +16,7 @@ public class StudyUser {
     @EmbeddedId
     private StudyUserId studyUserId;
     @Column(length = 45)
-    private String userAdmin;
+    private String userRole;
 }
 /*
 | Field      | Type                | Null | Key | Default | Extra |
