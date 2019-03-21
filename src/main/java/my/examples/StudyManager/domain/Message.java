@@ -20,11 +20,11 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "receiver_id")
-    private User receiver;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private User sender;
+    private User user1;
 }
 /*
  Field           | Type                | Null | Key | Default           | Extra             |

@@ -15,17 +15,19 @@ public class StudyContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studyContentId;
+    @Lob
+    @Column(name="content")
     private String content;
     private Date regdate;
 
-    @OneToMany(mappedBy = "study_content", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "studyContent", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Comment> comments;
 
     @ManyToOne
     @JoinColumn(name = "writer")
     private User user;
 
-    @OneToMany(mappedBy = "study_content", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "studyContent", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<ImageFile> imageFiles;
 
     @OneToOne

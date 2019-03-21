@@ -1,8 +1,8 @@
 -- category
-INSERT INTO category(category_name) VALUES('IT');
-INSERT INTO category(category_name) VALUES('어학');
-INSERT INTO category(category_name) VALUES('취업');
-INSERT INTO category(category_name) VALUES('기타');
+INSERT INTO category(category_id, category_name) VALUES(1,'IT');
+INSERT INTO category(category_id, category_name) VALUES(2,'어학');
+INSERT INTO category(category_id, category_name) VALUES(3,'취업');
+INSERT INTO category(category_id, category_name) VALUES(4,'기타');
 
 -- user
 INSERT INTO user( user_id, passwd, phone, name) VALUES('urstory@gmail.com', '1234' , '01022523645', '토토');

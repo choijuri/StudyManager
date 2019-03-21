@@ -14,13 +14,14 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
     private String commentContent;
-    @Column(length = 50)
-    private String writer;
 
     @ManyToOne
     @JoinColumn(name = "study_content_id")
     private StudyContent studyContent;
 
+    @ManyToOne
+    @JoinColumn(name = "writer")
+    private User user;
 }
 /*
  Field            | Type                | Null | Key | Default | Extra |
