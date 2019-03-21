@@ -14,6 +14,7 @@ public class Curriculum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long curriculumId;
+    @Lob
     private String curriculumContent;
 
     @ManyToOne

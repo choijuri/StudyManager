@@ -14,6 +14,7 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long messageId;
+    @Lob
     private String messageContent;
     private Date regdate;
 

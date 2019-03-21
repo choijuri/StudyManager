@@ -16,6 +16,7 @@ public class Study {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studyId;
     private String studyName;
+    @Lob
     private String studyInformation;
     private Date regdate;
 

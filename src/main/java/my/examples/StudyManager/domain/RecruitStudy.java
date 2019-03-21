@@ -17,6 +17,7 @@ public class RecruitStudy {
     private String recruitName;
     private String location;
     private int recruitNumber;
+    @Lob
     private String recruitContent;
 
     @ManyToOne
