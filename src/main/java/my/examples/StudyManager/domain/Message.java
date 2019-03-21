@@ -18,9 +18,13 @@ public class Message {
     private Date regdate;
 
 
-    private String receiverId;
-    private String senderId;
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private User receiver;
 
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private User sender;
 }
 /*
  Field           | Type                | Null | Key | Default           | Extra             |

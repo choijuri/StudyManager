@@ -19,9 +19,13 @@ public class RecruitStudy {
     private int recruitNumbeer;
     private String recruitContent;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private String userId;
-    private Long categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
 /*
  Field           | Type                | Null | Key | Default | Extra          |

@@ -17,13 +17,16 @@ public class Comment {
     @Column(length = 50)
     private String writer;
 
-    private Long studyContentId;
+    @ManyToOne
+    @JoinColumn(name = "study_content_id")
+    private StudyContent studyContent;
 
 }
 /*
  Field            | Type                | Null | Key | Default | Extra |
 +------------------+---------------------+------+-----+---------+-------+
-| study_content_id | bigint(20) unsigned | NO   | PRI | NULL    |       |
-| comment_content  | longtext            | NO   |     | NULL    |       |
-| writer           | varchar(50)         | NO   | PRI | NULL    |       |
+| comment_id       | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
+| comment_content  | longtext            | NO   |     | NULL    |                |
+| study_content_id | bigint(20) unsigned | NO   | MUL | NULL    |                |
+| writer           | varchar(50)         | NO   | MUL | NULL    |                |
  */

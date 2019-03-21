@@ -17,6 +17,11 @@ public class Category {
     @Column(length = 255)
     private String categoryName;
 
+    @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<Study> studies;
+
+    @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<RecruitStudy> recruitStudies;
 }
 
 /*

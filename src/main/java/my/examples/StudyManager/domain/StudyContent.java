@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "study_content")
@@ -17,6 +18,19 @@ public class StudyContent {
     private String content;
     private Date regdate;
 
+    @OneToMany(mappedBy = "study_content", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<Comment> comments;
+
+    @ManyToOne
+    @JoinColumn(name = "writer")
+    private User user;
+
+    @OneToMany(mappedBy = "study_content", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<ImageFile> imageFiles;
+
+    @OneToOne
+    @JoinColumn(name = "curriculum_detail_id")
+    private CurriculumDetail curriculumDetail;
 }
 
 /*

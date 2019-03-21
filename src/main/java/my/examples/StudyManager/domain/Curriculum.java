@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "curriculum")
@@ -14,6 +15,13 @@ public class Curriculum {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long curriculumId;
     private String curriculumContent;
+
+    @ManyToOne
+    @JoinColumn(name = "study_id")
+    private Study study;
+
+    @OneToMany(mappedBy = "curriculum", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private List<CurriculumDetail> curriculumDetails;
 }
 
 /*
