@@ -20,4 +20,5 @@ public class RecruitStudyRepositoryImpl extends QuerydslRepositorySupport implem
     public Long getRecruitStudyCount(Long categoryId, String searchKind, String searchStr) {
         return null;
     }
+    
 }
