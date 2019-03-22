@@ -1,8 +1,7 @@
 package my.examples.StudyManager;
 
-import my.examples.StudyManager.domain.Category;
-import my.examples.StudyManager.repository.CategoryRepository;
-import org.hibernate.validator.constraints.URL;
+import my.examples.StudyManager.domain.RecruitStudy;
+import my.examples.StudyManager.repository.RecruitStudyRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,23 +17,26 @@ import java.util.Optional;
 //@SpringBootTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DataJpaTest
-public class CategoryRepositoryTest {
+public class RecruitStudyRepositoryTest {
     @Autowired
-    CategoryRepository categoryRepository;
+    RecruitStudyRepository recruitStudyRepository;
 
     @Test
-    public void initTest(){
-
-    }
+    public void init(){ }
 
     @Test
-    public void getCategory(){
-        List<Category> all = categoryRepository.findAll();
-        for(Category category : all){
-            System.out.println(category.getCategoryName());
+    public void getRecruitStudy(){
+        List<RecruitStudy> recruitStudies = recruitStudyRepository.findAll();
+        for(RecruitStudy recruitStudy :recruitStudies) {
+            System.out.println(recruitStudy.getRecruitName());
         }
-
-        System.out.println(categoryRepository.findById(1L).get().getCategoryName());
     }
+
+    @Test
+    public void getRecuitStudyById(){
+        Optional<RecruitStudy> recruitStudy = recruitStudyRepository.findById(1L);
+        System.out.println(recruitStudy.get().getRecruitName());
+    }
+
 
 }
