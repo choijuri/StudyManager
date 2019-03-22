@@ -22,6 +22,10 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<RecruitStudy> recruitStudies;
+
+
+
+
 }
 
 /*
