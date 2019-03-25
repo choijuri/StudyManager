@@ -30,4 +30,12 @@ public class StudyRepositoryTest {
         }
         System.out.println(studyRepository.getStudiesByCategory("어학").iterator());
     }
+
+    @Test
+    public void getStudyByEmail(){
+        List<Study> studies = studyRepository.getStudiesAll("urstory@gmail.com");
+        for(Study s : studies){
+            System.out.println("스터디이름 : "+s.getStudyName());
+        }
+    }
 }

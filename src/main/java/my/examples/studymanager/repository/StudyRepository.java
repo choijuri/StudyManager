@@ -11,4 +11,5 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
 
     @Query("SELECT s FROM Study s INNER JOIN FETCH s.category WHERE s.category.categoryName = :categoryName")
     public List<Study> getStudiesByCategory(@Param("categoryName") String categoryName);
+
 }
