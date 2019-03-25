@@ -2,7 +2,6 @@ package my.examples.studymanager;
 
 import my.examples.studymanager.domain.RecruitStudy;
 import my.examples.studymanager.repository.RecruitStudyRepository;
-import my.examples.studymanager.repository.custom.RecruitStudyRepositoryCustom;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,6 @@ public class RecruitStudyRepositoryTest {
     @Autowired
     RecruitStudyRepository recruitStudyRepository;
 
-
-    RecruitStudyRepositoryCustom recruitStudyRepositoryCustom;
 
     @Test
     public void init(){ }
