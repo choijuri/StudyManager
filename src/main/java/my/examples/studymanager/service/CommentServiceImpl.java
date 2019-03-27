@@ -37,7 +37,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     @Transactional
-    public void modifyComment(Comment comment) {
-
+    public void modifyComment(Long commentId, String commentContent) {
+        Comment comment = commentRepository.getOne(commentId);
+        comment.setCommentContent(commentContent);
+        commentRepository.save(comment);
     }
 }

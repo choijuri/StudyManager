@@ -29,8 +29,10 @@ public class CurriculumServiceImpl implements CurriculumService {
 
     @Override
     @Transactional
-    public void modifyCurriculum(Curriculum curriculum) {
-
+    public void modifyCurriculum(Long curriculumId, String curriculumContent) {
+        Curriculum curriculum = curriculumRepository.getOne(curriculumId);
+        curriculum.setCurriculumContent(curriculumContent);
+        curriculumRepository.save(curriculum);
     }
 
     @Override

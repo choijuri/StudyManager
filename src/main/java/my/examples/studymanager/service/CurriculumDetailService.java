@@ -7,7 +7,7 @@ import java.util.List;
 public interface CurriculumDetailService {
     public List<CurriculumDetail> getCurriculumDetailByCurriculumId(Long curriculumId);
     public void deleteCurriculumDetail(Long curriculumDetailId);
-    public void modifyCurriculumDetail(CurriculumDetail curriculumDetail);
+    public void modifyCurriculumDetail(List<CurriculumDetail> curriculumDetails);
     public void addCurriculumDetail(CurriculumDetail curriculumDetail);
 
 }

@@ -27,8 +27,12 @@ public class CurriculumDetailServiceImpl implements CurriculumDetailService {
 
     @Override
     @Transactional
-    public void modifyCurriculumDetail(CurriculumDetail curriculumDetail) {
-
+    public void modifyCurriculumDetail(List<CurriculumDetail> curriculumDetails) {
+        for(CurriculumDetail curriculumDetail : curriculumDetails) {
+            CurriculumDetail detail = curriculumDetailRepository.getOne(curriculumDetail.getCurriculumDetailId());
+            detail.setCurriculumDetailContent(curriculumDetail.getCurriculumDetailContent());
+            curriculumDetailRepository.save(detail);
+        }
     }
 
     @Override

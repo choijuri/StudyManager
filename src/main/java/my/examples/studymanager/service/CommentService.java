@@ -8,5 +8,5 @@ public interface CommentService {
     public List<Comment> getComment(Long studyContentId);
     public void addComment(Comment comment, String userId);
     public void deleteComment(Long commentId);
-    public void modifyComment(Comment comment);
+    public void modifyComment(Long commentId, String commentContent);
 }
