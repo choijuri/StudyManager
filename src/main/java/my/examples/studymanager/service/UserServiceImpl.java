@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void modifyUser(User user) {
+    public void modifyPasswd(User user) {
 
     }
 
