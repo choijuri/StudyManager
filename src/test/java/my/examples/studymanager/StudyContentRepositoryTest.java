@@ -33,7 +33,7 @@ public class StudyContentRepositoryTest {
     @Test
     public void getStudyContentByUserId(){
 
-        List<StudyContent> studyContents = studyContentRepository.getStudyContentByUserId("mj123@gmail.com");
+        List<StudyContent> studyContents = studyContentRepository.getStudyContentByUserId(1L);
         for (StudyContent studyContent : studyContents){
             System.out.println(studyContent.getContent());
         }

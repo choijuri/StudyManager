@@ -44,10 +44,10 @@ public class UserRepositoryTest {
     //userId를 가져와서 동일한 유저 유무 확인하기
     @Test
     public void getUserEmail(){
-        List<String> allUserId = userRepository.getAllUserId();
-        for(String userId : allUserId){
-            System.out.println(userId);
-            if(userId.equals("jh123@gmail.com")){
+        List<String> allUserEmail = userRepository.getAllUserEmail();
+        for(String userEmail : allUserEmail){
+            System.out.println(userEmail);
+            if(userEmail.equals("jh123@gmail.com")){
                 System.out.println("사용불가능한 아이디입니다.");
                 break;
             }else{

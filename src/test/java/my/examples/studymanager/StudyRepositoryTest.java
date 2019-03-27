@@ -24,7 +24,7 @@ public class StudyRepositoryTest {
 
     @Test
     public void getStudiesByUserId(){
-        List<Study> studiesByUserId = studyRepository.getStudiesByUserId("urstory@gmail.com");
+        List<Study> studiesByUserId = studyRepository.getStudiesByUserId(1L);
         for(Study study : studiesByUserId){
             System.out.println(study.getStudyId());
         }
@@ -32,7 +32,7 @@ public class StudyRepositoryTest {
 
     @Test
     public void getStudiesByUserIdAndCategoryId(){
-        List<Study> studiesByUserIdAndCategoryId = studyRepository.getStudiesByUserIdAndCategory("urstory@gmail.com",1L);
+        List<Study> studiesByUserIdAndCategoryId = studyRepository.getStudiesByUserIdAndCategory(1L,1L);
         for(Study s : studiesByUserIdAndCategoryId){
             System.out.println(s.getStudyName());
         }
