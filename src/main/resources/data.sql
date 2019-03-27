@@ -5,11 +5,11 @@ INSERT INTO category(category_id, category_name) VALUES(3,'취업');
 INSERT INTO category(category_id, category_name) VALUES(4,'기타');
 
 -- user
-INSERT INTO user( user_id, passwd, phone, name) VALUES('urstory@gmail.com', '1234' , '01022523645', '토토');
-INSERT INTO user( user_id, passwd, phone, name) VALUES('mj123@gmail.com', '1234' , '01022458562', '민준');
-INSERT INTO user( user_id, passwd, phone, name) VALUES('sj123@gmail.com', '1234' , '01036158562', '서준');
-INSERT INTO user( user_id, passwd, phone, name) VALUES('jh123@gmail.com', '1234' , '01022457562', '지훈');
-INSERT INTO user( user_id, passwd, phone, name) VALUES('yw123@gmail.com', '1234' , '01022457545', '연우');
+INSERT INTO user( email, passwd, phone, name) VALUES('urstory@gmail.com', '1234' , '01022523645', '토토');
+INSERT INTO user( email, passwd, phone, name) VALUES('mj123@gmail.com', '1234' , '01022458562', '민준');
+INSERT INTO user( email, passwd, phone, name) VALUES('sj123@gmail.com', '1234' , '01036158562', '서준');
+INSERT INTO user( email, passwd, phone, name) VALUES('jh123@gmail.com', '1234' , '01022457562', '지훈');
+INSERT INTO user( email, passwd, phone, name) VALUES('yw123@gmail.com', '1234' , '01022457545', '연우');
 
 
 -- study
@@ -240,26 +240,26 @@ VALUES(5, '주니어 개발자 위한 스터디' , '서울특별시 강남구' ,
 
 
 --studyUser
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('urstory@gmail.com',1,'admin');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('mj123@gmail.com',1,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('jh123@gmail.com',1,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(1,1,'admin');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(2,1,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(4,1,'user');
 
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('mj123@gmail.com',2,'admin');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('sj123@gmail.com',2,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('jh123@gmail.com',2,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('yw123@gmail.com',2,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(2,2,'admin');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(3,2,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(4,2,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(5,2,'user');
 
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('yw123@gmail.com',3,'admin');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('sj123@gmail.com',3,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('mj123@gmail.com',3,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(5,3,'admin');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(3,3,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(2,3,'user');
 
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('urstory@gmail.com',4,'admin');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('sj123@gmail.com',4,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('yw123@gmail.com',4,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('mj123@gmail.com',4,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(1,4,'admin');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(3,4,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(5,4,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(2,4,'user');
 
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('jh123@gmail.com',5,'admin');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('urstory@gmail.com',5,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('sj123@gmail.com',5,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('mj123@gmail.com',5,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES('yw123@gmail.com',5,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(4,5,'admin');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(1,5,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(3,5,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(2,5,'user');
+INSERT INTO study_user(user_id,study_id,user_role) VALUES(5,5,'user');

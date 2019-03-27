@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.User;
 import my.examples.studymanager.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +22,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserByEmail(String userId) {
-        return null;
+        User user = userRepository.getOne(userId);
+        return user;
     }
 }
