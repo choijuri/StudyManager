@@ -12,4 +12,8 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
     @Query("SELECT s FROM Study s INNER JOIN FETCH s.category WHERE s.category.categoryName = :categoryName")
     public List<Study> getStudiesByCategory(@Param("categoryName") String categoryName);
 
+    @Query("SELECT distinct s FROM Study s, StudyUser su, User u INNER JOIN FETCH s.category WHERE s.studyId = su.studyUserId.study.studyId and " +
+            "su.studyUserId.user.userId = u.userId and u.userId = :userId")
+    public List<Study> getStudiesByUserId(@Param("userId") String userId);
+
 }

@@ -23,6 +23,14 @@ public class StudyRepositoryTest {
     }
 
     @Test
+    public void getStudiesByUserId(){
+        List<Study> studiesByUserId = studyRepository.getStudiesByUserId("urstory@gmail.com");
+        for(Study study : studiesByUserId){
+            System.out.println(study.getStudyId());
+        }
+    }
+
+    @Test
     public void getStudyByCategory(){
         List<Study> studyList = studyRepository.getStudiesByCategory("IT");
         for (Study study : studyList){
@@ -31,11 +39,11 @@ public class StudyRepositoryTest {
         System.out.println(studyRepository.getStudiesByCategory("어학").iterator());
     }
 
-    @Test
-    public void getStudyByEmail(){
-        List<Study> studies = studyRepository.getStudiesAll("urstory@gmail.com");
-        for(Study s : studies){
-            System.out.println("스터디이름 : "+s.getStudyName());
-        }
-    }
+//    @Test
+//    public void getStudyByEmail(){
+//        List<Study> studies = studyRepository.getStudiesAll("urstory@gmail.com");
+//        for(Study s : studies){
+//            System.out.println("스터디이름 : "+s.getStudyName());
+//        }
+//    }
 }
