@@ -16,27 +16,38 @@ public class StudyServiceImpl implements StudyService {
 
 
     @Override
-    public List<Study> getStudiesByCategory(String category) {
-        return studyRepository.getStudiesByCategory(category);
+    @Transactional(readOnly = true)
+    public List<Study> getStudiesByUser(String userId) {
+        return studyRepository.getStudiesByUserId(userId);
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Study> getStudiesByUserIdAndCategoryId(String userId, Long categoryId) {
+        return studyRepository.getStudiesByUserIdAndCategory(userId, categoryId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Study getStudy(Long studyId) {
         return studyRepository.getOne(studyId);
     }
 
     @Override
-    public boolean deleteStudy(Long studyId) {
-        return false;
+    @Transactional
+    public void deleteStudy(Long studyId) {
+        studyRepository.deleteById(studyId);
     }
 
     @Override
-    public boolean modifyStudy(Study study) {
-        return false;
+    @Transactional
+    public void modifyStudy(Study study) {
+
     }
 
     @Override
+    @Transactional
     public void addStudy(Study study) {
-
+        studyRepository.save(study);
     }
 }

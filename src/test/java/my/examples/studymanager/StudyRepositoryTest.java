@@ -31,6 +31,14 @@ public class StudyRepositoryTest {
     }
 
     @Test
+    public void getStudiesByUserIdAndCategoryId(){
+        List<Study> studiesByUserIdAndCategoryId = studyRepository.getStudiesByUserIdAndCategory("urstory@gmail.com",1L);
+        for(Study s : studiesByUserIdAndCategoryId){
+            System.out.println(s.getStudyName());
+        }
+    }
+
+    @Test
     public void getStudyByCategory(){
         List<Study> studyList = studyRepository.getStudiesByCategory("IT");
         for (Study study : studyList){

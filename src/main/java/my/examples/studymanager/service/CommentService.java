@@ -7,6 +7,6 @@ import java.util.List;
 public interface CommentService {
     public List<Comment> getComment(Long studyContentId);
     public void addComment(Comment comment, String userId);
-    public boolean deleteComment(Long commentId);
-    public boolean modifyComment(Comment comment);
+    public void deleteComment(Long commentId);
+    public void modifyComment(Comment comment);
 }
