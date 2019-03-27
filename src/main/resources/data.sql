@@ -68,12 +68,12 @@ INSERT INTO curriculum_detail(curriculum_id, curriculum_detail_content) VALUES(9
 
 
 -- study_content
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(1,'mj123@gmail.com','객체 지향 프로그래밍이란 컴퓨터 프로그래밍 패러다임중 하나로, 프로그래밍에서 필요한 데이터를 공통된 특징을 파악하여 정의한 설계에 따라 상태와 행위를 가진 객체를 만들고 그 객체들 간의 서로 밀접하게 관련이 있는 상호작용을 통해 로직을 구성하는 프로그래밍 방법이다.');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(2,'mj123@gmail.com','HTTP는 Hyper Text Transfer Protocol의 줄임말로 브라우저가 웹 서버와 통신하기 위해 사용하는 주요 통신규약이다. TCP/IP 80번 포트를 사용한다. 브라우저가 요청 메시지를 보내면 서버가 요청의 결과인 응답 코드가 포함된 응답메시지를 회신해준다. 요청과 응답 처리 이후에 연결이 끊기기 때문에 상태는 기록해두지 않아 비상태 프로토콜 이라고도 부른다.');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(3,'jh123@gmail.com','하나의 프로세스를 다수의 실행 단위로 구분하여 자원을 공유하고 자원의 생성과 관리의 중복성을 최소화하여 수행능력을 향상시키는 것으로 쓰레드간 스택영역을 비공유하고 데이터와 힙 영역을 공유하여 데이터 교환에 용이하다. 하지만 공유하는 자원에 대해 동시에 접근하는 부분은 동기화를 통해 작업 처리순서나 접근에 대헤 컨트롤 해야하며 과도한 락이 걸릴 경우 성능이 저하될 가능성이 크기 때문에 동기화를 해야 할 공유자원에 대한 많은 고민이 필요하다.');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(4,'urstory@gmail.com','장점: 프로세스를 생성하는 것보다 쓰레드를 생성하는 것이 더 경제적이다, 응답성이 좋다, 자원 공유를 효율적으로 할 수 있다, 작업이 분리되어 코드가 간결해진다. 단점: 동기화에 주의해야한다(synchronization), 교착상태 (dead-lock)이 발생하지 않도록 해야한다, 각 쓰레드가 고르게 실행되도록 해야한다.');
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(1,2,'객체 지향 프로그래밍이란 컴퓨터 프로그래밍 패러다임중 하나로, 프로그래밍에서 필요한 데이터를 공통된 특징을 파악하여 정의한 설계에 따라 상태와 행위를 가진 객체를 만들고 그 객체들 간의 서로 밀접하게 관련이 있는 상호작용을 통해 로직을 구성하는 프로그래밍 방법이다.');
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(2,2,'HTTP는 Hyper Text Transfer Protocol의 줄임말로 브라우저가 웹 서버와 통신하기 위해 사용하는 주요 통신규약이다. TCP/IP 80번 포트를 사용한다. 브라우저가 요청 메시지를 보내면 서버가 요청의 결과인 응답 코드가 포함된 응답메시지를 회신해준다. 요청과 응답 처리 이후에 연결이 끊기기 때문에 상태는 기록해두지 않아 비상태 프로토콜 이라고도 부른다.');
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(3,4,'하나의 프로세스를 다수의 실행 단위로 구분하여 자원을 공유하고 자원의 생성과 관리의 중복성을 최소화하여 수행능력을 향상시키는 것으로 쓰레드간 스택영역을 비공유하고 데이터와 힙 영역을 공유하여 데이터 교환에 용이하다. 하지만 공유하는 자원에 대해 동시에 접근하는 부분은 동기화를 통해 작업 처리순서나 접근에 대헤 컨트롤 해야하며 과도한 락이 걸릴 경우 성능이 저하될 가능성이 크기 때문에 동기화를 해야 할 공유자원에 대한 많은 고민이 필요하다.');
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(4,1,'장점: 프로세스를 생성하는 것보다 쓰레드를 생성하는 것이 더 경제적이다, 응답성이 좋다, 자원 공유를 효율적으로 할 수 있다, 작업이 분리되어 코드가 간결해진다. 단점: 동기화에 주의해야한다(synchronization), 교착상태 (dead-lock)이 발생하지 않도록 해야한다, 각 쓰레드가 고르게 실행되도록 해야한다.');
 
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(5, 'mj123@gmail.com', 'import java.util.Stack;
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(5, 2, 'import java.util.Stack;
 
 class Solution {
        public int solution(String arrangement) {
@@ -101,7 +101,7 @@ class Solution {
         return answer;
     }
 }');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(6, 'sj123@gmail.com', 'class Solution {
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(6, 3, 'class Solution {
     public int[] solution(int[] prices) {
         int[] answer = new int[prices.length];
         for(int i = 0; i < prices.length - 1; i++){
@@ -117,7 +117,7 @@ INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(6, 'sj12
         return answer;
 }
 }');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(7, 'mj123@gmail.com','import java.util.*;
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(7, 2,'import java.util.*;
 -- --
 class Solution {
        public String solution(String[] participant, String[] completion) {
@@ -145,7 +145,7 @@ class Solution {
         return answer;
     }
 }');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(8, 'mj123@gmail.com', 'import java.util.Arrays;
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(8, 2, 'import java.util.Arrays;
 
 class Solution {
     public boolean solution(String[] phone_book) {
@@ -164,7 +164,7 @@ class Solution {
         return answer;
     }
 }');
-INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(9, 'yw123@gmail.com', 'import java.util.*;
+INSERT INTO study_content(curriculum_detail_id, writer, content) VALUES(9, 5, 'import java.util.*;
 
 class Solution {
  public String solution(int[] numbers) {
@@ -202,7 +202,7 @@ class Solution {
 
 
 --comment
-INSERT INTO comment(study_content_id, comment_content, writer) VALUES(1,'내용이 부족한것 같아 다음에 모일 때 추가 할 내용에 대해서 다같이 생각해보고 이야기 나누면 좋을 것 같아요! ','mj123@gmail.com');
+INSERT INTO comment(study_content_id, comment_content, writer) VALUES(1,'내용이 부족한것 같아 다음에 모일 때 추가 할 내용에 대해서 다같이 생각해보고 이야기 나누면 좋을 것 같아요! ',2);
 
 -- INSERT INTO comment(study_content_id , comment_content, writer) VALUES(1, '잘 정리된 문서를 봐도 어렵네요…bb 역시 전 멀었어요…' , 'jh123@gmail.com' );
 -- INSERT INTO comment(study_content_id , comment_content, writer) VALUES(1, '유익한 스터디 내용이었습니다. 감사합니다' , 'yw123@gmail.com' );
@@ -213,30 +213,30 @@ INSERT INTO comment(study_content_id, comment_content, writer) VALUES(1,'내용�
 
 --message
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(1, 'jh123@gmail.com', 'yw123@gmail.com' , '참가를 요청합니다.');
+VALUES(1, 4, 5 , '참가를 요청합니다.');
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(2, 'jh123@gmail.com', 'yw123@gmail.com' , '받아주세요!!');
+VALUES(2, 4, 5 , '받아주세요!!');
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(3, 'jh123@gmail.com', 'yw123@gmail.com' , '답장 기다릴게요');
+VALUES(3, 4, 5 , '답장 기다릴게요');
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(4, 'sj123@gmail.com', 'mj123@gmail.com' , '안녕하세요! 스터디 내용 문의 드리고 싶어서 연락드려요! 혹시 위치는 그쪽 지역밖에 안되는 건가요??');
+VALUES(4, 3, 2 , '안녕하세요! 스터디 내용 문의 드리고 싶어서 연락드려요! 혹시 위치는 그쪽 지역밖에 안되는 건가요??');
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(5 , 'mj123@gmail.com', 'sj123@gmail.com' , '이미 모집된 인원이 있어 위치변경은 힘들 것 같은데…저 혼자 바꾸고 통보하기 민감한 내용이라 어려울 것 같습니다~~');
+VALUES(5 , 2, 3 , '이미 모집된 인원이 있어 위치변경은 힘들 것 같은데…저 혼자 바꾸고 통보하기 민감한 내용이라 어려울 것 같습니다~~');
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(6, 'sj123@gmail.com', 'mj123@gmail.com' , '네 알겠습니다. ');
+VALUES(6, 3, 2 , '네 알겠습니다. ');
 
 
 --recruitStudy
 INSERT INTO recruit_study (recruit_id , recruit_name, location , recruit_number, recruit_content, user_id, category_id)
-VALUES(1, 'java스터디 모집합니다. ' , '서울특별시 강남구' , 5 , 'java내용에 대해서 같이 공부하실 분 모집합니다 ', 'jh123@gmail.com' , 1);
+VALUES(1, 'java스터디 모집합니다. ' , '서울특별시 강남구' , 5 , 'java내용에 대해서 같이 공부하실 분 모집합니다 ', 4 , 1);
 INSERT INTO recruit_study (recruit_id , recruit_name, location , recruit_number, recruit_content, user_id, category_id)
-VALUES(2, '토익스터디 모집합니다. ' , '서울특별시 서초구' , 6 , '토익 점수 800점 목표로 공부하 실 분 모집합니다. ', 'yw123@gmail.com' , 3);
+VALUES(2, '토익스터디 모집합니다. ' , '서울특별시 서초구' , 6 , '토익 점수 800점 목표로 공부하 실 분 모집합니다. ', 5 , 3);
 INSERT INTO recruit_study (recruit_id , recruit_name, location , recruit_number, recruit_content, user_id, category_id)
-VALUES(3, '개발자 면접 스터디 모집합니다. ' , '서울특별시 종로구' , 4 , '면접 준비로 힘들어서 함께 하실분들 모집해요!', 'sj123@gmail.com' , 2);
+VALUES(3, '개발자 면접 스터디 모집합니다. ' , '서울특별시 종로구' , 4 , '면접 준비로 힘들어서 함께 하실분들 모집해요!', 3 , 2);
 INSERT INTO recruit_study (recruit_id , recruit_name, location , recruit_number, recruit_content, user_id, category_id)
-VALUES(4, ' 운동량 인증 하실분들 모집합니다. ' , '서울특별시 노원구' , 10 , '매일 목표를 인증하면서 운동하실 분 모집합니다', 'mj123@gmail.com' , 4);
+VALUES(4, ' 운동량 인증 하실분들 모집합니다. ' , '서울특별시 노원구' , 10 , '매일 목표를 인증하면서 운동하실 분 모집합니다', 2 , 4);
 INSERT INTO recruit_study (recruit_id , recruit_name, location , recruit_number, recruit_content, user_id, category_id)
-VALUES(5, '주니어 개발자 위한 스터디' , '서울특별시 강남구' , 5 , '힘든 직장생활에 서로 도움을 줄 수 있도록 도와주세요!!', 'jh123@gmail.com' , 1);
+VALUES(5, '주니어 개발자 위한 스터디' , '서울특별시 강남구' , 5 , '힘든 직장생활에 서로 도움을 줄 수 있도록 도와주세요!!', 4 , 1);
 
 
 --studyUser
