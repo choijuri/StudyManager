@@ -13,5 +13,5 @@ public interface StudyContentRepository extends JpaRepository<StudyContent, Long
     public StudyContent getStudyContentByCurriculumDetailId(@Param("curriculumDetailId") Long curriculumDetailId);
 
     @Query("SELECT sc FROM StudyContent sc INNER JOIN FETCH sc.user WHERE sc.user.userId = :userId")
-    public List<StudyContent> getStudyContentByUserId(@Param("userId") String userId);
+    public List<StudyContent> getStudyContentByUserId(@Param("userId") Long userId);
 }

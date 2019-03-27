@@ -13,17 +13,17 @@ public class StudyUserServiceImpl implements StudyUserService {
     private final StudyUserRepository studyUserRepository;
 
     @Override
-    public void addStudyUser(String userId, Long studyId, String userRole) {
+    public void addStudyUser(Long userId, Long studyId, String userRole) {
 
     }
 
     @Override
-    public void deleteStudyUser(String userId, Long studyId) {
+    public void deleteStudyUser(Long userId, Long studyId) {
 
     }
 
     @Override
-    public List<StudyUser> getStudyUsers(String userId) {
+    public List<StudyUser> getStudyUsers(Long userId) {
         return studyUserRepository.getStudyUserByUserId(userId);
     }
 }

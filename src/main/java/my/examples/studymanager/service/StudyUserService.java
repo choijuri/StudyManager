@@ -7,7 +7,7 @@ import java.util.List;
 
 // 이건 studyService에서 쓰기.
 public interface StudyUserService {
-    public void addStudyUser(String userId, Long studyId, String userRole);
-    public void deleteStudyUser(String userId, Long studyId);
-    public List<StudyUser> getStudyUsers(String userId);
+    public void addStudyUser(Long userId, Long studyId, String userRole);
+    public void deleteStudyUser(Long userId, Long studyId);
+    public List<StudyUser> getStudyUsers(Long userId);
 }

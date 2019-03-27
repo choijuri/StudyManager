@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface StudyUserRepository extends JpaRepository<StudyUser, StudyUserId> {
     @Query("SELECT su FROM StudyUser su WHERE su.studyUserId = :userId")
-    public List<StudyUser> getStudyUserByUserId(@Param("userId") String userId);
+    public List<StudyUser> getStudyUserByUserId(@Param("userId") Long userId);
 }

@@ -17,13 +17,13 @@ public class StudyServiceImpl implements StudyService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Study> getStudiesByUser(String userId) {
+    public List<Study> getStudiesByUser(Long userId) {
         return studyRepository.getStudiesByUserId(userId);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Study> getStudiesByUserIdAndCategoryId(String userId, Long categoryId) {
+    public List<Study> getStudiesByUserIdAndCategoryId(Long userId, Long categoryId) {
         return studyRepository.getStudiesByUserIdAndCategory(userId, categoryId);
     }
 

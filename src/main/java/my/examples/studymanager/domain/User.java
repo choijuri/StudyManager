@@ -13,7 +13,9 @@ import java.util.List;
 @Setter
 public class User {
     @Id
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
+    private String email;
     private String passwd;
     @Column(length = 45)
     private String name;
