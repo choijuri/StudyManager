@@ -20,7 +20,7 @@ public class ImageFile {
     private String name;
     private String saveFileName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_content_id")
     private StudyContent studyContent;
 }

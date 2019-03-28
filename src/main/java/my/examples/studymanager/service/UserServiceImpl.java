@@ -17,8 +17,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void modifyPasswd(User user) {
-        
+    public void modifyPasswd(String changePasswd, Long userId) {
+        User user = userRepository.getOne(userId);
+        user.setPasswd(changePasswd);
+        userRepository.save(user);
     }
 
     @Override

@@ -39,7 +39,7 @@ public class MessageRepositoryTest {
     //유저의 메시지 조회
     @Test
     public void getMessageByUser(){
-        List<Message> messages = messageRepository.getMessageByUser("jh123@gmail.com");
+        List<Message> messages = messageRepository.getMessageByUser(4L);
         for(Message message : messages){
             System.out.println(message.getMessageContent());
         }
@@ -52,8 +52,8 @@ public class MessageRepositoryTest {
     public void addmessage(){
         Message message = new Message();
         message.setMessageContent("test message");
-        message.setUser(userRepository.findById("sj123@gmail.com").get());
-        message.setUser1(userRepository.getOne("jh123@gmail.com"));
+        message.setUser(userRepository.findById(3L).get());
+        message.setUser1(userRepository.getOne(2L));
         messageRepository.save(message);
     }
 }

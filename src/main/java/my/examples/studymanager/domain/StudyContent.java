@@ -23,7 +23,7 @@ public class StudyContent {
     @OneToMany(mappedBy = "studyContent", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Comment> comments;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer")
     private User user;
 

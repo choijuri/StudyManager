@@ -37,7 +37,7 @@ public class UserRepositoryTest {
     //userId로 해당 user가져오기 (1건)
     @Test
     public void getUserByUserId(){
-        User user = userRepository.findById("yw123@gmail.com").get();
+        User user = userRepository.findById(1L).get();
         System.out.println(user.getName());
     }
 
@@ -62,7 +62,7 @@ public class UserRepositoryTest {
     @Transactional
     public void modifyUserPassword() throws Exception{
         //userRepository.modifyPasswordByUserId("12345","yw123@gmail.com");
-        User user = userRepository.findById("yw123@gmail.com").get();
+        User user = userRepository.findById(4L).get();
         user.setPasswd("123456");
     }
 

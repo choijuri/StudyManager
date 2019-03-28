@@ -16,11 +16,11 @@ public class Comment {
     @Lob
     private String commentContent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_content_id")
     private StudyContent studyContent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer")
     private User user;
 }

@@ -17,7 +17,7 @@ public class CurriculumDetail {
     @Lob
     private String curriculumDetailContent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "curriculum_id")
     private Curriculum curriculum;
 }
