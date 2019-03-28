@@ -14,17 +14,16 @@ public class RecruitStudyServiceImpl implements RecruitStudyService {
 
     @Override
     public List<RecruitStudy> getRecruitStudyAll() {
-        return null;
+        return recruitStudyRepository.findAll();
     }
 
     @Override
     public void addRecruitStudy(RecruitStudy recruitStudy, String userId) {
-
     }
 
     @Override
     public RecruitStudy getRecruitStudy(Long recruitStudyId) {
-        return null;
+        return recruitStudyRepository.getOne(recruitStudyId);
     }
 
     @Override
