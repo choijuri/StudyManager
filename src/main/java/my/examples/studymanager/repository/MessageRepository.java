@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
     @Query("SELECT m FROM Message m WHERE m.user.userId =:receiverId")
-    public List<Message> getMessageByUser(@Param("receiverId") String receiverId);
+    public List<Message> getMessageByUser(@Param("receiverId") Long receiverId);
 }
