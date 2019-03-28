@@ -3,7 +3,7 @@ package my.examples.studymanager.dto;
 import lombok.Data;
 
 @Data
-public class RecruitStudy {
+public class RecruitStudyDto {
     private String recruitName;
     private String location;
     private int recruitNumber;

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, Long> {
 //    @Modifying
 //    @Query("UPDATE User u SET u.passwd =:password WHERE u.userId =:userId")
 //    public void modifyPasswordByUserId(@Param("password") String password, @Param("userId") String userId);

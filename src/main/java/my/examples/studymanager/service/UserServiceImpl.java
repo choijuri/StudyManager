@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public User getUserByEmail(String userId) {
+    public User getUserByEmail(Long userId) {
         User user = userRepository.getOne(userId);
         return user;
     }

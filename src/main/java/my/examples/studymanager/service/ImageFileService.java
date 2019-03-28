@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ImageFileService {
     public List<ImageFile> getImageFiles(Long studyContentId);
+    public void deleteImageFile(Long imageFileId);
 }

@@ -27,7 +27,7 @@ public class StudyContentServiceImpl implements StudyContentService {
 
     @Override
     @Transactional
-    public void addStudyContent(StudyContent studyContent, String userId) {
+    public void addStudyContent(StudyContent studyContent, Long userId) {
         studyContent.setUser(userRepository.getOne(userId));
         studyContentRepository.save(studyContent);
     }

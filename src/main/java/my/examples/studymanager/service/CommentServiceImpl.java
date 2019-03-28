@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     @Transactional
-    public void addComment(Comment comment, String userId) {
+    public void addComment(Comment comment, Long userId) {
         comment.setUser(userRepository.getOne(userId));
         commentRepository.save(comment);
     }
