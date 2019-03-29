@@ -41,6 +41,10 @@ public class User {
 
     @OneToMany(mappedBy = "studyUserId.user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<StudyUser> studyUsers;
+
+    public User() {
+        regdate = new Date();
+    }
 }
 
 /*

@@ -33,6 +33,10 @@ public class StudyContent {
     @OneToOne
     @JoinColumn(name = "curriculum_detail_id")
     private CurriculumDetail curriculumDetail;
+
+    public StudyContent() {
+        regdate = new Date();
+    }
 }
 
 /*

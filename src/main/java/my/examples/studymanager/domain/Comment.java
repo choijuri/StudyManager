@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "comment")
@@ -15,6 +16,7 @@ public class Comment {
     private Long commentId;
     @Lob
     private String commentContent;
+    private Date regdate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_content_id")
@@ -23,6 +25,10 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer")
     private User user;
+
+    public Comment() {
+        regdate = new Date();;
+    }
 }
 /*
  Field            | Type                | Null | Key | Default | Extra |

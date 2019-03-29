@@ -16,7 +16,6 @@ public class Study {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studyId;
     private String studyName;
-
     @Column(columnDefinition = "TEXT")
     private String studyInformation;
     private Date regdate;
@@ -30,6 +29,10 @@ public class Study {
 
     @OneToMany(mappedBy = "studyUserId.study", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<StudyUser> studyUsers;
+
+    public Study() {
+        regdate = new Date();
+    }
 }
 
 /*
