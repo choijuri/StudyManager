@@ -2,7 +2,10 @@ package my.examples.studymanager.service;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Study;
+import my.examples.studymanager.domain.StudyUser;
+import my.examples.studymanager.dto.StudyDto;
 import my.examples.studymanager.repository.StudyRepository;
+import my.examples.studymanager.repository.StudyUserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,13 +21,13 @@ public class StudyServiceImpl implements StudyService {
     @Override
     @Transactional(readOnly = true)
     public List<Study> getStudiesByUser(Long userId) {
-        return studyRepository.getStudiesByUserId(userId);
+        return studyRepository.getStudiesByUser(userId);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Study> getStudiesByUserIdAndCategoryId(Long userId, Long categoryId) {
-        return studyRepository.getStudiesByUserIdAndCategory(userId, categoryId);
+        return studyRepository.getStudiesByUserIdCategoryId(userId, categoryId);
     }
 
     @Override
@@ -41,7 +44,11 @@ public class StudyServiceImpl implements StudyService {
 
     @Override
     @Transactional
-    public void modifyStudy(Study study) {
+    public void modifyStudy(StudyDto studyDto) {
+        Study study = studyRepository.getOne(studyDto.getStudyId());
+        study.setStudyName(studyDto.getStudyName());
+        study.setStudyInformation(studyDto.getStudyInformation());
+        studyRepository.save(study);
 
     }
 
