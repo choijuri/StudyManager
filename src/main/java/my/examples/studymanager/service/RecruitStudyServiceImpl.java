@@ -6,6 +6,8 @@ import my.examples.studymanager.dto.RecruitStudyDto;
 import my.examples.studymanager.repository.CategoryRepository;
 import my.examples.studymanager.repository.RecruitStudyRepository;
 import my.examples.studymanager.repository.UserRepository;
+import my.examples.studymanager.repository.custom.RecruitStudyRepositoryCustom;
+import my.examples.studymanager.repository.custom.RecruitStudyRepositoryImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +19,13 @@ public class RecruitStudyServiceImpl implements RecruitStudyService {
     private final RecruitStudyRepository recruitStudyRepository;
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
+//    private final RecruitStudyRepositoryCustom recruitStudyRepositoryCustom;
+
+
+    public final static String RECRUITSTUDYNAME_SEARCH = "name_search";
+    public final static String RECRUITSTUDYLOCATION_SEARCH = "title_content_search";
+//    public final static String TITLE_SEARCH = "title_search";
+//    public final static String CONTENT_SEARCH = "content_search";
 
     @Override
     @Transactional(readOnly = true)
@@ -43,9 +52,10 @@ public class RecruitStudyServiceImpl implements RecruitStudyService {
         return recruitStudyRepository.getOne(recruitStudyId);
     }
 
-    @Override
-    @Transactional
-    public List<RecruitStudy> searchRecruitStudy(int page, Long categoryId, String searchType, String searchStr) {
-        return null;
-    }
+//    @Override
+//    @Transactional
+//    public List<RecruitStudy> searchRecruitStudy(int page, Long categoryId, String searchType, String searchStr) {
+//        List<RecruitStudy> recruitStudies = recruitStudyRepositoryCustom.getRecruitStudy(categoryId, 0, 5, searchType, searchStr);
+//        return recruitStudies;
+//    }
 }

@@ -1,4 +1,4 @@
-package my.examples.studymanager;
+package my.examples.studymanager.repository;
 
 import my.examples.studymanager.domain.StudyContent;
 import my.examples.studymanager.repository.StudyContentRepository;

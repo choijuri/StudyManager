@@ -9,5 +9,5 @@ public interface RecruitStudyService {
     public List<RecruitStudy> getRecruitStudyAll();
     public void addRecruitStudy(RecruitStudyDto recruitStudyDto, Long userId);
     public RecruitStudy getRecruitStudy(Long recruitStudyId);
-    public List<RecruitStudy> searchRecruitStudy(int page, Long categoryId, String searchType, String searchStr);
+//    public List<RecruitStudy> searchRecruitStudy(int page, Long categoryId, String searchType, String searchStr);
 }
