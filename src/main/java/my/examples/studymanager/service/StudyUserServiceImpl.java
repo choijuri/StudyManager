@@ -5,6 +5,7 @@ import my.examples.studymanager.domain.StudyUser;
 import my.examples.studymanager.domain.StudyUserId;
 import my.examples.studymanager.repository.StudyUserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,16 +15,19 @@ public class StudyUserServiceImpl implements StudyUserService {
     private final StudyUserRepository studyUserRepository;
 
     @Override
+    @Transactional
     public void addStudyUser(StudyUser studyUser) {
         studyUserRepository.save(studyUser);
     }
 
     @Override
+    @Transactional
     public void deleteStudyUser(Long userId, Long studyId) {
         studyUserRepository.delete(studyUserRepository.getStudyUserByUserIdStudyId(userId,studyId));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<StudyUser> getStudyUsers(Long userId) {
         return studyUserRepository.getStudyUserByUserId(userId);
     }

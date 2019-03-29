@@ -12,11 +12,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public void addUser(User user) {
         userRepository.save(user);
     }
 
     @Override
+    @Transactional
     public void modifyPasswd(String changePasswd, Long userId) {
         User user = userRepository.getOne(userId);
         user.setPasswd(changePasswd);

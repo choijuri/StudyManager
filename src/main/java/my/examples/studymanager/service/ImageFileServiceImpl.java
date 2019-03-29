@@ -20,6 +20,7 @@ public class ImageFileServiceImpl implements ImageFileService {
     }
 
     @Override
+    @Transactional
     public void deleteImageFile(Long imageFileId) {
         imageFileRepository.deleteById(imageFileId);
     }
