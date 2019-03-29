@@ -22,7 +22,9 @@ public class StudyContentServiceImpl implements StudyContentService {
     @Override
     @Transactional
     public void modifyStudyContent(StudyContent studyContent) {
-
+        StudyContent updateStudyContent = studyContentRepository.getOne(studyContent.getStudyContentId());
+        updateStudyContent.setContent(studyContent.getContent());
+        studyContentRepository.save(updateStudyContent);
     }
 
     @Override
