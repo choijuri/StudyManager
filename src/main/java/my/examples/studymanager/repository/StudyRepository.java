@@ -20,4 +20,7 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
             "su.studyUserId.user.userId = u.userId and u.userId = :userId and s.category.categoryId =:categoryId")
     public List<Study> getStudiesByUserIdAndCategory(@Param("userId") Long userId, @Param("categoryId") Long categoryId);
 
+    @Query("SELECT s FROM Study s INNER JOIN s.studyUsers su INNER JOIN su.studyUserId sui INNER JOIN sui.user u WHERE u.userId =:userId")
+    public List<Study> getStudiesByUser(@Param("userId") Long userId);
+
 }

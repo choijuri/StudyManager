@@ -47,6 +47,14 @@ public class StudyRepositoryTest {
         System.out.println(studyRepository.getStudiesByCategory("어학").iterator());
     }
 
+    @Test
+    public void getStudiesByUserId2(){
+        List<Study> studiesByUserId = studyRepository.getStudiesByUser(1L);
+        for(Study study : studiesByUserId){
+            System.out.println(study.getStudyId());
+        }
+    }
+
 //    @Test
 //    public void getStudyByEmail(){
 //        List<Study> studies = studyRepository.getStudiesAll("urstory@gmail.com");
