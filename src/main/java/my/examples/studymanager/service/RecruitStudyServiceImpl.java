@@ -19,7 +19,6 @@ public class RecruitStudyServiceImpl implements RecruitStudyService {
     private final RecruitStudyRepository recruitStudyRepository;
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
-//    private final RecruitStudyRepositoryCustom recruitStudyRepositoryCustom;
 
 
     public final static String RECRUITSTUDYNAME_SEARCH = "name_search";
@@ -52,10 +51,12 @@ public class RecruitStudyServiceImpl implements RecruitStudyService {
         return recruitStudyRepository.getOne(recruitStudyId);
     }
 
-//    @Override
-//    @Transactional
-//    public List<RecruitStudy> searchRecruitStudy(int page, Long categoryId, String searchType, String searchStr) {
-//        List<RecruitStudy> recruitStudies = recruitStudyRepositoryCustom.getRecruitStudy(categoryId, 0, 5, searchType, searchStr);
-//        return recruitStudies;
-//    }
+    @Override
+    @Transactional
+    public List<RecruitStudy> searchRecruitStudy(int page, Long categoryId, String searchType, String searchStr) {
+        int limit = 5;
+        int start = page * limit - limit;
+        return recruitStudyRepository.getRecruitStudy(categoryId, start, limit, searchType, searchStr);
+
+    }
 }

@@ -48,4 +48,13 @@ public class RecruitStudyServiceTest {
             System.out.println(recruitStudy.getRecruitName());
         }
     }
+
+    @Test
+    @Transactional(readOnly = true)
+    public void searchRecruitStudies(){
+        List<RecruitStudy> recruitStudies = recruitStudyService.searchRecruitStudy(1, null, "RECRUITSTUDYNAME_SEARCH", "java");
+        for(RecruitStudy r : recruitStudies){
+            System.out.println(r.getRecruitName());
+        }
+    }
 }
