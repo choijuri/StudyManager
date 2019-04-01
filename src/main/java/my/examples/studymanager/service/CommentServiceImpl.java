@@ -2,7 +2,9 @@ package my.examples.studymanager.service;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Comment;
+import my.examples.studymanager.dto.CommentDto;
 import my.examples.studymanager.repository.CommentRepository;
+import my.examples.studymanager.repository.StudyContentRepository;
 import my.examples.studymanager.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,18 +17,22 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
+    private final StudyContentRepository studyContentRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public List<Comment> getComment(Long studyContentId) {
+    public List<Comment> getComments(Long studyContentId) {
         return commentRepository.getCommentByStudyContentId(studyContentId);
     }
 
     @Override
     @Transactional
-    public void addComment(Comment comment, Long userId) {
-        comment.setUser(userRepository.getOne(userId));
-        commentRepository.save(comment);
+    public Comment addComment(CommentDto commentDto) {
+        Comment comment = new Comment();
+        comment.setUser(userRepository.getOne(commentDto.getUserId()));
+        comment.setStudyContent(studyContentRepository.getOne(commentDto.getStudyContentId()));
+        comment.setCommentContent(commentDto.getContent());
+        return commentRepository.save(comment);
     }
 
     @Override
