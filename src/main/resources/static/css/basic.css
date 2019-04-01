@@ -1,0 +1,58 @@
+*{margin:0; padding:0; box-sizing:border-box;}
+/*@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:400,700');
+
+a {text-decoration:none; color:#000;}
+img{vertical-align:bottom;}
+ul {list-style-position:inside;}
+ul li{list-style:none;}
+
+body{font-family: 'Nanum Gothic', sans-serif;
+    font-size:0.8em;}
+
+div#wrap{width:100%; margin:0 auto;}
+
+div.box{ width:100%;
+    margin:10% auto 0; text-align:center;
+    color:#898989;}
+
+
+div.box h1{font-size:2.5em;
+    /*box-shadow:3px 3px 3px 3px #e7be24; */
+
+    font-family: 'Noto Sans','Telex', 'Vast Shadow', 'Telex', cursive, sans-serif;}
+
+div.button{
+    width:20%;
+    margin:3% auto;
+    text-align:center;
+}
+
+div.button a.button{
+    width:45%;
+    /*background:#f3c239;*/
+    /*background:#f6d71e;*/
+    background:#f2cc32;
+    /*background:#f5ce61;*/
+    padding:4% 5%;
+    color:#fff;
+    size:1.8em;
+    font-weight:bold;
+}
+
+div.button a.join{
+    float:left;
+}
+div.button a.login{
+    float:right;
+}
+div.button a.join:hover, div.button a.login:hover{
+    background-color:#F6E34D;
+}
+
+
+
+
+
+
