@@ -34,7 +34,7 @@ public class StudyManagerUserDetailService implements UserDetailsService {
 
         StudyManagerSecurityUser studyManagerSecurityUser =  new StudyManagerSecurityUser(email, user.getPasswd(), authorities);
         studyManagerSecurityUser.setName(user.getName());
-        
+
         return studyManagerSecurityUser;
     }
 }
