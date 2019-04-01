@@ -66,4 +66,9 @@ public class UserRepositoryTest {
         user.setPasswd("123456");
     }
 
+    @Test
+    public void emailChk(){
+        System.out.println(userRepository.emailChk("jr@gmail.com"));
+    }
+
 }
