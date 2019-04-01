@@ -27,7 +27,7 @@ public class Comment {
     private User user;
 
     public Comment() {
-        regdate = new Date();;
+        regdate = new Date();
     }
 }
 /*
