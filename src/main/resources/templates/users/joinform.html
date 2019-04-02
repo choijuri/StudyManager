@@ -6,7 +6,55 @@
 
     <link rel="stylesheet" type="text/css" href="/css/join.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#check-email").unbind("click").click(function (e) {
+                e.preventDefault();
+                fn_emailCheck();
 
+            });
+        });
+
+        function fn_emailCheck() {
+            var email =$('#email').val();
+            var userData = {'email' : email}
+            var jsonData = JSON.stringify( userData );
+
+            if(email<1){
+                document.getElementById('checkemail').innerHTML = 'email을 입력해주세요!';
+            }else {
+                $.ajax({
+                    type : 'post',
+                    url : '/api/emailCheck',
+                    data: jsonData,
+                    // data : userData,
+                    dataType : 'json',
+                    // contentType: "application/json",
+                    // error : function (err) {
+                    //     console.log(err.toString());
+                    //     alert("서버가 응답하지 않습니다. \n 다시 시도해주시기 바랍니다.");
+                    //
+                    // },
+                    success : function (result) {
+                        if(result==0){
+                            $('#email').attr('disabled', true);
+                            document.getElementById('checkemail').innerHTML = '사용가능한 email 입니다!';
+                        }else if(result==1){
+                            document.getElementById('checkemail').innerHTML = '이미 존재하는 email 입니다. 다른 email을 사용해주세요!';
+                        }else{
+                            alert("에러가 발생했습니다!");
+                        }
+                    },
+                    error:function(request,status,error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });
+            }
+        }
+
+
+    </script>
 </head>
 <body>
 <!-- ---------------------form------------------------------->
@@ -15,7 +63,7 @@
 
     <div class="bord"></div>
 
-    <form action="/join" method="post" onsubmit="return tocheckpw()">
+    <form action="/users/join" method="post" onsubmit="return tocheckpw()">
 
         <fieldset id="sec">
             <legend>정보</legend>
@@ -26,7 +74,7 @@
 
                 <li><label class="email" for="email">이메일</label>
                     <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요." required>
-                    <button id="check-email" value="중복확인" >중복확인</button>
+                    <a href="#" id="check-email" value="중복확인" >중복확인</a>
                     &nbsp; <span id = "checkemail" style="color:red;"></span>
                 </li>
 
@@ -67,10 +115,11 @@
         var userPWD1 = document.getElementById("userPWD1").value;
 
         if (userPWD != userPWD1) {
-            document.getElementById('check').innerHTML = '비밀번호가 틀렸습니다. 다시 입력해 주세요';
+            document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다. 다시 입력해 주세요';
             return false;
         }
     }
+
 </script>
 
 </body>

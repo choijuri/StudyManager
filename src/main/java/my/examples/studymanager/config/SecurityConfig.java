@@ -3,6 +3,7 @@ package my.examples.studymanager.config;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -33,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(new AntPathRequestMatcher("/static/fonts.icomoon/**"))
                 .requestMatchers(new AntPathRequestMatcher("/demo-files/**"))
                 .requestMatchers(new AntPathRequestMatcher("/fonts/**"))
+                .requestMatchers(new AntPathRequestMatcher("/api/**"))
                 .requestMatchers(new AntPathRequestMatcher("/scss/**"));
     }
 
@@ -46,25 +48,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // 인가에 대한 설정
                 .antMatchers("/main").permitAll()
                 .antMatchers("/").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/emailCheck").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/emailCheck").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/**").permitAll()
+                .antMatchers("/api/emailCheck").permitAll()
 //                .antMatchers("/admin/register").permitAll()
                 .antMatchers("/users/delete").permitAll()
+                .antMatchers("/users/**").permitAll()
+                .antMatchers("/api/**").permitAll()
                 .antMatchers("/users/join").permitAll()
                 .antMatchers("/users/welcome").permitAll()
                 .antMatchers("/users/login").permitAll()
-                .antMatchers("/studyContent/images/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/studyContent/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/study/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/studyCurriculum/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/users/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/studyContent/images/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/studyContent/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/study/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/studyCurriculum/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/users/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/recruitStudy/**").permitAll()
-                .anyRequest().fullyAuthenticated()
-                .and()
-                .formLogin() // 사용자가 정의하는 로그인 화면을 만들겠다.
-                .loginProcessingUrl("/users/login") // 로그인 화면
-                .loginPage("/users/login") // 사용자가 입력한 id, password가 전달되는 url경로(필터가처리)
-                .usernameParameter("id")
-                .passwordParameter("password")
-                .failureUrl("/users/login?fail=true");
+                .anyRequest().fullyAuthenticated();
+//                .and()
+//                .formLogin() // 사용자가 정의하는 로그인 화면을 만들겠다.
+//                .loginProcessingUrl("/users/login") // 로그인 화면
+//                .loginPage("/users/login") // 사용자가 입력한 id, password가 전달되는 url경로(필터가처리)
+//                .usernameParameter("id")
+//                .passwordParameter("password")
+//                .failureUrl("/users/login?fail=true");
     }
 
 
