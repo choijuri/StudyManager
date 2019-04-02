@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/emailchk")
+@RequestMapping("/api/emailCheck")
 @RequiredArgsConstructor
 public class EmailCheckApiController {
     private final UserService userService;
