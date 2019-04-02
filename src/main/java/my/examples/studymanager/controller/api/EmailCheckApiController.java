@@ -5,6 +5,7 @@ import my.examples.studymanager.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/emailCheck")
@@ -13,8 +14,9 @@ public class EmailCheckApiController {
     private final UserService userService;
 
     @PostMapping
-    public int getEmails(@RequestParam(name="email") String email){
-        int result = userService.emailChk(email);
+    public int getEmails(@RequestBody Map<Object,Object> email){
+        System.out.println(email.get("email"));
+        int result = userService.emailChk(email.get("email").toString());
         return result;
     }
 }
