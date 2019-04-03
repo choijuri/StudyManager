@@ -29,7 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .requestMatchers(new AntPathRequestMatcher("/**.html"))
                 .requestMatchers(new AntPathRequestMatcher("/static/**"))
-                .requestMatchers(new AntPathRequestMatcher("/css/**"))
                 .requestMatchers(new AntPathRequestMatcher("/bootstrap/**"))
                 .requestMatchers(new AntPathRequestMatcher("/static/fonts.icomoon/**"))
                 .requestMatchers(new AntPathRequestMatcher("/demo-files/**"))
