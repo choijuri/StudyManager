@@ -104,11 +104,11 @@
         function tocheckPhone() {
             var regExp = /^[0-9]{11,11}$/;
             var userPhone = document.getElementById("phone").value;
-            if (regExp.test(userPhone)) {
+            if (!regExp.test(userPhone)) {
                 document.getElementById('phoneCheck').innerHTML = '핸드폰 번호가 올바르지 않습니다.';
                 return false;
             } else {
-                document.getElementById('check2').innerHTML = '';
+                document.getElementById('phoneCheck').innerHTML = '';
                 return true;
             }
         }
@@ -163,7 +163,7 @@
                 </li>
 
                 <li><label class="phone" for="phone">전화번호</label>
-                    <input type="text" id="phone" name="phone" placeholder="전화번호 입력" autofocus required>
+                    <input type="text" id="phone" name="phone" placeholder="전화번호 입력" autofocus required> &nbsp; <span id="phoneCheck" style="color:red;"></span>
                 </li>
 
 
