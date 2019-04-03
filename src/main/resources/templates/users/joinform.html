@@ -9,47 +9,108 @@
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            $("#check-email").unbind("click").click(function (e) {
-                e.preventDefault();
-                fn_emailCheck();
+                $("#email").unbind("click").focusout(function (e) {
+                    e.preventDefault();
+                    fn_emailCheck();
+                });
 
+                $('#userPWD1').focusout(function (e) {
+                    tocheckpw();
+                });
+                $('#userPWD').focusout(function (e) {
+                tocheckPw2();
             });
-        });
+            });
+
 
         function fn_emailCheck() {
             var email =$('#email').val();
             var userData = {'email' : email}
             var jsonData = JSON.stringify( userData );
+            var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
             if(email<1){
+                $('#checkemail').css('color','red');
                 document.getElementById('checkemail').innerHTML = 'email을 입력해주세요!';
+                return false;
             }else {
-                $.ajax({
-                    type : 'post',
-                    url : '/api/emailCheck',
-                    data : jsonData,
-                    contentType: "application/json",
-                    error : function (err) {
-                        console.log(err.toString());
-                        alert("서버가 응답하지 않습니다. \n 다시 시도해주시기 바랍니다.");
 
-                    },
-                    success : function (data) {
-                        if(data==0){
-                            $('#email').attr('disabled', true);
-                            document.getElementById('checkemail').innerHTML = '사용가능한 email 입니다!';
-                        }else if(data==1){
-                            document.getElementById('checkemail').innerHTML = '이미 존재하는 email 입니다. 다른 email을 사용해주세요!';
-                        }else{
-                            alert("에러가 발생했습니다!");
+                if (!regEmail.test(email)) {
+                    $('#checkemail').css('color', 'red');
+                    document.getElementById('checkemail').innerHTML = '유효한 email이 아닙니다. 다시 입력해 주세요';
+                    return false;
+                } else {
+                    $.ajax({
+                        type: 'post',
+                        url: '/api/emailCheck',
+                        data: jsonData,
+                        contentType: "application/json",
+                        error: function (err) {
+                            console.log(err.toString());
+                            alert("서버가 응답하지 않습니다. \n 다시 시도해주시기 바랍니다.");
+
+                        },
+                        success: function (data) {
+                            if (data == 0) {
+                                $('#checkemail').css('color', 'green');
+                                document.getElementById('checkemail').innerHTML = '사용가능한 email 입니다!';
+                                return true;
+                            } else if (data == 1) {
+                                $('#checkemail').css('color', 'red');
+                                document.getElementById('checkemail').innerHTML = '이미 존재하는 email 입니다. 다른 email을 사용해주세요!';
+                                return false;
+                            } else {
+                                alert("에러가 발생했습니다!");
+                                return false;
+                            }
                         }
-                    }
-                    // error:function(request,status,error){
-                    //     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                    // }
-                });
+                        // error:function(request,status,error){
+                        //     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                        // }
+                    });
+                }
             }
         }
+
+
+        function tocheckpw() {
+            var userPWD = document.getElementById("userPWD").value;
+            var userPWD1 = document.getElementById("userPWD1").value;
+
+                if (userPWD != userPWD1) {
+                    document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다. 다시 입력해 주세요';
+                    return false;
+                } else if (userPWD == userPWD1) {
+                    document.getElementById('check').innerHTML = '';
+                    return true;
+                }
+        }
+
+        function tocheckPw2() {
+            var regExpId = /^[0-9a-z]{8,12}$/;
+            var userPWD = document.getElementById("userPWD").value;
+            if (!regExpId.test(userPWD)) {
+                document.getElementById('check2').innerHTML = '비밀번호는 숫자, 영문, 특수문자 조합으로 8~12자리를 사용해야 합니다.';
+                return false;
+            }else {
+                document.getElementById('check2').innerHTML ='';
+                return true;
+            }
+
+        }
+
+        function tocheck() {
+            var r1 = tocheckPw2().val();
+            var r2 = tocheckPw2().val();
+            var r3 = fn_emailCheck().val();
+
+            if(r1 == false || r2 == false || r3 == false ){
+                alert('입력오류');
+                return false;
+            }
+            return true;
+        }
+
 
 
     </script>
@@ -61,7 +122,7 @@
 
     <div class="bord"></div>
 
-    <form action="/users/join" method="post" onsubmit="return tocheckpw()">
+    <form action="/users/join" method="post">
 
         <fieldset id="sec">
             <legend>정보</legend>
@@ -72,16 +133,15 @@
 
                 <li><label class="email" for="email">이메일</label>
                     <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요." required>
-                    <a href="#" id="check-email" value="중복확인" >중복확인</a>
                     &nbsp; <span id = "checkemail" style="color:red;"></span>
                 </li>
 
                 <li><label for="userPWD" class="labelStyle">비밀번호</label>
-                    <input type="password" id="userPWD" name="userPWD" placeholder="영문 / 숫자 8~12자입력해주세요."  maxLength="12" required />
+                    <input type="password" id="userPWD" name="passwd1" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"  maxLength="12" required />&nbsp; <span id = "check2" style="font-size:0.95em; color:red; "></span>
                 </li>
 
                 <li><label for="userPWD1" class="labelStyle">비밀번호 확인</label>
-                    <input type="password" id="userPWD1" name="userPWD_" placeholder="영문 / 숫자 8~12자입력해주세요."  maxLength="12" required /> &nbsp; <span id = "check" style="color:red;"></span>
+                    <input type="password" id="userPWD1" name="passwd2" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"  maxLength="12" required /> &nbsp; <span id = "check" style="color:red;"></span>
                 </li>
 
                 <li><label class="phone" for="phone">전화번호</label>
@@ -99,7 +159,7 @@
         <!----------------------버튼------------------------------------------>
         <div class="bt">
             <div class="before button"><a href="/board">이전</a></div>
-            <input type="submit" value="가입" id="btnjoin"/>
+            <input type="submit" value="가입" id="btnjoin" onsubmit="return tocheck()"/>
         </div>
 
 
@@ -107,18 +167,7 @@
 </div>
 
 
-<script type="text/javascript">
-    function tocheckpw() {
-        var userPWD = document.getElementById("userPWD").value;
-        var userPWD1 = document.getElementById("userPWD1").value;
 
-        if (userPWD != userPWD1) {
-            document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다. 다시 입력해 주세요';
-            return false;
-        }
-    }
-
-</script>
 
 </body>
 </html>
