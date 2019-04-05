@@ -13,8 +13,14 @@ public class EmailCheckApiController {
     private final UserService userService;
 
     @PostMapping
-    public int emailCheck(@RequestParam(name = "email") String email){
-        int emailChk = userService.emailChk(email);
+    public int emailCheck(@RequestBody EmailCheckDto emailCheckDto){
+        int emailChk = userService.emailChk(emailCheckDto.getEmail());
         return emailChk;
     }
+
+//    @PostMapping
+//    public int emailCheck(@RequestParam(name = "email") String email){
+//        int emailChk = userService.emailChk(email);
+//        return emailChk;
+//    }
 }

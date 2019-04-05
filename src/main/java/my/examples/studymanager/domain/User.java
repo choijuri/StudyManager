@@ -1,5 +1,6 @@
 package my.examples.studymanager.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     private String email;
+    @JsonIgnore
     private String passwd;
     @Column(length = 45)
     private String name;

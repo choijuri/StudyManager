@@ -33,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(new AntPathRequestMatcher("/static/fonts.icomoon/**"))
                 .requestMatchers(new AntPathRequestMatcher("/demo-files/**"))
                 .requestMatchers(new AntPathRequestMatcher("/fonts/**"))
-                .requestMatchers(new AntPathRequestMatcher("/api/**"))
                 .requestMatchers(new AntPathRequestMatcher("/scss/**"));
     }
 
@@ -71,8 +70,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/users/login") // 사용자가 입력한 id, password가 전달되는 url경로(필터가처리)
                 .usernameParameter("id")
                 .passwordParameter("password")
-                .failureUrl("/users/login?fail=true").and().csrf().ignoringAntMatchers("/**");
+                .failureUrl("/users/login?fail=true");
     }
 
 
 }
+
+//.and().csrf().ignoringAntMatchers("/**")
