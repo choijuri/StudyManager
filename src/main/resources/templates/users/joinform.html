@@ -44,9 +44,10 @@
                     return $.ajax({
                         type: 'post',
                         url: '/api/emailCheck',
-                        data: jsonData,
+                        data: 'email='+ encodeURIComponent(email),
+                        datatype: "text",
                         async: false,
-                        contentType: "application/json",
+                        // contentType: "application/json",
                         error: function (err) {
                             console.log(err.toString());
                             alert("서버가 응답하지 않습니다. \n 다시 시도해주시기 바랍니다.");
