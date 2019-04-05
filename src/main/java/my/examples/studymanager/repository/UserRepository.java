@@ -20,4 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT count(u.email) FROM User u WHERE u.email = :email")
     public int emailChk(@Param("email") String email);
+
+    @Query("SELECT u.userId FROM User u WHERE u.email = :email")
+    public Long getUserIdByEmail(@Param("email") String email);
 }

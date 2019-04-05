@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public User getUserByEmail(Long userId) {
+    public User getUserById(Long userId) {
         User user = userRepository.getOne(userId);
         return user;
     }
@@ -39,5 +39,10 @@ public class UserServiceImpl implements UserService {
     public int emailChk(String email){
         int result = userRepository.emailChk(email);
         return result;
+    }
+
+    @Override
+    public Long getUserIdByEmail(String email) {
+        return userRepository.getUserIdByEmail(email);
     }
 }
