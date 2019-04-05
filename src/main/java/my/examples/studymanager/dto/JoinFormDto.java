@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
-public class JoinDto {
+public class JoinFormDto {
     @NotNull
     @Email
     @Size(min=10, max=50)
