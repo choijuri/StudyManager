@@ -63,6 +63,12 @@ public class StudyRepositoryTest {
         }
     }
 
+//    @Test
+//    public void getLast(){
+//        System.out.println(studyRepository.getLastStudyId());
+//    }
+//
+//
 
 
 
