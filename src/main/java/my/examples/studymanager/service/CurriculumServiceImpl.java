@@ -2,7 +2,6 @@ package my.examples.studymanager.service;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Curriculum;
-import my.examples.studymanager.dto.CurriculumFormDto;
 import my.examples.studymanager.repository.CurriculumRepository;
 import my.examples.studymanager.repository.StudyRepository;
 import org.springframework.stereotype.Service;
@@ -38,12 +37,8 @@ public class CurriculumServiceImpl implements CurriculumService {
 
     @Override
     @Transactional
-    public void addCurriculum(List<CurriculumFormDto> curriculumFormDtoList) {
-        for(CurriculumFormDto c : curriculumFormDtoList) {
-            Curriculum curriculum = new Curriculum();
-            curriculum.setStudy(studyRepository.getOne(c.getStudyId()));
-            curriculum.setCurriculumContent(c.getCurriculumContent());
-            curriculumRepository.save(curriculum);
-        }
+    public void addCurriculum(Curriculum curriculum, Long studyId) {
+        curriculum.setStudy(studyRepository.getOne(studyId));
+        curriculumRepository.save(curriculum);
     }
 }
