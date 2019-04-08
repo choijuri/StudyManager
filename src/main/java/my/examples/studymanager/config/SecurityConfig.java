@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/users/login").permitAll() // 사용자가 입력한 id, password가 전달되는 url경로(필터가처리)
                 .usernameParameter("id")
                 .passwordParameter("password")
-                .failureUrl("/users/login?fail=true");
+                .failureUrl("/users/login?fail=true").and().csrf().ignoringAntMatchers("/**");
     }
 
 

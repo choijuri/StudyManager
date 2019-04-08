@@ -6,7 +6,6 @@ import my.examples.studymanager.service.CurriculumDetailService;
 import net.sf.json.JSONArray;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +23,8 @@ public class CurriculumDetailApiController {
     @PostMapping
     public String addCurriculumDetail(@RequestBody String paramData){
         List<CurriculumDetailFormDto> curriculumDetailFormDtoList = new ArrayList<>();
-        JSONArray jsonArray = JSONArray.fromObject(paramData);
+        curriculumDetailFormDtoList = JSONArray.fromObject(paramData);
 
-        curriculumDetailFormDtoList = jsonArray.subList(0,jsonArray.size());
         curriculumDetailService.addCurriculumDetail(curriculumDetailFormDtoList);
         return null;
     }
