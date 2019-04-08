@@ -2,8 +2,11 @@ package my.examples.studymanager.dto;
 
 import lombok.Data;
 
+import javax.persistence.Lob;
+
 @Data
-public class CurriculumDetail {
-    private Long curriculumDetailId;
+public class CurriculumDetailFormDto {
+    private Long curriculumId;
+    @Lob
     private String curriculumDetailContent;
 }
