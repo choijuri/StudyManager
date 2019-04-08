@@ -4,8 +4,10 @@
     <title>JOIN</title>
     <meta charset="utf-8">
 
-    <meta name="_csrf" content="${_csrf.token}"/>
-    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <meta name="_csrf_param" th:content="${_csrf.parameterName}"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 
     <!--<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>-->
     <!-- default header name is X-CSRF-TOKEN -->
@@ -14,6 +16,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
     <script>
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(function () {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $(document).ajaxSend(function(e, xhr, options) {
+                xhr.setRequestHeader(header, token);
+            });
+        });
 
         $(document).ready(function () {
             $("#email").unbind("click").focusout(function (e) {
@@ -51,6 +63,11 @@
                     document.getElementById('checkemail').innerHTML = '유효한 email이 아닙니다. 다시 입력해 주세요';
                     return false;
                 } else {
+                    // var token = $("meta[name='_csrf']").attr("content");
+                    // var header = $("meta[name='_csrf_header']").attr("content");
+                    // $(document).ajaxSend(function(e,xhr,options) {
+                    //     xhr.setRequestHeader(header, token);
+                    // });
                     return $.ajax({
                         type: 'post',
                         url: '/api/emailCheck',
@@ -59,13 +76,13 @@
                         // datatype: "text",
                         async: false,
                         contentType: "application/json",
-                        beforeSend: function( xhr ) {
-                            xhr.setRequestHeader(header, token);
-                        },
                         error: function (err) {
                             console.log(err.toString());
                             alert("서버가 응답하지 않습니다. \n 다시 시도해주시기 바랍니다.");
                             return false;
+                        },
+                        beforeSend: function( xhr ) {
+                            xhr.setRequestHeader(header, token);
                         },
                         success: function (data) {
                             if (data == 0) {
