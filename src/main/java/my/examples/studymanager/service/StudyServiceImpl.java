@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Study;
 import my.examples.studymanager.domain.StudyUser;
 import my.examples.studymanager.dto.StudyDto;
+import my.examples.studymanager.dto.StudyFormDto;
+import my.examples.studymanager.repository.CategoryRepository;
 import my.examples.studymanager.repository.StudyRepository;
 import my.examples.studymanager.repository.StudyUserRepository;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.List;
 public class StudyServiceImpl implements StudyService {
 
     private final StudyRepository studyRepository;
+    private final CategoryRepository categoryRepository;
 
 
     @Override
@@ -54,7 +57,12 @@ public class StudyServiceImpl implements StudyService {
 
     @Override
     @Transactional
-    public void addStudy(Study study) {
+    public Long addStudy(StudyFormDto studyFormDto) {
+        Study study = new Study();
+        study.setStudyName(studyFormDto.getStudyName());
+        study.setStudyInformation(studyFormDto.getStudyInformation());
+        study.setCategory(categoryRepository.getOne(studyFormDto.getCategoryId()));
         studyRepository.save(study);
+        return study.getStudyId();
     }
 }
