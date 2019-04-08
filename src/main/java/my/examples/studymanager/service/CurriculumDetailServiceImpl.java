@@ -2,7 +2,9 @@ package my.examples.studymanager.service;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.CurriculumDetail;
+import my.examples.studymanager.dto.CurriculumDetailFormDto;
 import my.examples.studymanager.repository.CurriculumDetailRepository;
+import my.examples.studymanager.repository.CurriculumRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CurriculumDetailServiceImpl implements CurriculumDetailService {
     private final CurriculumDetailRepository curriculumDetailRepository;
+    private final CurriculumRepository curriculumRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -37,7 +40,13 @@ public class CurriculumDetailServiceImpl implements CurriculumDetailService {
 
     @Override
     @Transactional
-    public void addCurriculumDetail(CurriculumDetail curriculumDetail) {
-        curriculumDetailRepository.save(curriculumDetail);
+    public void addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList) {
+        for (CurriculumDetailFormDto c : curriculumDetailFormDtoList){
+            CurriculumDetail curriculumDetail = new CurriculumDetail();
+
+            curriculumDetail.setCurriculum(curriculumRepository.getOne(c.getCurriculumId()));
+            curriculumDetail.setCurriculumDetailContent(c.getCurriculumDetailContent());
+            curriculumDetailRepository.save(curriculumDetail);
+        }
     }
 }
