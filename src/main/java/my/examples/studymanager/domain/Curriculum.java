@@ -1,7 +1,6 @@
 package my.examples.studymanager.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,6 +9,9 @@ import java.util.List;
 @Table(name = "curriculum")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Curriculum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

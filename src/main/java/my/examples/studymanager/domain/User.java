@@ -1,8 +1,7 @@
 package my.examples.studymanager.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +11,8 @@ import java.util.List;
 @Table(name = "user")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,6 @@
 package my.examples.studymanager.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +9,9 @@ import javax.persistence.*;
 @Table(name = "image_file")
 @Setter
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ImageFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

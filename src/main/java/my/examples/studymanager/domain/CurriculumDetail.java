@@ -1,14 +1,16 @@
 package my.examples.studymanager.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "curriculum_detail")
+@Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CurriculumDetail {
 
     @Id

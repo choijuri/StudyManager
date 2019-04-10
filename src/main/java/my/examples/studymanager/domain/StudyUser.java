@@ -1,7 +1,6 @@
 package my.examples.studymanager.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -12,6 +11,9 @@ import javax.persistence.Table;
 @Table(name = "study_user")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudyUser {
     @EmbeddedId
     private StudyUserId studyUserId;
