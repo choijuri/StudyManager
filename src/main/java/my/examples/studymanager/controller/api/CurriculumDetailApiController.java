@@ -26,6 +26,6 @@ public class CurriculumDetailApiController {
         curriculumDetailFormDtoList = JSONArray.fromObject(paramData);
 
         curriculumDetailService.addCurriculumDetail(curriculumDetailFormDtoList);
-        return "index";
+        return "/index";
     }
 }

@@ -31,17 +31,29 @@ public class CurriculumDetailServiceImpl implements CurriculumDetailService {
     @Override
     @Transactional
     public void modifyCurriculumDetail(List<CurriculumDetail> curriculumDetails) {
-        for(CurriculumDetail curriculumDetail : curriculumDetails) {
+        for (CurriculumDetail curriculumDetail : curriculumDetails) {
             CurriculumDetail detail = curriculumDetailRepository.getOne(curriculumDetail.getCurriculumDetailId());
             detail.setCurriculumDetailContent(curriculumDetail.getCurriculumDetailContent());
             curriculumDetailRepository.save(detail);
         }
     }
 
+    //    @Override
+//    @Transactional
+//    public List<CurriculumDetailFormDto> addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList) {
+//        for (CurriculumDetailFormDto c : curriculumDetailFormDtoList){
+//            CurriculumDetail curriculumDetail = new CurriculumDetail();
+//
+//            curriculumDetail.setCurriculum(curriculumRepository.getOne(c.getCurriculumId()));
+//            curriculumDetail.setCurriculumDetailContent(c.getCurriculumDetailContent());
+//            curriculumDetailRepository.save(curriculumDetail);
+//        }
+//        return curriculumDetailFormDtoList;
+//    }
     @Override
     @Transactional
     public List<CurriculumDetailFormDto> addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList) {
-        for (CurriculumDetailFormDto c : curriculumDetailFormDtoList){
+        for (CurriculumDetailFormDto c : curriculumDetailFormDtoList) {
             CurriculumDetail curriculumDetail = new CurriculumDetail();
 
             curriculumDetail.setCurriculum(curriculumRepository.getOne(c.getCurriculumId()));
