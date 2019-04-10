@@ -10,6 +10,6 @@ public interface CurriculumDetailService {
     public List<CurriculumDetail> getCurriculumDetailByCurriculumId(Long curriculumId);
     public void deleteCurriculumDetail(Long curriculumDetailId);
     public void modifyCurriculumDetail(List<CurriculumDetail> curriculumDetails);
-    public void addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList);
+    public List<CurriculumDetailFormDto> addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList);
 
 }

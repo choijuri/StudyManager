@@ -40,7 +40,7 @@ public class CurriculumDetailServiceImpl implements CurriculumDetailService {
 
     @Override
     @Transactional
-    public void addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList) {
+    public List<CurriculumDetailFormDto> addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList) {
         for (CurriculumDetailFormDto c : curriculumDetailFormDtoList){
             CurriculumDetail curriculumDetail = new CurriculumDetail();
 
@@ -48,5 +48,6 @@ public class CurriculumDetailServiceImpl implements CurriculumDetailService {
             curriculumDetail.setCurriculumDetailContent(c.getCurriculumDetailContent());
             curriculumDetailRepository.save(curriculumDetail);
         }
+        return curriculumDetailFormDtoList;
     }
 }
