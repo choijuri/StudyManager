@@ -1,4 +1,4 @@
-package my.examples.studymanager.controller.api;
+package my.examples.studymanager.controller;
 
 public class UserControllerTest {
 }
