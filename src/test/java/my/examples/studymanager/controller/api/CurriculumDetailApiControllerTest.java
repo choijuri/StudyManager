@@ -57,14 +57,13 @@ public class CurriculumDetailApiControllerTest {
         list.add(curriculumDetailFormDto);
 
         List<CurriculumDetailFormDto> curriculumDetailList = JSONArray.fromObject(list);
-//        Mockito.when(curriculumDetailService.addCurriculumDetail(curriculumDetailList)).thenReturn(curriculumDetailList);
-//        Mockito.when(curriculumDetailService.addCurriculumDetail(curriculumDetailList)).thenReturn(curriculumDetailList);
+        Mockito.when(curriculumDetailService.addCurriculumDetail(curriculumDetailList)).thenReturn(true);
 
         mockMvc.perform(post("/api/curriculumDetail")
                         .with(csrf())
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                         .accept(MediaType.APPLICATION_JSON_UTF8)
-                        .content(objectMapper.writeValueAsString(curriculumDetailList))
+                        .content(objectMapper.writeValueAsString(list))
                 ).andExpect(status().is(200))
 //        )
                 .andDo(print()); // 값을 출력할 수 있다.
