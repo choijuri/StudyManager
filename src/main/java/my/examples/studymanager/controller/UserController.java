@@ -29,8 +29,8 @@ public class UserController {
         return "users/joinform";
     }
 
-    @PostMapping("/join")
-    public String join(@Valid JoinFormDto joinFormDto, BindingResult bindingResult){
+    @PutMapping("/join")
+    public String join(@RequestBody @Valid JoinFormDto joinFormDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
         }
@@ -46,7 +46,8 @@ public class UserController {
         user.setPasswd(passwordEncoder.encode(joinFormDto.getPasswd1()));
         User result = userService.addUser(user);
 
-        return "redirect:/index";
+        return "/index";
+//        return null;
     }
 
 //    @GetMapping("/login")

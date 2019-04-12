@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll().and()
                 .authorizeRequests() // 인가에 대한 설정
                 .antMatchers("/main").permitAll()
+                .antMatchers("/index").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/users/**").permitAll()
                 .antMatchers("/users/join").permitAll()
