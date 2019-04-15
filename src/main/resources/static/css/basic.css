@@ -15,7 +15,8 @@ body{font-family: 'Nanum Gothic', sans-serif;
 div#wrap{width:100%; margin:0 auto;}
 
 div.box{ width:100%;
-    margin:10% auto 0; text-align:center;
+    /*margin:10% auto 0; */
+    text-align:center;
     color:#898989;}
 
 
