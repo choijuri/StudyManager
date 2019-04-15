@@ -50,13 +50,19 @@ public class UserController {
 //        return null;
     }
 
-//    @GetMapping("/login")
-//    public String loginform(@RequestParam(name = "fail",
-//            required = false,
-//            defaultValue = "false") String errorFlag) {
-//        return "users/loginform";
-//    }
-//
+    @GetMapping("/login")
+    public String loginform(@RequestParam(name = "fail",
+            required = false,
+            defaultValue = "false") String errorFlag) {
+        return "users/loginform";
+    }
+
+    @PostMapping("/login")
+    public String login(){
+
+        return"/index";
+    }
+
 //    @GetMapping("/logout")
 //    public String logout(){
 //        return "/index";

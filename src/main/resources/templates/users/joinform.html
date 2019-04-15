@@ -13,7 +13,7 @@
     <!-- default header name is X-CSRF-TOKEN -->
     <!--<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>-->
     <link rel="stylesheet" type="text/css" href="/css/join.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
     <script>
         var token = $("meta[name='_csrf']").attr("content");
@@ -55,12 +55,12 @@
 
             if (email < 1) {
                 $('#checkemail').css('color', 'red');
-                document.getElementById('checkemail').innerHTML = 'email을 입력해주세요!';
+                document.getElementById('checkemail').innerHTML = 'e-mail을 입력해주세요.';
                 return false;
             } else {
                 if (!regEmail.test(email)) {
                     $('#checkemail').css('color', 'red');
-                    document.getElementById('checkemail').innerHTML = '유효한 email이 아닙니다. 다시 입력해 주세요';
+                    document.getElementById('checkemail').innerHTML = '유효한 e-mail이 아닙니다. 다시 입력해 주세요.';
                     return false;
                 } else {
                     // var token = $("meta[name='_csrf']").attr("content");
@@ -87,14 +87,14 @@
                         success: function (data) {
                             if (data == 0) {
                                 $('#checkemail').css('color', 'green');
-                                document.getElementById('checkemail').innerHTML = '사용가능한 email 입니다!';
+                                document.getElementById('checkemail').innerHTML = '사용가능한 e-mail 입니다.';
                                 return true;
                             } else if (data == 1) {
                                 $('#checkemail').css('color', 'red');
-                                document.getElementById('checkemail').innerHTML = '이미 존재하는 email 입니다. 다른 email을 사용해주세요!';
+                                document.getElementById('checkemail').innerHTML = '이미 존재하는 e-mail 입니다. 다른 e-mail을 사용해주세요.';
                                 return false;
                             } else {
-                                alert("에러가 발생했습니다!");
+                                alert("에러가 발생했습니다.");
                                 return false;
                             }
                         }
@@ -165,7 +165,7 @@
 <body>
 <!-- ---------------------form------------------------------->
 <div class="info">
-    <h2>< 회원 정보 입력 ></h2>
+    <h2>< 회원 가입 ></h2>
 
     <div class="bord"></div>
 
@@ -178,24 +178,26 @@
                     <input type="text" id="name" name="name" placeholder="이름 입력" autofocus required>
                 </li>
 
-                <li><label class="email" for="email">이메일</label>
-                    <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요." required>
-                    &nbsp; <span id="checkemail" style="color:red;"></span>
+                <li><label class="email" for="email">e-mail</label>
+                    <input type="text" id="email" name="email" placeholder="e-mail을 입력해주세요." required><br>
+                    <span id="checkemail" style="color:red; width: 85%; display:block;"></span>
                 </li>
 
                 <li><label for="userPWD" class="labelStyle">비밀번호</label>
                     <input type="password" id="userPWD" name="passwd1" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"
-                           maxLength="12" required/>&nbsp; <span id="check2"
-                                                                 style="font-size:0.95em; color:red; "></span>
+                           maxLength="12" required/><br>
+                    <span id="check2" style="color:red; width: 85%; display:block;"></span>
                 </li>
 
                 <li><label for="userPWD1" class="labelStyle">비밀번호 확인</label>
                     <input type="password" id="userPWD1" name="passwd2" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"
-                           maxLength="12" required/> &nbsp; <span id="check" style="color:red;"></span>
+                           maxLength="12" required/><br>
+                    <span id="check" style="color:red; width: 85%; display:block;"></span>
                 </li>
 
                 <li><label class="phone" for="phone">전화번호</label>
-                    <input type="text" id="phone" name="phone" placeholder="전화번호 입력" autofocus required> &nbsp; <span id="phoneCheck" style="color:red;"></span>
+                    <input type="text" id="phone" name="phone" placeholder="전화번호 입력" autofocus required><br>
+                    <span id="phoneCheck" style="color:red; width: 85%; display:block;"></span>
                 </li>
 
 
@@ -207,8 +209,8 @@
 
         <!----------------------버튼------------------------------------------>
         <div class="bt">
-            <div class="before button"><a href="/board">이전</a></div>
-            <input type="submit" value="가입" id="btnjoin" onclick="return tocheck()"/>
+            <div class="before button"><a href="/index">취소</a></div>
+            <input type="submit" value="JOIN" id="btnjoin" onclick="return tocheck()"/>
         </div>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
