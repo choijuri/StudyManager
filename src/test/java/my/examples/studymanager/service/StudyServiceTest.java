@@ -1,13 +1,15 @@
 package my.examples.studymanager.service;
 
 
-import my.examples.studymanager.dto.StudyDto;
+import my.examples.studymanager.domain.Study;
 import my.examples.studymanager.dto.StudyFormDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,4 +27,13 @@ public class StudyServiceTest {
         Long id = studyService.addStudy(studyFormDto);
         System.out.println(id);
     }
+
+    @Test
+    public void getStudiesByUser(){
+        List<Study> studiesByUser = studyService.getStudiesByUser(1L);
+        for(Study s : studiesByUser){
+            System.out.println(s.getStudyName());
+        }
+    }
+
 }
