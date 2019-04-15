@@ -69,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin() // 사용자가 정의하는 로그인 화면을 만들겠다.
                 .loginProcessingUrl("/users/login") // 로그인 화면
                 .loginPage("/users/login").permitAll() // 사용자가 입력한 id, password가 전달되는 url경로(필터가처리)
-                .usernameParameter("id")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .failureUrl("/users/login?fail=true").and().csrf().ignoringAntMatchers("/**");
     }
