@@ -1,0 +1,150 @@
+*{margin:0; padding:0; box-sizing:border-box;}
+/*@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:400,700');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+	a {text-decoration:none; color:#000;}
+	img{vertical-align:bottom;}
+	ul {list-style-position:inside;}
+	ul li{list-style:none;}
+
+body{font-family: 'Nanum Gothic', sans-serif;
+	font-size:0.8em;}
+	
+/*스마트폰에서 실행할 css*/
+@media all and (max-width:767px){	
+/**************헤더 로고******************/
+#wrap header{width:100%; height:50px; display:black;}	
+#wrap header div.logo {
+	width:50%;
+	margin:2% auto;
+	text-align:center;
+	overflow:hidden;
+}
+
+#wrap header div.logo img{
+	float:left; 
+	width:100%; 
+}
+
+
+/**************클릭메뉴******************/
+div.buttonmenu{
+	position:absolute;
+	top:0; right:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+label.ham{
+	position:relative;
+	width:10%;
+	top:7px; right:5px;
+	float:right;
+}
+label.ham img{width:100%;}
+input#click{display:none;}
+nav.clickmenu{display:none;}
+input#click:checked ~nav.clickmenu{display:block;}
+input#click:checked ~label.ham{position:relative; top:7px; right:47%; z-index:100;}
+
+/**************클릭메뉴스타일******************/
+nav.clickmenu{
+	position:absolute;
+	position:relative;
+	top:0; right:-150px;
+	width:60%;
+	height:1000px;
+	background:#ebebeb;
+	overflow:hidden;
+	text-align:center;
+	padding-top:5%;
+}
+nav.clickmenu ul {
+	width:100%;
+	
+}
+nav.clickmenu ul li{
+	width:100%;
+	border-bottom:1px solid #666;
+	display:block;
+	
+}
+
+nav.clickmenu ul li a{
+	display:block;
+	padding:20px 0;
+	font-size:1.2em;
+}
+nav.clickmenu ul li.fir{
+	padding-bottom:20px;
+}
+nav.clickmenu ul li.fir h3{
+	color:#666;
+	margin-bottom:10px;
+}
+nav.clickmenu ul li.fir a{
+	display:inline;
+	font-size:1em;
+}
+
+nav.clickmenu ul li:first-child{
+	padding-top:0;
+}
+
+	
+/**************카테고리메뉴******************/	
+nav.categorymenu{
+	width:100%;
+	height:30px;
+	margin:0 auto;
+	text-align:center;
+	display:block;
+	border-bottom:1px solid #ebebeb;
+	border-top:1px solid #ebebeb;
+	overflow:hidden;
+}	
+nav.categorymenu ul{width:90%;margin:0 auto; overflow:hidden;}
+nav.categorymenu ul{width:90%;margin:0 auto; overflow:hidden;}
+nav.categorymenu ul li{width:25%; float:left; }	
+nav.categorymenu ul li a{padding:7px 0; display:block;}
+	
+	
+/**************contents******************/		
+div#contents{
+	width:90%;
+	margin:10% auto;
+}	
+	
+div#contents .box{
+	padding:2%;
+	margin-bottom:20px;
+	width:100%;
+	height:100%;
+	border:1px solid lightgray;
+	overflow:hidden;
+}	
+div#contents .box h4{margin-bottom:10px;}
+
+div#contents .box span{
+	float:right;
+	display:block;
+	margin-top: -30px;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+	
+	
+	
+	
