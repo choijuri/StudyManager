@@ -34,6 +34,8 @@ public class Study {
     public Study() {
         regdate = new Date();
     }
+
+
 }
 
 /*
