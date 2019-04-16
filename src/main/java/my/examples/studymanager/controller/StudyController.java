@@ -25,8 +25,9 @@ public class StudyController {
     @GetMapping("/list")
     public String getStudies(Model model){
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
         model.addAttribute("studyList",studyService.getStudiesByUser(securityUser.getId()));
-        return "study/";
+        return "study/main";
     }
 
     //스터디 한건 보기

@@ -1,10 +1,13 @@
-<html lang="ko"><head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
 	
 		<meta charset="UTE-8">
 		
 		<title>index</title>
 		
-		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
 		<!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>-->
 		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
@@ -23,7 +26,7 @@
 	<div id="wrap">
 	<header>
 		<div class="logo">
-			<img src="img/logo.png">
+			<img src="/images/logo.png">
 		</div>
 		<nav class="categorymenu">
 		<ul>
@@ -38,15 +41,17 @@
 	<div>
 	<div class="buttonmenu">  
 	  <input type="checkbox" id="click" class="tog">
-	  <label for="click" class="ham"><img src="img/menu.png"></label>
+	  <label for="click" class="ham"><img src="/images/menu.png"></label>
 	
 	  
 	 
 	  
 	  <nav class="clickmenu">
 		<ul>
-			<li class="fir"><h3>000님 환영합니다</h3><a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a></li>
-			
+			<li class="fir" th:if="${isLogin}" >
+				<h3  th:text="${#authentication.principal.name}+'님 환영합니다'">님 환영합니다</h3>
+				<a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a>
+			</li>
 			<li><a href="/study/list">MY STUDY</a></li>
 			<li><a href="/recruitstudy/list">STUDY 찾기</a></li>
 			<li><a href="/study/">STUDY 일정</a></li>
@@ -75,4 +80,5 @@
 	</div>
 
 
-	</body></html>
+	</body>
+</html>
