@@ -29,8 +29,8 @@ public class UserController {
         return "users/joinform";
     }
 
-    @PutMapping("/join")
-    public String join(@RequestBody @Valid JoinFormDto joinFormDto, BindingResult bindingResult){
+    @PostMapping("/join")
+    public String join(@Valid JoinFormDto joinFormDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
         }
@@ -47,7 +47,6 @@ public class UserController {
         User result = userService.addUser(user);
 
         return "/index";
-//        return null;
     }
 
     @GetMapping("/login")
@@ -63,11 +62,11 @@ public class UserController {
         return"/index";
     }
 
-//    @GetMapping("/logout")
-//    public String logout(){
-//        return "/index";
-//    }
-//
+    @GetMapping("/logout")
+    public String logout(){
+        return "/index";
+    }
+
 //    @GetMapping("/mypage")
 //    public String mypage(){
 //        return "users/mypage";
