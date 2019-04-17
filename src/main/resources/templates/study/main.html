@@ -52,7 +52,11 @@
 				<h3  th:text="${#authentication.principal.name}+'님'">님</h3>
 				<a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a>
 			</li>
-			<li><a href="/study/list">MY STUDY</a></li>
+			<li><a href="/study/list">MY STUDY</a>
+				<a href="/study/add" style="font-size: 0.95em; padding:0 0 20px; text-align: left; margin-left: 70px;">- 새 스터디 만들기</a>
+				<a href="/study/addcode" style="font-size: 0.95em; padding:0 0 20px;text-align: left; margin-left: 70px;">- 스터디 등록하기</a>
+
+			</li>
 			<li><a href="/recruitstudy/list">STUDY 찾기</a></li>
 			<li><a href="/study/">STUDY 일정</a></li>
 		</ul>
@@ -67,7 +71,6 @@
 				<img src="">
 				<h4 th:text="${study.studyName}">studyName</h4>
 				<p th:text="${study.studyInformation}">studyInformation</p>
-				<span>달성률 : </span>
 			</div>
 
 	</div>
