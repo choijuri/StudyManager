@@ -14,6 +14,11 @@ public class HomeController {
 
     @GetMapping("/index")
     public String index( ){
+
+//        System.out.println("================"+SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            return "redirect:/study/list";
+        }
         return "/index";
     }
 }
