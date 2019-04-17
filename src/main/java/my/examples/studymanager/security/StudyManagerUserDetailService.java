@@ -32,7 +32,9 @@ public class StudyManagerUserDetailService implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority("ROLE" + "ADMIN"));
         authorities.add(new SimpleGrantedAuthority("ROLE" + "USER"));
 
+
         StudyManagerSecurityUser studyManagerSecurityUser =  new StudyManagerSecurityUser(email, user.getPasswd(), authorities);
+        studyManagerSecurityUser.setId(user.getUserId());
         studyManagerSecurityUser.setName(user.getName());
 
         return studyManagerSecurityUser;
