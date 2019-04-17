@@ -53,4 +53,19 @@ public class StudyController {
 
         return "/study/";
     }
+
+    @GetMapping("/addcode")
+    public String addcode(){
+        return "study/addcode";
+    }
+
+    @PostMapping("/addByCode")
+    public String addByCode(String code){
+        Long studyId = studyService.getStudyByCode(code);
+
+        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        studyUserService.addStudyUserByCode(studyId,securityUser.getId());
+
+        return "redirect:/study/list";
+    }
 }

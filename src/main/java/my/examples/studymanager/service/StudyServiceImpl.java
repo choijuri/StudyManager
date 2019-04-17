@@ -61,9 +61,9 @@ public class StudyServiceImpl implements StudyService {
     public Long addStudy(StudyFormDto studyFormDto) {
         String code;
         int result;
-        
+        RandomCode randomCode = new RandomCode();
+
         do{
-            RandomCode randomCode = new RandomCode();
             code = randomCode.makeRandomCode();
             result = studyRepository.codeCheck(code);
         }while (result == 1);
@@ -72,7 +72,15 @@ public class StudyServiceImpl implements StudyService {
         study.setStudyName(studyFormDto.getStudyName());
         study.setStudyInformation(studyFormDto.getStudyInformation());
         study.setCategory(categoryRepository.getOne(studyFormDto.getCategoryId()));
+        study.setCode(code);
         studyRepository.save(study);
+        return study.getStudyId();
+    }
+
+    @Override
+    @Transactional
+    public Long getStudyByCode(String code){
+        Study study = studyRepository.getStudyByCode(code);
         return study.getStudyId();
     }
 }

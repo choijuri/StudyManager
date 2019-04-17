@@ -33,6 +33,18 @@ public class StudyUserServiceImpl implements StudyUserService {
         studyUserRepository.save(studyUser);
     }
 
+    @Override
+    @Transactional
+    public void addStudyUserByCode(Long studyId, Long userId){
+        StudyUserId studyUserId = new StudyUserId();
+        studyUserId.setStudy(studyRepository.getOne(studyId));
+        studyUserId.setUser(userRepository.getOne(userId));
+
+        StudyUser studyUser = new StudyUser();
+        studyUser.setStudyUserId(studyUserId);
+        studyUser.setUserRole("USER");
+        studyUserRepository.save(studyUser);
+    }
 
     @Override
     @Transactional

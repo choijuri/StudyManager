@@ -13,6 +13,6 @@ public interface StudyService {
     public void deleteStudy(Long studyId);
     public void modifyStudy(StudyDto studyDto);
     public Long addStudy(StudyFormDto studyFormDto);
-
+    public Long getStudyByCode(String code);
 
 }
