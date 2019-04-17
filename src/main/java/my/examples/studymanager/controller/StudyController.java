@@ -6,6 +6,7 @@ import my.examples.studymanager.dto.StudyFormDto;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
 import my.examples.studymanager.service.StudyService;
 import my.examples.studymanager.service.StudyUserService;
+import my.examples.studymanager.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 public class StudyController {
     private final StudyService studyService;
     private final StudyUserService studyUserService;
+    private final UserService userService;
 
     //내 스터디 보기
     @GetMapping("/list")
@@ -27,7 +29,7 @@ public class StudyController {
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
         model.addAttribute("studyList",studyService.getStudiesByUser(securityUser.getId()));
-        return "study/main";
+        return "/study/main";
     }
 
     //스터디 한건 보기

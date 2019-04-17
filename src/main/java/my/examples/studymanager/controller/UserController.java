@@ -59,7 +59,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(){
 
-        return"/index";
+        return"/study/list";
     }
 
     @GetMapping("/logout")

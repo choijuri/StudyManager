@@ -18,6 +18,7 @@ public class StudyServiceTest {
     @Autowired(required = true)
     StudyService studyService;
 
+
     @Test
     public void getstudyId(){
         StudyFormDto studyFormDto = new StudyFormDto();
@@ -30,7 +31,7 @@ public class StudyServiceTest {
 
     @Test
     public void getStudiesByUser(){
-        List<Study> studiesByUser = studyService.getStudiesByUser(1L);
+        List<Study> studiesByUser = studyService.getStudiesByUser(2L);
         for(Study s : studiesByUser){
             System.out.println(s.getStudyName());
         }
