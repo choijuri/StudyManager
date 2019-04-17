@@ -5,6 +5,7 @@ import my.examples.studymanager.domain.Study;
 import my.examples.studymanager.domain.StudyUser;
 import my.examples.studymanager.dto.StudyDto;
 import my.examples.studymanager.dto.StudyFormDto;
+import my.examples.studymanager.random.RandomCode;
 import my.examples.studymanager.repository.CategoryRepository;
 import my.examples.studymanager.repository.StudyRepository;
 import my.examples.studymanager.repository.StudyUserRepository;
@@ -58,6 +59,15 @@ public class StudyServiceImpl implements StudyService {
     @Override
     @Transactional
     public Long addStudy(StudyFormDto studyFormDto) {
+        String code;
+        int result;
+        
+        do{
+            RandomCode randomCode = new RandomCode();
+            code = randomCode.makeRandomCode();
+            result = studyRepository.codeCheck(code);
+        }while (result == 1);
+
         Study study = new Study();
         study.setStudyName(studyFormDto.getStudyName());
         study.setStudyInformation(studyFormDto.getStudyInformation());

@@ -19,6 +19,7 @@ public class Study {
     private String studyName;
     @Column(columnDefinition = "TEXT")
     private String studyInformation;
+    private String code;
     private Date regdate;
 
     @OneToMany(mappedBy = "study", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})

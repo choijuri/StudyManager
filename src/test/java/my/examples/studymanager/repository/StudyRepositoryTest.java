@@ -63,6 +63,11 @@ public class StudyRepositoryTest {
         }
     }
 
+    @Test
+    public void codeCheck(){
+        System.out.println(studyRepository.codeCheck("2Wq8D6s8"));
+        System.out.println(studyRepository.codeCheck("2Wq8F6s8"));
+    }
 //    @Test
 //    public void getLast(){
 //        System.out.println(studyRepository.getLastStudyId());

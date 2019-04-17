@@ -27,6 +27,9 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
             "WHERE u.userId =:userId AND c.categoryId =:categoryId")
     public List<Study> getStudiesByUserIdCategoryId(@Param("userId") Long userId, @Param("categoryId") Long categoryId);
 
+    @Query("SELECT count(s.code) FROM Study s WHERE s.code = :code")
+    public int codeCheck(@Param("code") String code);
+
 //    @Query( "SELECT LAST_INSERT_ID()")
 //    public Long getLastStudyId();
 
