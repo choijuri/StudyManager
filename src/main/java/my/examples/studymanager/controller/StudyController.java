@@ -4,10 +4,7 @@ package my.examples.studymanager.controller;
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.dto.StudyFormDto;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
-import my.examples.studymanager.service.CurriculumService;
-import my.examples.studymanager.service.StudyService;
-import my.examples.studymanager.service.StudyUserService;
-import my.examples.studymanager.service.UserService;
+import my.examples.studymanager.service.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +20,7 @@ public class StudyController {
     private final StudyService studyService;
     private final StudyUserService studyUserService;
     private final CurriculumService curriculumService;
-    private final UserService userService;
+    private final CategoryService categoryService;
 
     //내 스터디 보기
     @GetMapping("/list")
@@ -42,6 +39,13 @@ public class StudyController {
         return "/study/";
     }
 
+    //스터디등록하는 페이지로 가기
+    @GetMapping("/add")
+    public String studyadd(Model model){
+        model.addAttribute("categories",categoryService.getCategories());
+        return "study/studyregister";
+    }
+
     //스터디 등록하기, 스터디유저 추가
     @PostMapping("/add")
     public String addStudy(@RequestBody @Valid StudyFormDto studyFormDto, BindingResult bindingResult){
@@ -53,7 +57,7 @@ public class StudyController {
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         studyUserService.addStudyUser(studyId,securityUser.getId());
 
-        return "/study/";
+        return "study/";
     }
 
     @GetMapping("/addcode")

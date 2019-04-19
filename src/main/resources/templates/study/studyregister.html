@@ -6,7 +6,7 @@
 
     <title>index</title>
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>-->
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
@@ -25,7 +25,7 @@
 <div id="wrap">
     <header>
         <div class="logo">
-            <img src="img/logo.png">
+            <img src="/images/logo.png">
         </div>
         <nav class="categorymenu">
             <ul>
@@ -40,7 +40,7 @@
         <div>
             <div class="buttonmenu">
                 <input type="checkbox" id="click" class="tog">
-                <label for="click" class="ham"><img src="img/menu.png"></label>
+                <label for="click" class="ham"><img src="/images/menu.png"></label>
 
 
 
@@ -58,31 +58,30 @@
         </div>
     </header>
 
-    <div id="cbox">
-        <div class="box">
-            <form method="post" action="/study/add">
+    <div id="cbox" style="width:100%;height:100%;margin:10% auto;">
+            <form method="post" action="/study/add" style="width:80%;margin: 0 auto;font-size:0.8em;font-weight:bold;">
                 category :
-                <select name="categoryId">
-                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                <select name="categoryId" style="margin-left:7%;">
+                    <option th:each="category : ${categories}" th:text="${category.categoryName}"></option>
                 </select>
                 </br></br>
 
                 <label class="addstudy" for="studyname"></label>
-                <input type="text" id="studyname" name="studyname" placeholder="스터디 제목을 입력해주세요" autofocus required>
+                <input type="text" id="studyname" name="studyname" style="padding:2% 1%;margin: 1% auto;width:100%;" placeholder="스터디 제목을 입력해주세요" autofocus required>
                 </br></br>
 
 
-                <textarea id="studycontent" cols="40" rows="10" name="studycontent" placeholder="스터디에 대한 설명을 입력해주세요" required ></textarea>
+                <textarea id="studycontent" style="padding:2% 1%;margin: 1% auto;width:100%;" cols="40" rows="10" name="studycontent" placeholder="스터디에 대한 설명을 입력해주세요" required ></textarea>
                 <br>
                 <input
                         type="hidden"
                         th:name="${_csrf.parameterName}"
                         th:value="${_csrf.token}" />
 
-                <input id="next" type="submit" value="다음" style="width:30%; float:right; color:#666;">
+                <input id="next" type="submit" value="다음" style="width:30%; float:right; color:#666; border:1px solid #f2cc32;background-color:#fff;">
             </form>
 
-        </div>
+
 
     </div>
 
