@@ -38,23 +38,23 @@
         </nav>
 
         <div>
-            <div class="buttonmenu">
-                <input type="checkbox" id="click" class="tog">
-                <label for="click" class="ham"><img src="/images/menu.png"></label>
+            <!--<div class="buttonmenu">-->
+                <!--<input type="checkbox" id="click" class="tog">-->
+                <!--<label for="click" class="ham"><img src="/images/menu.png"></label>-->
 
 
 
 
-                <nav class="clickmenu">
-                    <ul>
-                        <li class="fir"><h3>000님 환영합니다</h3><a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a></li>
+                <!--<nav class="clickmenu">-->
+                    <!--<ul>-->
+                        <!--<li class="fir"><h3>000님 환영합니다</h3><a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a></li>-->
 
-                        <li><a href="/study/list">MY STUDY</a></li>
-                        <li><a href="/recruitstudy/list">STUDY 찾기</a></li>
-                        <li><a href="/study/">STUDY 일정</a></li>
-                    </ul>
-                </nav>
-            </div>
+                        <!--<li><a href="/study/list">MY STUDY</a></li>-->
+                        <!--<li><a href="/recruitstudy/list">STUDY 찾기</a></li>-->
+                        <!--<li><a href="/study/">STUDY 일정</a></li>-->
+                    <!--</ul>-->
+                <!--</nav>-->
+            <!--</div>-->
         </div>
     </header>
 
@@ -62,16 +62,16 @@
             <form method="post" action="/study/add" style="width:80%;margin: 0 auto;font-size:0.8em;font-weight:bold;">
                 category :
                 <select name="categoryId" style="margin-left:7%;">
-                    <option th:each="category : ${categories}" th:text="${category.categoryName}"></option>
+                    <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
                 </select>
                 </br></br>
 
                 <label class="addstudy" for="studyname"></label>
-                <input type="text" id="studyname" name="studyname" style="padding:2% 1%;margin: 1% auto;width:100%;" placeholder="스터디 제목을 입력해주세요" autofocus required>
+                <input type="text" id="studyname" name="studyName" style="padding:2% 1%;margin: 1% auto;width:100%;" placeholder="스터디 제목을 입력해주세요" autofocus required>
                 </br></br>
 
 
-                <textarea id="studycontent" style="padding:2% 1%;margin: 1% auto;width:100%;" cols="40" rows="10" name="studycontent" placeholder="스터디에 대한 설명을 입력해주세요" required ></textarea>
+                <textarea name="studyInformation"  id="studyinformation"  style="padding:2% 1%;margin: 1% auto;width:100%;" cols="40" rows="10" placeholder="스터디에 대한 설명을 입력해주세요" required ></textarea>
                 <br>
                 <input
                         type="hidden"

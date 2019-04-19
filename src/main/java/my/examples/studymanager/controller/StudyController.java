@@ -48,7 +48,7 @@ public class StudyController {
 
     //스터디 등록하기, 스터디유저 추가
     @PostMapping("/add")
-    public String addStudy(@RequestBody @Valid StudyFormDto studyFormDto, BindingResult bindingResult){
+    public String addStudy(@Valid StudyFormDto studyFormDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
         }

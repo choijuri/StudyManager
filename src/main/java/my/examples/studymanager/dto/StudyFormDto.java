@@ -21,6 +21,5 @@ public class StudyFormDto {
     @Lob
     private String studyInformation;
     @NotNull
-    @Size(min=1, max=2)
     private Long categoryId;
 }
