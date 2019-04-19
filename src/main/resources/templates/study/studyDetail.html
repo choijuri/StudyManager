@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JOIN</title>
+    <meta charset="utf-8">
+
+    <meta name="_csrf_param" th:content="${_csrf.parameterName}"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!--<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>-->
+    <!-- default header name is X-CSRF-TOKEN -->
+    <!--<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <link rel="stylesheet" type="text/css" href="/css/studyDetail.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script>
+        function gotolist() {
+            location.href="/study/list";
+        }
+    </script>
+</head>
+<body>
+<!-- ---------------------form------------------------------->
+<div class="info">
+    <h3 th:text="${study.studyName}" style="margin-left:1%; margin-top: .5em;"></h3>
+    <p th:text="${study.code}" style="margin-left:1%; font-size: .9em; color: #c2c2c2;"></p><br>
+
+    <p th:text="${study.studyInformation}" style="margin-left:1%; "></p>
+    <div class="bord"></div>
+
+    <form action="/users/join" method="post">
+
+        <fieldset id="sec">
+
+            <div class="box" th:each="curriculum,iter : ${curriculums}">
+                <p th:text="step + ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%"></p>
+
+            </div>
+            <!--<legend>정보</legend>-->
+            <!--<ul>-->
+                <!--<li><label class="userId" for="name">이름</label>-->
+                    <!--<input type="text" id="name" name="name" placeholder="이름 입력" autofocus required>-->
+                <!--</li>-->
+
+                <!--<li><label class="email" for="email">e-mail</label>-->
+                    <!--<input type="text" id="email" name="email" placeholder="e-mail을 입력해주세요." required><br>-->
+                    <!--<span id="checkemail" style="color:red; width: 85%; display:block;"></span>-->
+                <!--</li>-->
+
+                <!--<li><label for="userPWD" class="labelStyle">비밀번호</label>-->
+                    <!--<input type="password" id="userPWD" name="passwd1" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"-->
+                           <!--maxLength="12" required/><br>-->
+                    <!--<span id="check2" style="color:red; width: 85%; display:block;"></span>-->
+                <!--</li>-->
+
+                <!--<li><label for="userPWD1" class="labelStyle">비밀번호 확인</label>-->
+                    <!--<input type="password" id="userPWD1" name="passwd2" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"-->
+                           <!--maxLength="12" required/><br>-->
+                    <!--<span id="check" style="color:red; width: 85%; display:block;"></span>-->
+                <!--</li>-->
+
+                <!--<li><label class="phone" for="phone">전화번호</label>-->
+                    <!--<input type="text" id="phone" name="phone" placeholder="전화번호 입력" autofocus required><br>-->
+                    <!--<span id="phoneCheck" style="color:red; width: 85%; display:block;"></span>-->
+                <!--</li>-->
+
+
+            <!--</ul>-->
+        </fieldset>
+
+        <div class="bord"></div>
+
+
+        <!----------------------버튼------------------------------------------>
+        <div class="bt">
+            <!--<div class="before button"><a href="/index">취소</a></div>-->
+            <input type="button" value="목록" id="btnjoin" onclick="gotolist()"/>
+        </div>
+
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+    </form>
+</div>
+
+
+</body>
+</html>

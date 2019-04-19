@@ -4,6 +4,7 @@ package my.examples.studymanager.controller;
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.dto.StudyFormDto;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
+import my.examples.studymanager.service.CurriculumService;
 import my.examples.studymanager.service.StudyService;
 import my.examples.studymanager.service.StudyUserService;
 import my.examples.studymanager.service.UserService;
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 public class StudyController {
     private final StudyService studyService;
     private final StudyUserService studyUserService;
+    private final CurriculumService curriculumService;
     private final UserService userService;
 
     //내 스터디 보기
@@ -67,5 +69,14 @@ public class StudyController {
         studyUserService.addStudyUserByCode(studyId,securityUser.getId());
 
         return "redirect:/study/list";
+    }
+
+    @GetMapping("/studyDetail/{studyId}")
+    public String studyDetail(@PathVariable(name = "studyId") Long studyId,
+                              Model model){
+
+        model.addAttribute("study",studyService.getStudy(studyId));
+        model.addAttribute("curriculums",curriculumService.getCurriculumByStudyId(studyId));
+        return "study/studyDetail";
     }
 }
