@@ -2,6 +2,7 @@ package my.examples.studymanager.controller.api;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.CurriculumDetail;
+import my.examples.studymanager.dto.CurriculumDetailDTO;
 import my.examples.studymanager.dto.CurriculumDetailFormDto;
 import my.examples.studymanager.service.CurriculumDetailService;
 import net.sf.json.JSONArray;
@@ -30,9 +31,10 @@ public class CurriculumDetailApiController {
         return "/index";
     }
 
-    @GetMapping
-    public List<CurriculumDetail> getCurriculumDetails(@RequestParam(name = "curriculumId") Long curriculumId){
-        List<CurriculumDetail> list = curriculumDetailService.getCurriculumDetailByCurriculumId(curriculumId);
+    @PostMapping
+    public List<CurriculumDetail> getCurriculumDetails(@RequestParam(name="curriculumDetailId") String curriculumDetailId){
+        System.out.println(Long.parseLong(curriculumDetailId));
+        List<CurriculumDetail> list = curriculumDetailService.getCurriculumDetailByCurriculumId(Long.parseLong(curriculumDetailId));
         return list;
     }
 }

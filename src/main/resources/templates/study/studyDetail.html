@@ -21,26 +21,37 @@
         }
 
         function curriculumDetail() {
-            location.href='/api/curriculumDetail'
-            var name = $('#commentName').val();
-            var content = $('#commentContent').val();
-            var passwd = $('#commentPasswd').val();
-            var postId = $('#commentPostId').val();
+            // location.href='/api/curriculumDetail'
+            // var name = $('#commentName').val();
+            // var content = $('#commentContent').val();
+            // var passwd = $('#commentPasswd').val();
+            // var postId = $('#commentPostId').val();
+
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
             var curriculumId = $('#curriculumId').val();
-            var JSONObject = {'name': name, 'content': content, 'passwd': passwd, 'postId': postId};
-            var jsonData = JSON.stringify( JSONObject );
-            console.log(name);
-            console.log(content);
-            console.log(passwd);
+            var JSONObject = {'curriculumId': curriculumId};
+            var jsonData = JSON.stringify(JSONObject);
+            alert(jsonData);
             $.ajax({
                 url: '/api/curriculumDetail',
-                method: 'get',
-                data: curriculumId,
+                type: 'post',
+                data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
+                // data: 'email='+ encodeURIComponent(email)
                 async: true,
+                datatype: "text",
                 // contentType: "application/json",
-                success: function (curriculumDetail) {
-                    var curriculumDetailDiv = $('<div> name : ' + curriculumDetail.name + '</div>');
-                    curriculumDetailDiv.appendTo($('#curriculumDetails'));
+                beforeSend: function( xhr ) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (curriculumDetails) {
+                    for(var i = 0; i < curriculumDetails.length-1; i++) {
+                        var curriculumDetailDiv = $('<div> name : ' + curriculumDetails[i].name + '</div>');
+                        curriculumDetailDiv.appendTo($('#curriculumDetails'));
+                    }
+                    // var curriculumDetailDiv = $('<div> name : ' + curriculumDetail.name + '</div>');
+                    // curriculumDetailDiv.appendTo($('#curriculumDetails'));
                 },
                 error: function (err) {
                     console.log(err.toString());
@@ -60,12 +71,13 @@
     <p th:text="${study.studyInformation}" style="margin-left:1%; "></p>
     <div class="bord"></div>
 
-    <form action="/users/join" method="post">
+    <!--<form action="/users/join" method="post">-->
 
         <fieldset id="sec">
 
             <div class="box" th:each="curriculum,iter : ${curriculums}">
-                <p id ="curriculumId" th:value="${curriculum.curriculumId}" th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%" onclick="curriculumDetail()"></p>
+                <input type="hidden" id="curriculumId" th:value="${curriculum.curriculumId}">
+                <p th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%" onclick="curriculumDetail()"></p>
                 <div id="curriculumDetails">
 
 
@@ -114,7 +126,7 @@
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-    </form>
+    <!--</form>-->
 </div>
 
 
