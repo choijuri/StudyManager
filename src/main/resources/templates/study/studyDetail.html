@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>JOIN</title>
+    <title>STUDY DETAIL</title>
     <meta charset="utf-8">
 
     <meta name="_csrf_param" th:content="${_csrf.parameterName}"/>
@@ -19,13 +19,43 @@
         function gotolist() {
             location.href="/study/list";
         }
+
+        function curriculumDetail() {
+            location.href='/api/curriculumDetail'
+            var name = $('#commentName').val();
+            var content = $('#commentContent').val();
+            var passwd = $('#commentPasswd').val();
+            var postId = $('#commentPostId').val();
+            var curriculumId = $('#curriculumId').val();
+            var JSONObject = {'name': name, 'content': content, 'passwd': passwd, 'postId': postId};
+            var jsonData = JSON.stringify( JSONObject );
+            console.log(name);
+            console.log(content);
+            console.log(passwd);
+            $.ajax({
+                url: '/api/curriculumDetail',
+                method: 'get',
+                data: curriculumId,
+                async: true,
+                // contentType: "application/json",
+                success: function (curriculumDetail) {
+                    var curriculumDetailDiv = $('<div> name : ' + curriculumDetail.name + '</div>');
+                    curriculumDetailDiv.appendTo($('#curriculumDetails'));
+                },
+                error: function (err) {
+                    console.log(err.toString());
+                }
+            });
+        }
+
+
     </script>
 </head>
 <body>
 <!-- ---------------------form------------------------------->
 <div class="info">
     <h3 th:text="${study.studyName}" style="margin-left:1%; margin-top: .5em;"></h3>
-    <p th:text="${study.code}" style="margin-left:1%; font-size: .9em; color: #c2c2c2;"></p><br>
+    <p th:text="${study.code}" style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
 
     <p th:text="${study.studyInformation}" style="margin-left:1%; "></p>
     <div class="bord"></div>
@@ -35,8 +65,11 @@
         <fieldset id="sec">
 
             <div class="box" th:each="curriculum,iter : ${curriculums}">
-                <p th:text="step + ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%"></p>
+                <p id ="curriculumId" th:value="${curriculum.curriculumId}" th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%" onclick="curriculumDetail()"></p>
+                <div id="curriculumDetails">
 
+
+                </div>
             </div>
             <!--<legend>정보</legend>-->
             <!--<ul>-->
@@ -76,7 +109,7 @@
         <!----------------------버튼------------------------------------------>
         <div class="bt">
             <!--<div class="before button"><a href="/index">취소</a></div>-->
-            <input type="button" value="목록" id="btnjoin" onclick="gotolist()"/>
+            <input type="button" value="목록" id="btnlist" onclick="gotolist()"/>
         </div>
 
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
