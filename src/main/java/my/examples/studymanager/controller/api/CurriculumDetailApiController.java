@@ -1,6 +1,7 @@
 package my.examples.studymanager.controller.api;
 
 import lombok.RequiredArgsConstructor;
+import my.examples.studymanager.domain.CurriculumDetail;
 import my.examples.studymanager.dto.CurriculumDetailFormDto;
 import my.examples.studymanager.service.CurriculumDetailService;
 import net.sf.json.JSONArray;
@@ -15,17 +16,23 @@ import java.util.List;
 public class CurriculumDetailApiController {
     private final CurriculumDetailService curriculumDetailService;
 
-    @GetMapping
+    @GetMapping("/add")
     public String addCurriculumDetail(){
         return null;
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public String addCurriculumDetail(@RequestBody String paramData){
         List<CurriculumDetailFormDto> curriculumDetailFormDtoList = new ArrayList<>();
         curriculumDetailFormDtoList = JSONArray.fromObject(paramData);
 
         curriculumDetailService.addCurriculumDetail(curriculumDetailFormDtoList);
         return "/index";
+    }
+
+    @GetMapping
+    public List<CurriculumDetail> getCurriculumDetails(@RequestParam(name = "curriculumId") Long curriculumId){
+        List<CurriculumDetail> list = curriculumDetailService.getCurriculumDetailByCurriculumId(curriculumId);
+        return list;
     }
 }
