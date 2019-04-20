@@ -20,7 +20,7 @@
             location.href="/study/list";
         }
 
-        function curriculumDetail() {
+        function curriculumDetail(curriculumId) {
             // location.href='/api/curriculumDetail'
             // var name = $('#commentName').val();
             // var content = $('#commentContent').val();
@@ -30,25 +30,25 @@
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
-            var curriculumId = $('#curriculumId').val();
+            // var curriculumId = $('#curriculumId').val();
             var JSONObject = {'curriculumId': curriculumId};
             var jsonData = JSON.stringify(JSONObject);
             alert(jsonData);
             $.ajax({
                 url: '/api/curriculumDetail',
-                type: 'post',
-                data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
-                // data: 'email='+ encodeURIComponent(email)
-                async: true,
-                datatype: "text",
-                // contentType: "application/json",
-                beforeSend: function( xhr ) {
-                    xhr.setRequestHeader(header, token);
-                },
-                success: function (curriculumDetails) {
-                    for(var i = 0; i < curriculumDetails.length-1; i++) {
-                        var curriculumDetailDiv = $('<div> name : ' + curriculumDetails[i].name + '</div>');
-                        curriculumDetailDiv.appendTo($('#curriculumDetails'));
+                method: 'post',
+                // data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
+                data: jsonData,
+                async: false,
+                // datatype: "text",
+                contentType: "application/json",
+                // beforeSend: function( xhr ) {
+                //     xhr.setRequestHeader(header, token);
+                // },
+                success: function (data) {
+                    for(var i = 0; i < data.length; i++) {
+                        var curriculumDetailDiv = $('<li style="margin-left: 5%;">' + data[i].curriculumDetailContent + '</li>');
+                        curriculumDetailDiv.appendTo($('#curriculumDetails'+curriculumId));
                     }
                     // var curriculumDetailDiv = $('<div> name : ' + curriculumDetail.name + '</div>');
                     // curriculumDetailDiv.appendTo($('#curriculumDetails'));
@@ -76,9 +76,9 @@
         <fieldset id="sec">
 
             <div class="box" th:each="curriculum,iter : ${curriculums}">
-                <input type="hidden" id="curriculumId" th:value="${curriculum.curriculumId}">
-                <p th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%" onclick="curriculumDetail()"></p>
-                <div id="curriculumDetails">
+                <input th:type="hidden" th:id="curriculumId" th:value="${curriculum.curriculumId}">
+                <p th:name ="curriculumId" th:value="${curriculum.curriculumId}" th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%" th:onclick="'curriculumDetail('+${curriculum.curriculumId}+')'"></p>
+                <div class="curriculumDetails" th:id="'curriculumDetails'+${curriculum.curriculumId}">
 
 
                 </div>

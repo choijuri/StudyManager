@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.CurriculumDetail;
 import my.examples.studymanager.dto.CurriculumDetailDTO;
 import my.examples.studymanager.dto.CurriculumDetailFormDto;
+import my.examples.studymanager.dto.CurriculumDetailSendDTO;
 import my.examples.studymanager.service.CurriculumDetailService;
 import net.sf.json.JSONArray;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +33,17 @@ public class CurriculumDetailApiController {
     }
 
     @PostMapping
-    public List<CurriculumDetail> getCurriculumDetails(@RequestParam(name="curriculumDetailId") String curriculumDetailId){
-        System.out.println(Long.parseLong(curriculumDetailId));
-        List<CurriculumDetail> list = curriculumDetailService.getCurriculumDetailByCurriculumId(Long.parseLong(curriculumDetailId));
-        return list;
+    public List<CurriculumDetailSendDTO> getCurriculumDetails(@RequestBody CurriculumDetailDTO curriculumDetailDTO){
+        System.out.println(curriculumDetailDTO.getCurriculumId());
+        List<CurriculumDetail> list = curriculumDetailService.getCurriculumDetailByCurriculumId(curriculumDetailDTO.getCurriculumId());
+        List<CurriculumDetailSendDTO> data = new ArrayList<>();
+        for (CurriculumDetail c : list){
+            CurriculumDetailSendDTO cf = new CurriculumDetailSendDTO();
+            cf.setCurriculumDetailContent(c.getCurriculumDetailContent());
+            cf.setCurriculumDetailId(c.getCurriculumDetailId());
+            data.add(cf);
+        }
+
+        return data;
     }
 }

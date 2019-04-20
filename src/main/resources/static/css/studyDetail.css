@@ -127,6 +127,10 @@ div.button div.bt #btnlist{
     float:right;
 }
 
+div.curriculumDetails li{
+    list-style: disc;
+}
+
 
 
 

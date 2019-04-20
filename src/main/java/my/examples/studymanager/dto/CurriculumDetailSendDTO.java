@@ -1,6 +1,5 @@
 package my.examples.studymanager.dto;
 
-
 import lombok.*;
 
 import javax.persistence.Lob;
@@ -10,8 +9,8 @@ import javax.persistence.Lob;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurriculumFormDto {
+public class CurriculumDetailSendDTO {
+    private Long curriculumDetailId;
     @Lob
-    private String curriculumContent;
-    private Long studyId;
+    private String curriculumDetailContent;
 }
