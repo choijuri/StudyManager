@@ -57,7 +57,13 @@ public class StudyController {
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         studyUserService.addStudyUser(studyId,securityUser.getId());
 
-        return "study/";
+        return "study/curriculumregister";
+    }
+
+    //스터디 커리큘럼 등록페이지
+    @GetMapping("/curriculumregister")
+    public String curriculumregister(){
+        return "study/curriculumregister";
     }
 
     @GetMapping("/addcode")
