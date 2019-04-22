@@ -21,16 +21,10 @@
         }
 
         function curriculumDetail(curriculumId) {
-            // location.href='/api/curriculumDetail'
-            // var name = $('#commentName').val();
-            // var content = $('#commentContent').val();
-            // var passwd = $('#commentPasswd').val();
-            // var postId = $('#commentPostId').val();
 
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
 
-            // var curriculumId = $('#curriculumId').val();
             var JSONObject = {'curriculumId': curriculumId};
             var jsonData = JSON.stringify(JSONObject);
             alert(jsonData);
@@ -40,14 +34,13 @@
                 // data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
                 data: jsonData,
                 async: false,
-                // datatype: "text",
                 contentType: "application/json",
                 // beforeSend: function( xhr ) {
                 //     xhr.setRequestHeader(header, token);
                 // },
                 success: function (data) {
                     for(var i = 0; i < data.length; i++) {
-                        var curriculumDetailDiv = $('<li style="margin-left: 5%;">' + data[i].curriculumDetailContent + '</li>');
+                        var curriculumDetailDiv = $('<li style="margin-left: 5%;" onclick="gotoContent('+ data[i].curriculumDetailId +')">' + data[i].curriculumDetailContent + '</li>');
                         curriculumDetailDiv.appendTo($('#curriculumDetails'+curriculumId));
                     }
                     // var curriculumDetailDiv = $('<div> name : ' + curriculumDetail.name + '</div>');
@@ -59,6 +52,9 @@
             });
         }
 
+        function gotoContent(curriculumDetailId) {
+            location.href='/studyContent?curriculumDetailId='+curriculumDetailId;
+        }
 
     </script>
 </head>
