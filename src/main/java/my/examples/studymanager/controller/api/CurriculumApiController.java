@@ -23,13 +23,13 @@ public class CurriculumApiController {
     }
 
     @PostMapping
-    public String addCurriculum(@RequestBody String paramData){
+    public List<CurriculumFormDto> addCurriculum(@RequestBody CurriculumFormDto curriculumFormDto){
         List<CurriculumFormDto> curriculumFormDtoList = new ArrayList<>();
 
-        JSONArray jsonArray =  JSONArray.fromObject(paramData);
+        JSONArray jsonArray =  JSONArray.fromObject(curriculumFormDto);
         curriculumFormDtoList = jsonArray.subList(0, jsonArray.size());
         curriculumService.addCurriculum(curriculumFormDtoList);
-        return "";
+        return curriculumFormDtoList;
     }
 
 }

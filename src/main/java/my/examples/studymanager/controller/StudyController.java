@@ -48,7 +48,7 @@ public class StudyController {
 
     //스터디 등록하기, 스터디유저 추가
     @PostMapping("/add")
-    public String addStudy(@Valid StudyFormDto studyFormDto, BindingResult bindingResult){
+    public String addStudy(@Valid StudyFormDto studyFormDto, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
         }
@@ -56,15 +56,12 @@ public class StudyController {
 
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         studyUserService.addStudyUser(studyId,securityUser.getId());
+        model.addAttribute("study", studyService.getStudy(studyId));
 
-        return "study/curriculumregister";
+        return "curriculum/curriculumregister";
     }
 
-    //스터디 커리큘럼 등록페이지
-    @GetMapping("/curriculumregister")
-    public String curriculumregister(){
-        return "study/curriculumregister";
-    }
+
 
     @GetMapping("/addcode")
     public String addcode(){
