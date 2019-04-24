@@ -1,14 +1,13 @@
 package my.examples.studymanager.controller;
 
 import lombok.RequiredArgsConstructor;
+import my.examples.studymanager.domain.Study;
 import my.examples.studymanager.dto.CurriculumFormDto;
 import my.examples.studymanager.service.CurriculumService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -23,13 +22,16 @@ public class CurriculumController {
 
     //스터디 커리큘럼 등록페이지
     @GetMapping("/curriculumregister")
-    public String curriculumregister(){
+    public String curriculumregister(@RequestParam("study") Study study, Model model){
+
+        model.addAttribute("study", study);
         return "curriculum/curriculumregister";
     }
 
     //커리큘럼 등록하기
     @PostMapping("/curriculumregister")
-    public String addcurriculum(@Valid CurriculumFormDto curriculumFormDto, BindingResult bindingResult, Model model){
+    public String addcurriculum(@Valid @RequestBody CurriculumFormDto curriculumFormDto, BindingResult bindingResult, Model model){
+        System.out.println(curriculumFormDto.getCurriculumContent());
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
         }

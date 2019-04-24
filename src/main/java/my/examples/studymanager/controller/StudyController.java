@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 
@@ -48,7 +51,7 @@ public class StudyController {
 
     //스터디 등록하기, 스터디유저 추가
     @PostMapping("/add")
-    public String addStudy(@Valid StudyFormDto studyFormDto, BindingResult bindingResult, Model model){
+    public String addStudy(@Valid StudyFormDto studyFormDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
         }
@@ -56,9 +59,9 @@ public class StudyController {
 
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         studyUserService.addStudyUser(studyId,securityUser.getId());
-        model.addAttribute("study", studyService.getStudy(studyId));
-
-        return "curriculum/curriculumregister";
+        redirectAttributes.addAttribute("study", studyService.getStudy(studyId));
+        return "redirect:/curriculum/curriculumregister";
+//        return new ModelAndView(new RedirectView("/curriculum/curriculumregister"), "study",studyService.getStudy(studyId));
     }
 
 
