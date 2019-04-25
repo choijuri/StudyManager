@@ -5,10 +5,12 @@ import my.examples.studymanager.domain.CurriculumDetail;
 import my.examples.studymanager.dto.CurriculumDetailDTO;
 import my.examples.studymanager.dto.CurriculumDetailFormDto;
 import my.examples.studymanager.dto.CurriculumDetailSendDTO;
+import my.examples.studymanager.dto.CurriculumFormDto;
 import my.examples.studymanager.service.CurriculumDetailService;
 import net.sf.json.JSONArray;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +25,11 @@ public class CurriculumDetailApiController {
         return null;
     }
 
+    //커리큘럼 디테일 등록하기
     @PostMapping("/add")
-    public String addCurriculumDetail(@RequestBody String paramData){
-        List<CurriculumDetailFormDto> curriculumDetailFormDtoList = new ArrayList<>();
-        curriculumDetailFormDtoList = JSONArray.fromObject(paramData);
-
+    public List<CurriculumDetailFormDto> addCurriculum(@Valid @RequestBody List<CurriculumDetailFormDto> curriculumDetailFormDtoList){
         curriculumDetailService.addCurriculumDetail(curriculumDetailFormDtoList);
-        return "/index";
+        return curriculumDetailFormDtoList;
     }
 
     @PostMapping
