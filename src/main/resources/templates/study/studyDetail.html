@@ -27,7 +27,8 @@
 
             var JSONObject = {'curriculumId': curriculumId};
             var jsonData = JSON.stringify(JSONObject);
-            alert(jsonData);
+
+
             $.ajax({
                 url: '/api/curriculumDetail',
                 method: 'post',
@@ -40,7 +41,7 @@
                 // },
                 success: function (data) {
                     for(var i = 0; i < data.length; i++) {
-                        var curriculumDetailDiv = $('<li style="margin-left: 5%;" onclick="gotoContent('+ data[i].curriculumDetailId +')">' + data[i].curriculumDetailContent + '</li>');
+                        var curriculumDetailDiv = $('<li style="margin-left: 5%;" onclick="gotoContent('+ data[i].curriculumDetailId +',\''+data[i].curriculumDetailContent+'\')"  th:value="'+data[i].curriculumDetailContent+'">' + data[i].curriculumDetailContent + '</li>');
                         curriculumDetailDiv.appendTo($('#curriculumDetails'+curriculumId));
                     }
                     // var curriculumDetailDiv = $('<div> name : ' + curriculumDetail.name + '</div>');
@@ -52,8 +53,34 @@
             });
         }
 
-        function gotoContent(curriculumDetailId) {
-            location.href='/studyContent?curriculumDetailId='+curriculumDetailId;
+        function gotoContent(curriculumDetailId,curriculumDetailContent) {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            // var curriculumDetailContent = $('#curriculumDetailContent').val();
+            var curriculumContent = $("input[name=curriculumContent]").val();
+
+            var JSONObject2 = {'curriculumDetailContent': curriculumDetailContent, 'curriculumContent':curriculumContent, 'curriculumDetailId':curriculumDetailId};
+            var jsonData2 = JSON.stringify(JSONObject2);
+            alert(jsonData2);
+            $.ajax({
+                url: '/studyContent',
+                method: 'POST',
+                // data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
+                data: jsonData2,
+                async: true,
+                contentType: "application/json",
+                beforeSend: function( xhr ) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (data) {
+                    window.location.href = data;
+                },
+                error: function (err) {
+                    console.log(err.toString());
+                }
+            });
+            // location.href='/studyContent?curriculumDetailId='+curriculumDetailId;
         }
 
     </script>
@@ -73,7 +100,8 @@
 
             <div class="box" th:each="curriculum,iter : ${curriculums}">
                 <input th:type="hidden" th:id="curriculumId" th:value="${curriculum.curriculumId}">
-                <p th:name ="curriculumId" th:value="${curriculum.curriculumId}" th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%" th:onclick="'curriculumDetail('+${curriculum.curriculumId}+')'"></p>
+                <input th:type="hidden" th:id="curriculumContent" th:name="curriculumContent" th:value="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}">
+                <p th:type="text" th:name ="'curriculumContent'" th:id="'curriculumContent'" th:value="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}" style="margin: 1%; border: none;" th:onclick="'curriculumDetail('+${curriculum.curriculumId}+')'"></p>
                 <div class="curriculumDetails" th:id="'curriculumDetails'+${curriculum.curriculumId}">
 
 
