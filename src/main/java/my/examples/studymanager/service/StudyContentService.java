@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public interface StudyContentService {
-    public StudyContent getStudyContentByCurriculumId(Long curriculumdetailId);
+    public StudyContent getStudyContentByCurriculumDetailId(Long curriculumDetailId);
     public void modifyStudyContent(StudyContent studyContent);
     public void addStudyContent(StudyContent studyContent, Long userId);
 

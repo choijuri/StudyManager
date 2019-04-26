@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.StudyContent;
 import my.examples.studymanager.dto.StudyContentDto;
 import my.examples.studymanager.service.StudyContentService;
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +17,22 @@ public class StudyContentController {
     private final StudyContentService studyContentService;
 
     @PostMapping
-    public String studyContent(@RequestBody StudyContentDto studyContentDto, Model model ) {
-        StudyContent studyContent = studyContentService.getStudyContentByCurriculumId(studyContentDto.getCurriculumDetailId());
+    public String studyContent(
+//            @RequestBody StudyContentDto studyContentDto,
+            @RequestParam(name = "curriculumDetailContent") String curriculumDetailContent,
+                               @RequestParam(name = "curriculumContent") String curriculumContent,
+                               @RequestParam(name = "curriculumDetailId") Long curriculumDetailId,
+                               Model model ) {
+
+//        StudyContent studyContent = studyContentService.getStudyContentByCurriculumDetailId(studyContentDto.getCurriculumDetailId());
+//        model.addAttribute("studyContent", studyContent);
+//        model.addAttribute("curriculumContent", studyContentDto.getCurriculumContent());
+//        model.addAttribute("curriculumDetailContent",studyContentDto.getCurriculumDetailContent());
+        System.out.println(curriculumContent+curriculumDetailContent+curriculumDetailId);
+        StudyContent studyContent = studyContentService.getStudyContentByCurriculumDetailId(curriculumDetailId);
         model.addAttribute("studyContent", studyContent);
-        model.addAttribute("curriculumContent", studyContentDto.getCurriculumContent());
-        model.addAttribute("curriculumDetailContent",studyContentDto.getCurriculumDetailContent());
+        model.addAttribute("curriculumContent", curriculumContent);
+        model.addAttribute("curriculumDetailContent",curriculumDetailContent);
 
         return "study/studyContent";
     }

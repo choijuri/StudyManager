@@ -15,9 +15,9 @@ public class StudyContentServiceImpl implements StudyContentService {
 
     @Override
     @Transactional(readOnly = true)
-    public StudyContent getStudyContentByCurriculumId(Long curriculumdetailId) {
-        studyContentRepository.getOne(curriculumdetailId).getCurriculumDetail().getCurriculum().getCurriculumContent();
-        return studyContentRepository.getStudyContentByCurriculumDetailId(curriculumdetailId);
+    public StudyContent getStudyContentByCurriculumDetailId(Long curriculumDetailId) {
+        studyContentRepository.getOne(curriculumDetailId).getCurriculumDetail().getCurriculum().getCurriculumContent();
+        return studyContentRepository.getStudyContentByCurriculumDetailId(curriculumDetailId);
     }
 
     @Override
