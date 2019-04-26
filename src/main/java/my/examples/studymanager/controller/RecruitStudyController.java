@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,8 +33,9 @@ public class RecruitStudyController {
     public String recruit(Model model){
         List<RecruitStudy> recruitStudyAll =
                 recruitStudyService.getRecruitStudyAll();
-        model.addAttribute("recruitStudy", recruitStudyAll);
-        return "recruitstudy/recruit";
+        model.addAttribute("recruitStudyList", recruitStudyAll);
+        model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
+        return "recruitstudy/recruitstudylist";
     }
 
     //recruitStudy 등록페이지
@@ -54,7 +56,17 @@ public class RecruitStudyController {
         }
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         recruitStudyService.addRecruitStudy(recruitStudyDto, securityUser.getId());
-        return "recruitstudy/list";
+        return "recruitstudy/recruitstudydetail";
+    }
+
+
+    //recruitStudyDetail 페이지 모집스터디 한건 보기
+    @GetMapping("/recruitstudydetail/{recruitId}")
+    public String getRecruitStudy(@PathVariable(name = "recruitId") Long recruitId,
+                           Model model){
+        model.addAttribute("recruitstudy", recruitStudyService.getRecruitStudy(recruitId));
+        model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
+        return "recruitstudy/recruitstudydetail";
     }
 
 }

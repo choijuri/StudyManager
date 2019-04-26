@@ -2,6 +2,7 @@ package my.examples.studymanager.service;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Message;
+import my.examples.studymanager.dto.SendMessageDto;
 import my.examples.studymanager.repository.MessageRepository;
 import my.examples.studymanager.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,11 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional
-    public void addMessage(Long writerId, String content, Long senderId) {
+    public void addMessage(SendMessageDto sendMessageDto) {
         Message message = new Message();
-        message.setUser(userRepository.getOne(writerId));
-        message.setUser1(userRepository.getOne(senderId));
-        message.setMessageContent(content);
+        message.setUser(userRepository.getOne(sendMessageDto.getReceiver()));
+        message.setUser1(userRepository.getOne(sendMessageDto.getSender()));
+        message.setMessageContent(sendMessageDto.getMessageContent());
         messageRepository.save(message);
     }
 

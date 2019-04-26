@@ -36,12 +36,12 @@ public class MessageController {
         return "message/receiveform";
     }
 
-    @PostMapping("/receive")
-    public String receivemessage(
-            @RequestParam(name = "messagecontent") String messagecontent,
-            @RequestParam(name = "user") String userEmail){
-        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        messageService.addMessage(securityUser.getId(),messagecontent,userService.getUserIdByEmail(userEmail));
-        return "message/receive";
-    }
+//    @PostMapping("/receive")
+//    public String receivemessage(
+//            @RequestParam(name = "messagecontent") String messagecontent,
+//            @RequestParam(name = "user") String userEmail){
+//        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        messageService.addMessage(securityUser.getId(),messagecontent,userService.getUserIdByEmail(userEmail));
+//        return "message/receive";
+//    }
 }

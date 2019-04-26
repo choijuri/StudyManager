@@ -12,13 +12,15 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class RecruitStudyDto {
     @NotNull
-    @Size(min=10, max=50)
+    @Size(min=2, max=50)
     private String recruitName;
     @NotNull
-    @Size(min=5, max=50)
-    private String location;
+    @Size(min=2, max=50)
+    private String sido1;
     @NotNull
-    @Size(min=1, max=50)
+    @Size(min=2, max=50)
+    private String gugun1;
+    @NotNull
     private int recruitNumber;
     @NotNull
     @Size(min=1, max=255)

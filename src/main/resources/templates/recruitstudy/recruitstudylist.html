@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'
+          name='viewport'>
+    <title>recruitStudyList</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+<div class='main-content' id='main'>
+    <div class='section'>
+
+        <div class="recruitstudy_box" th:each="recruitstudy : ${recruitStudyList}">
+
+            <img src="">
+            <h4><a th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
+            </h4>
+            <p th:text="${recruitstudy.recruitContent}">recruitContent</p>
+            <p th:text="${recruitstudy.recruitNumber}">recruitContent</p>
+            <p th:text="${recruitstudy.location}">recruitContent</p>
+            <p th:text="${recruitstudy.user.email}">recruitContent</p>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- div#main -->
+<div class='main-navbar main-navbar-fixed-top' id='main-navbar'>
+    <div class='main-navbar-content'>
+        <div class="logo"><img src="/images/logo.png"></div>
+        <div class='icon right' id='toggle-sidebar'>
+            <img alt='menu' height='24px' src='/images/menu.png' width='24px'>
+        </div>
+
+        <nav class="categorymenu">
+            <ul>
+                <li><a href="#">IT</a></li>
+                <li><a href="#">어학</a></li>
+                <li><a href="#">취업</a></li>
+                <li><a href="#">기타</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+<!-- div#main-navbar -->
+<div class='main-sidebar main-sidebar-right' id='main-sidebar'>
+    <div class='main-sidebar-wrapper'>
+        <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
+            <h3 th:text="${#authentication.principal.name}+'님'" style="margin-bottom: 5px;">님</h3>
+            <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a>
+        </div>
+
+        <div class='section click_menu' style="text-align: left;">
+            <nav>
+                <ul>
+                    <li><a href="/study/list" style="font-size: 1.2em; font-weight: bold;">MY STUDY</a>
+                        <a href="/study/add" style=" margin-left: 0;  ">&nbsp; - 새 스터디 만들기</a>
+                        <a href="/study/addcode" style=" ">&nbsp; - 스터디 등록하기</a></li>
+                    <li><a href="/recruitstudy/list" style="font-size: 1.2em; font-weight: bold;">STUDY 찾기</a></li>
+                    <li><a href="/study/" style="font-size: 1.2em; font-weight: bold;">STUDY 일정</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </div>
+</div>
+<!-- div#main-sidebar -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
+<script src='/js/jquery.simple-sidebar.js'></script>
+<script>
+    $(document).ready(function () {
+        $('#main-sidebar').simpleSidebar({
+            opener: '#toggle-sidebar',
+            wrapper: '#main',
+            animation: {
+                easing: 'easeOutQuint'
+            },
+            sidebar: {
+                align: 'right',
+                closingLinks: '.close-sb'
+            },
+            sbWrapper: {
+                display: true
+            }
+        })
+    })
+</script>
+
+</body>
+</html>

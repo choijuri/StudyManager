@@ -37,7 +37,7 @@ public class RecruitStudyServiceImpl implements RecruitStudyService {
     public void addRecruitStudy(RecruitStudyDto recruitStudyDto, Long userId) {
             RecruitStudy recruitStudy = new RecruitStudy();
             recruitStudy.setUser(userRepository.getOne(userId));
-            recruitStudy.setLocation(recruitStudyDto.getLocation());
+            recruitStudy.setLocation(recruitStudyDto.getSido1() +" "+recruitStudyDto.getGugun1());
             recruitStudy.setRecruitContent(recruitStudyDto.getRecruitContent());
             recruitStudy.setRecruitName(recruitStudyDto.getRecruitName());
             recruitStudy.setRecruitNumber(recruitStudyDto.getRecruitNumber());
