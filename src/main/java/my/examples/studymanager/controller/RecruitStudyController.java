@@ -2,11 +2,10 @@ package my.examples.studymanager.controller;
 
 
 import lombok.RequiredArgsConstructor;
-import my.examples.studymanager.domain.Message;
 import my.examples.studymanager.domain.RecruitStudy;
-import my.examples.studymanager.domain.User;
 import my.examples.studymanager.dto.RecruitStudyDto;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
+import my.examples.studymanager.service.CategoryService;
 import my.examples.studymanager.service.RecruitStudyService;
 import my.examples.studymanager.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,8 +23,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/recruitstudy")
 public class RecruitStudyController {
-    private RecruitStudyService recruitStudyService;
-    private UserService userService;
+    private final RecruitStudyService recruitStudyService;
+    private final UserService userService;
+    private final CategoryService categoryService;
 
     //recruitStudy 목록
     @GetMapping("/list")
@@ -37,9 +37,11 @@ public class RecruitStudyController {
     }
 
     //recruitStudy 등록페이지
-    @GetMapping("/recuritstudyform")
-    public String recruitStudyForm(){
-        return "recruitstudy/recruitstudyform";
+    @GetMapping("/recruitstudyregister")
+    public String recruitStudyForm(Model model){
+        model.addAttribute("categories",categoryService.getCategories());
+        model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
+        return "recruitstudy/recruitstudyregister";
     }
 
 

@@ -44,4 +44,11 @@ public class CurriculumController {
 
         return "curriculum/adddetail";
     }
+
+
+    //디테일 커리큘럼 등록페이지
+    @GetMapping("/curriculumdetailregister")
+    public String curriculumdetailregister(){
+        return "curriculum/curriculumdetailregister";
+    }
 }

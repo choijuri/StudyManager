@@ -4,9 +4,7 @@ package my.examples.studymanager.controller.api;
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.dto.CurriculumFormDto;
 import my.examples.studymanager.service.CurriculumService;
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.web.bind.annotation.*;
-import net.sf.json.JSONArray;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -23,10 +21,9 @@ public class CurriculumApiController {
         return "";
     }
 
+    //커리큘럼 등록
     @PostMapping
     public List<CurriculumFormDto> addCurriculum(@Valid @RequestBody List<CurriculumFormDto> curriculumFormDtoList){
-        System.out.println("+++++++++++++++++++++++++++++++");
-        System.out.println(curriculumFormDtoList);
         //        List<CurriculumFormDto> curriculumFormDtoList = new ArrayList<>();
 //        curriculumFormDtoList = JSONArray.fromObject(paramData);
 //        System.out.println(curriculumFormDtoList);
@@ -36,7 +33,6 @@ public class CurriculumApiController {
 //        JSONArray jsonArray =  JSONArray.fromObject(paramData);
 //        curriculumFormDtoList = jsonArray.subList(0, jsonArray.size());
         curriculumService.addCurriculum(curriculumFormDtoList);
-        System.out.println("-----------------------------------");
         return curriculumFormDtoList;
     }
 
