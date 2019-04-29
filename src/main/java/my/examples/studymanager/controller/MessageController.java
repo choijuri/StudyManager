@@ -9,10 +9,7 @@ import my.examples.studymanager.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,18 +20,32 @@ public class MessageController {
     private final MessageService messageService;
     private final UserService userService;
 
-    @GetMapping("/send")
-    public String sendMessage(Model model){
+    //유저에게 온 메시지 리스트
+    @GetMapping("/list")
+    public String getMessages(Model model){
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Message> messagesByUser = messageService.getMessagesByUser(securityUser.getId());
-        model.addAttribute("messages", messagesByUser);
-        return "history.go(-1)";
+        model.addAttribute("messageList", messagesByUser);
+        //return "history.go(-1)";
+        return "message/messagelist";
     }
 
-    @GetMapping("/receivemessageform")
-    public String receivemessageform(){
-        return "message/receiveform";
+    //메시지 한건 보기 - 한건 불러오기, 조회수 +1
+    @GetMapping("messagedetail/{messageId}")
+    public String getMessage(@PathVariable(name= "messageId") Long messageId,
+            Model model){
+        model.addAttribute("message",messageService.getMessageByMessageId(messageId));
+        messageService.updateReadCount(messageId);
+        return "message/messagedetail";
     }
+
+
+//    @GetMapping("/receivemessageform")
+//    public String receivemessageform(){
+//        return "message/receiveform";
+//    }
+
+
 
 //    @PostMapping("/receive")
 //    public String receivemessage(

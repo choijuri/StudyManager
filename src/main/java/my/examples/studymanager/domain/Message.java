@@ -18,6 +18,7 @@ public class Message {
     @Lob
     private String messageContent;
     private Date regdate;
+    private int readCount;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -35,8 +35,13 @@ public class MessageServiceImpl implements MessageService {
     @Override
     @Transactional(readOnly = true)
     public Message getMessageByMessageId(Long messageId) {
-
         return messageRepository.getOne(messageId);
+    }
+
+    @Override
+    @Transactional
+    public void updateReadCount(Long messageId) {
+        messageRepository.modifyReadCount(messageId);
     }
 
     @Override

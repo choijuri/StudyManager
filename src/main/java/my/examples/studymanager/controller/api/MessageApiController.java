@@ -24,12 +24,4 @@ public class MessageApiController {
         return sendMessageDto;
     }
 
-    /*
-        //커리큘럼 등록
-    @PostMapping
-    public List<CurriculumFormDto> addCurriculum(@Valid @RequestBody List<CurriculumFormDto> curriculumFormDtoList){
-        curriculumService.addCurriculum(curriculumFormDtoList);
-        return curriculumFormDtoList;
-    }
-     */
 }
