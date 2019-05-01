@@ -47,7 +47,7 @@ input{width:85%; padding:1.1% 0; border:0; font-size: 1.1em;
 
 select{width:15%; padding:.5% 0; border:0; border-bottom:1px solid #999;}
 
-fieldset#sec{margin:3% 0; padding-left:10%;}
+fieldset#sec{margin:3% 0; padding-left:5%; padding-right:5%;}
 fieldset#sec input{vertical-align:top; padding-left:10px;}
 
 

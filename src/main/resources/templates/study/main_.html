@@ -20,8 +20,8 @@
             <div class="box" th:each="study : ${studyList}">
 
                 <img src="">
-                <h4><a th:href="'/study/studyDetail/'+${study.studyId}" th:text="${study.studyName}">studyName</a>
-                </h4>
+                <h3><a th:href="'/study/studyDetail/'+${study.studyId}" th:text="${study.studyName}">studyName</a>
+                </h3>
                 <p th:text="${study.studyInformation}">studyInformation</p>
             </div>
 
