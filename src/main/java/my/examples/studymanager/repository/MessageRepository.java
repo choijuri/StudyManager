@@ -16,5 +16,8 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
     @Query("UPDATE Message m SET m.readCount = m.readCount+1 WHERE m.messageId =:messageId")
     public void modifyReadCount(@Param("messageId") Long messageId);
 
+    @Query("SELECT COUNT(m) FROM Message m WHERE m.user.userId=:receiverId AND m.readCount=0")
+    public int getNewMessageCount(@Param("receiverId") Long receiverId);
+
 
 }

@@ -26,7 +26,7 @@ public class MessageController {
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Message> messagesByUser = messageService.getMessagesByUser(securityUser.getId());
         model.addAttribute("messageList", messagesByUser);
-        //return "history.go(-1)";
+        //return "redirect:history.go(-1)";
         return "message/messagelist";
     }
 
@@ -40,11 +40,12 @@ public class MessageController {
     }
 
 
+
+
 //    @GetMapping("/receivemessageform")
 //    public String receivemessageform(){
 //        return "message/receiveform";
 //    }
-
 
 
 //    @PostMapping("/receive")

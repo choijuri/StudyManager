@@ -11,4 +11,5 @@ public interface MessageService {
     public Message getMessageByMessageId(Long messageId);
     public void deleteMessage(Long messageId);
     public void updateReadCount(Long messageId);
+    public int getNewMessageCount(Long senderId);
 }

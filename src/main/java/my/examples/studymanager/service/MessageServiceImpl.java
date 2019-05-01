@@ -2,6 +2,7 @@ package my.examples.studymanager.service;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Message;
+import my.examples.studymanager.domain.User;
 import my.examples.studymanager.dto.SendMessageDto;
 import my.examples.studymanager.repository.MessageRepository;
 import my.examples.studymanager.repository.UserRepository;
@@ -40,9 +41,17 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional
+    public int getNewMessageCount(Long receiverId) {
+        return messageRepository.getNewMessageCount(receiverId);
+    }
+
+    @Override
+    @Transactional
     public void updateReadCount(Long messageId) {
         messageRepository.modifyReadCount(messageId);
     }
+
+
 
     @Override
     @Transactional

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="ko">
 <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'
           name='viewport'>
     <title>recruitStudyList</title>
@@ -14,6 +14,25 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
 
     <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({
+                url: '/api/message',
+                method: 'get',
+                async: true,
+                contentType: "application/json",
+                success: function (count) {
+                    if(count != 0){
+                        $('#messageimg').append(
+                            '<img src="/images/885612-64.png" style="width:10%;" />'
+                        );
+                    }
+                },
+                error: function (err) {
+                    console.log(err.toString());
+                }
+            });
+        })
+
 
     </script>
 </head>
@@ -27,7 +46,7 @@
                 <span style="font-size: 0.8em; margin-top: 20px;" th:text="${recruitstudy.user.email}">recruitContent</span>
             </div>
             <div class = "recruitstudy_box3">
-                <h4><a th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
+                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
                 </h4>
                 <!--<p th:text="${recruitstudy.recruitContent}">recruitContent</p>-->
                 <div class = "recruitstudy_box3-1">
@@ -67,7 +86,9 @@
     <div class='main-sidebar-wrapper'>
         <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
             <h3 th:text="${#authentication.principal.name}+'님'" style="margin-bottom: 5px;">님</h3>
-            <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a>
+            <!--<h3 th:text="${#authentication.principal.newMessageCount}" style="margin-bottom: 5px;"></h3>-->
+            <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
+            <a href="/message/list" id="messageimg"> MESSAGE</a>
         </div>
 
         <div class='section click_menu' style="text-align: left;">

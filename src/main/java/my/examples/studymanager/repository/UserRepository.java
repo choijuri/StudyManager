@@ -2,6 +2,7 @@ package my.examples.studymanager.repository;
 
 import my.examples.studymanager.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -23,4 +24,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u.userId FROM User u WHERE u.email = :email")
     public Long getUserIdByEmail(@Param("email") String email);
+
+//    @Modifying
+//    @Query("UPDATE User u SET u.newMessageCount =:newMessageCount WHERE u.userId=:receiverId")
+//    public int newMessageCount(@Param("receiverId") Long receiverId, @Param("messageCount") int messageCount);
+
 }
