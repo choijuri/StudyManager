@@ -31,6 +31,16 @@ public class StudyController {
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
         model.addAttribute("studyList",studyService.getStudiesByUser(securityUser.getId()));
+        model.addAttribute("categories",categoryService.getCategories());
+        return "/study/main_";
+    }
+
+    @GetMapping("/list/{categoryId}")
+    public String getStudiesByCategoryId(@PathVariable Long categoryId, Model model){
+        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
+        model.addAttribute("studyList",studyService.getStudiesByUserIdAndCategoryId(securityUser.getId(),categoryId));
+        model.addAttribute("categories",categoryService.getCategories());
         return "/study/main_";
     }
 

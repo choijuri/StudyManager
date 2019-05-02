@@ -11,6 +11,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
 
+
+    <script>
+
+        function gotolist() {
+            location.href = "/study/list";
+        }
+    </script>
 </head>
 <body>
 <div class='main-content' id='main'>
@@ -35,17 +42,19 @@
 <!-- div#main -->
 <div class='main-navbar main-navbar-fixed-top' id='main-navbar'>
     <div class='main-navbar-content'>
-        <div class ="logo"><img src="/images/logo.png"></div>
+        <div class ="logo"><img src="/images/logo.png" th:onclick="'gotolist()'"></div>
         <div class='icon right' id='toggle-sidebar'>
             <img alt='menu' height='24px' src='/images/menu.png' width='24px'>
         </div>
 
         <nav class="categorymenu">
             <ul>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">어학</a></li>
-                <li><a href="#">취업</a></li>
-                <li><a href="#">기타</a></li>
+                <li th:each="category: ${categories}">
+                <a th:href="'/study/list/'+${category.categoryId}" th:text="${category.categoryName}"></a>
+                </li>
+                <!--<li><a href="#">어학</a></li>-->
+                <!--<li><a href="#">취업</a></li>-->
+                <!--<li><a href="#">기타</a></li>-->
             </ul>
         </nav>
     </div>
