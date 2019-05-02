@@ -71,10 +71,9 @@
 
         <nav class="categorymenu">
             <ul>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">어학</a></li>
-                <li><a href="#">취업</a></li>
-                <li><a href="#">기타</a></li>
+                <li th:each="category : ${categories}">
+                    <a th:href="'/recruitstudy/list?categoryId='+${category.categoryId}" th:text="${category.categoryName}" ></a>
+                </li>
             </ul>
         </nav>
     </div>

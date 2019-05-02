@@ -12,10 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,18 +22,38 @@ import java.util.List;
 @RequestMapping("/recruitstudy")
 public class RecruitStudyController {
     private final RecruitStudyService recruitStudyService;
-    private final UserService userService;
     private final CategoryService categoryService;
+//
+//    //recruitStudy 목록
+//    @GetMapping("/list")
+//    public String recruit(Model model){
+//        List<RecruitStudy> recruitStudyAll =
+//                recruitStudyService.getRecruitStudyAll();
+//        model.addAttribute("recruitStudyList", recruitStudyAll);
+//        model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
+//        return "recruitstudy/recruitstudylist";
+//    }
 
-    //recruitStudy 목록
+    //recruitStudy list 목록, 검색, 페이지
     @GetMapping("/list")
-    public String recruit(Model model){
-        List<RecruitStudy> recruitStudyAll =
-                recruitStudyService.getRecruitStudyAll();
-        model.addAttribute("recruitStudyList", recruitStudyAll);
+    public String recruitStudyList(
+            @RequestParam(name = "page",required = false,defaultValue = "1") int page,
+            @RequestParam(name = "searchKind", required = false) String searchKind,
+            @RequestParam(name = "categoryId", required = false) Long categoryId,
+            @RequestParam(name = "searchStr",required = false) String searchStr,
+            Model model
+    ){
         model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
+
+        List<RecruitStudy> recruitStudyList = recruitStudyService.searchRecruitStudy(page, categoryId, searchKind, searchStr);
+        model.addAttribute("recruitStudyList", recruitStudyList);
+
+        model.addAttribute("categories", categoryService.getCategories());
         return "recruitstudy/recruitstudylist";
     }
+
+
+
 
     //recruitStudy 등록페이지
     @GetMapping("/recruitstudyregister")
