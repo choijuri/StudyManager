@@ -23,8 +23,6 @@ public class RecruitStudyServiceImpl implements RecruitStudyService {
 
     public final static String RECRUITSTUDYNAME_SEARCH = "name_search";
     public final static String RECRUITSTUDYLOCATION_SEARCH = "title_content_search";
-//    public final static String TITLE_SEARCH = "title_search";
-//    public final static String CONTENT_SEARCH = "content_search";
 
     @Override
     @Transactional(readOnly = true)

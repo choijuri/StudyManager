@@ -24,14 +24,7 @@ public class CurriculumApiController {
     //커리큘럼 등록
     @PostMapping
     public List<CurriculumFormDto> addCurriculum(@Valid @RequestBody List<CurriculumFormDto> curriculumFormDtoList){
-        //        List<CurriculumFormDto> curriculumFormDtoList = new ArrayList<>();
-//        curriculumFormDtoList = JSONArray.fromObject(paramData);
-//        System.out.println(curriculumFormDtoList);
-//        JSONObject jsonObject =  JSONObject.fromObject(paramData);
-//        System.out.println(curriculumFormDto.getCurriculumContent());
-//        List<CurriculumFormDto> curriculumFormDtoList = new ArrayList<>();
-//        JSONArray jsonArray =  JSONArray.fromObject(paramData);
-//        curriculumFormDtoList = jsonArray.subList(0, jsonArray.size());
+
         curriculumService.addCurriculum(curriculumFormDtoList);
         return curriculumFormDtoList;
     }

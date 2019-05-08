@@ -40,8 +40,6 @@ public class CurriculumController {
 
         curriculumService.addCurriculum(curriculumFormDtoList);
 
-
-
         return "curriculum/adddetail";
     }
 
