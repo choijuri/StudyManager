@@ -53,17 +53,10 @@
                     document.getElementById('checkemail').innerHTML = '유효한 e-mail이 아닙니다. 다시 입력해 주세요.';
                     return false;
                 } else {
-                    // var token = $("meta[name='_csrf']").attr("content");
-                    // var header = $("meta[name='_csrf_header']").attr("content");
-                    // $(document).ajaxSend(function(e,xhr,options) {
-                    //     xhr.setRequestHeader(header, token);
-                    // });
                     return $.ajax({
                         type: 'post',
                         url: '/api/emailCheck',
-                        // data: 'email='+ encodeURIComponent(email),
                         data: jsonData,
-                        // datatype: "text",
                         async: false,
                         contentType: "application/json",
                         error: function (err) {
