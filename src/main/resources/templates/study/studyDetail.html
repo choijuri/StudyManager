@@ -40,10 +40,9 @@
                         data: jsonData,
                         async: false,
                         contentType: "application/json",
-                        // beforeSend: function( xhr ) {
-                        //     xhr.setRequestHeader(header, token);
-                        // },
-                        // ' + data[i].curriculumDetailId + ',\'' + data[i].curriculumDetailContent + '\'
+                        beforeSend: function( xhr ) {
+                            xhr.setRequestHeader(header, token);
+                        },
                         success: function (data) {
                             for (var i = 0; i < data.length; i++) {
                                 curriculumDetailDiv = $('<li style="margin-left: 5%; margin-bottom:1%;" onclick="gotoContent('+ curriculumId +','+data[i].curriculumDetailId+')" value="' + data[i].curriculumDetailContent + '">' + data[i].curriculumDetailContent + '</li> ' +
@@ -51,8 +50,6 @@
                                     '<input type="hidden" id="curriculumDetailId'+data[i].curriculumDetailId+'" value="' + data[i].curriculumDetailId + '"/>');
                                 curriculumDetailDiv.appendTo($('#curriculumDetails' + curriculumId));
                             }
-                            // var curriculumDetailDiv = $('<div> name : ' + curriculumDetail.name + '</div>');
-                            // curriculumDetailDiv.appendTo($('#curriculumDetails'));
                         },
                         error: function (err) {
                             console.log(err.toString());
@@ -99,13 +96,11 @@
 
             document.body.appendChild(form);
             form.submit();
-
         }
 
     </script>
 </head>
 <body>
-<!-- ---------------------form------------------------------->
 <div class="info">
     <h3 th:text="${study.studyName}" style="margin-left:1%; margin-top: .5em;"></h3>
     <p th:text="${study.code}" style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
@@ -114,7 +109,6 @@
     <div class="bord"></div>
 
     <fieldset id="sec">
-        <!--<form action="/studyContent" id="frm" method="post">-->
 
 
         <div class="box" th:each="curriculum,iter : ${curriculums}">
@@ -134,54 +128,19 @@
 
             <div class="curriculumDetails" th:id="'curriculumDetails'+${curriculum.curriculumId}">
 
-
             </div>
         </div>
-        <!--<legend>정보</legend>-->
-        <!--<ul>-->
-        <!--<li><label class="userId" for="name">이름</label>-->
-        <!--<input type="text" id="name" name="name" placeholder="이름 입력" autofocus required>-->
-        <!--</li>-->
 
-        <!--<li><label class="email" for="email">e-mail</label>-->
-        <!--<input type="text" id="email" name="email" placeholder="e-mail을 입력해주세요." required><br>-->
-        <!--<span id="checkemail" style="color:red; width: 85%; display:block;"></span>-->
-        <!--</li>-->
-
-        <!--<li><label for="userPWD" class="labelStyle">비밀번호</label>-->
-        <!--<input type="password" id="userPWD" name="passwd1" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"-->
-        <!--maxLength="12" required/><br>-->
-        <!--<span id="check2" style="color:red; width: 85%; display:block;"></span>-->
-        <!--</li>-->
-
-        <!--<li><label for="userPWD1" class="labelStyle">비밀번호 확인</label>-->
-        <!--<input type="password" id="userPWD1" name="passwd2" placeholder="영문 / 숫자 8~12자입력해주세요." minlength="8"-->
-        <!--maxLength="12" required/><br>-->
-        <!--<span id="check" style="color:red; width: 85%; display:block;"></span>-->
-        <!--</li>-->
-
-        <!--<li><label class="phone" for="phone">전화번호</label>-->
-        <!--<input type="text" id="phone" name="phone" placeholder="전화번호 입력" autofocus required><br>-->
-        <!--<span id="phoneCheck" style="color:red; width: 85%; display:block;"></span>-->
-        <!--</li>-->
-
-
-        <!--</ul>-->
-        <!--</form>-->
     </fieldset>
 
     <div class="bord"></div>
 
-
     <!----------------------버튼------------------------------------------>
     <div class="bt">
-        <!--<div class="before button"><a href="/index">취소</a></div>-->
         <input type="button" value="목록" id="btnlist" onclick="gotolist()"/>
     </div>
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-    <!--</form>-->
 </div>
 
 

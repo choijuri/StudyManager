@@ -37,20 +37,16 @@
                 data: jsonData,
                 async: false,
                 contentType: "application/json",
-
-                success: function (data) {
-                    toggleModal();
-                    alert('성공!');
-                },
                 beforeSend: function( xhr ) {
                     xhr.setRequestHeader(header, token);
+                },
+                success: function (data) {
+                    toggleModal();
                 },
                 error: function (err) {
                     console.log(err.toString());
                 }
             });
-
-
         }
 
 
