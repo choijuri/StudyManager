@@ -10,9 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 
@@ -71,7 +69,6 @@ public class StudyController {
         studyUserService.addStudyUser(studyId,securityUser.getId());
         redirectAttributes.addAttribute("study", studyService.getStudy(studyId));
         return "redirect:/curriculum/curriculumregister";
-//        return new ModelAndView(new RedirectView("/curriculum/curriculumregister"), "study",studyService.getStudy(studyId));
     }
 
 

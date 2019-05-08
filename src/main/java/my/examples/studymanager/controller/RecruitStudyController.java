@@ -23,16 +23,7 @@ import java.util.List;
 public class RecruitStudyController {
     private final RecruitStudyService recruitStudyService;
     private final CategoryService categoryService;
-//
-//    //recruitStudy 목록
-//    @GetMapping("/list")
-//    public String recruit(Model model){
-//        List<RecruitStudy> recruitStudyAll =
-//                recruitStudyService.getRecruitStudyAll();
-//        model.addAttribute("recruitStudyList", recruitStudyAll);
-//        model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
-//        return "recruitstudy/recruitstudylist";
-//    }
+
 
     //recruitStudy list 목록, 검색, 페이지
     @GetMapping("/list")

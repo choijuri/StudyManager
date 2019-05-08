@@ -24,10 +24,6 @@ public class StudyContentController {
                                @RequestParam(name = "curriculumDetailId") Long curriculumDetailId,
                                Model model ) {
 
-//        StudyContent studyContent = studyContentService.getStudyContentByCurriculumDetailId(studyContentDto.getCurriculumDetailId());
-//        model.addAttribute("studyContent", studyContent);
-//        model.addAttribute("curriculumContent", studyContentDto.getCurriculumContent());
-//        model.addAttribute("curriculumDetailContent",studyContentDto.getCurriculumDetailContent());
         System.out.println(curriculumContent+curriculumDetailContent+curriculumDetailId);
         StudyContent studyContent = studyContentService.getStudyContentByCurriculumDetailId(curriculumDetailId);
         model.addAttribute("studyContent", studyContent);
