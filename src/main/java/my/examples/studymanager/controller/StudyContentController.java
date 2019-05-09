@@ -24,7 +24,7 @@ public class StudyContentController {
                                @RequestParam(name = "curriculumDetailId") Long curriculumDetailId,
                                Model model ) {
 
-        
+
         StudyContent studyContent = studyContentService.getStudyContentByCurriculumDetailId(curriculumDetailId);
         model.addAttribute("studyContent", studyContent);
         model.addAttribute("curriculumContent", curriculumContent);

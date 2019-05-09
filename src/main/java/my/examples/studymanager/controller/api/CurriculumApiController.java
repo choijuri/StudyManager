@@ -15,11 +15,6 @@ import java.util.List;
 public class CurriculumApiController {
     private final CurriculumService curriculumService;
 
-    @GetMapping
-    public String getCurriculums(@RequestParam(name = "studyId") Long studyId){
-        curriculumService.getCurriculumByStudyId(studyId);
-        return "";
-    }
 
     //커리큘럼 등록
     @PostMapping
