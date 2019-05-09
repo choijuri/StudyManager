@@ -58,18 +58,18 @@ public class StudyController {
     }
 
     //스터디 등록하기, 스터디유저 추가
-    @PostMapping("/add")
-    public String addStudy(@Valid StudyFormDto studyFormDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors()){
-            throw new IllegalArgumentException(bindingResult.toString());
-        }
-        Long studyId = studyService.addStudy(studyFormDto);
-
-        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        studyUserService.addStudyUser(studyId,securityUser.getId());
-        redirectAttributes.addAttribute("study", studyService.getStudy(studyId));
-        return "redirect:/curriculum/curriculumregister";
-    }
+//    @PostMapping("/add")
+//    public String addStudy(@Valid StudyFormDto studyFormDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+//        if(bindingResult.hasErrors()){
+//            throw new IllegalArgumentException(bindingResult.toString());
+//        }
+//        Long studyId = studyService.addStudy(studyFormDto);
+//
+//        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        studyUserService.addStudyUser(studyId,securityUser.getId());
+//        redirectAttributes.addAttribute("study", studyService.getStudy(studyId));
+//        return "redirect:/curriculum/curriculumregister";
+//    }
 
 
 
