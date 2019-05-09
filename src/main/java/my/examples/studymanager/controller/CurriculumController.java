@@ -3,6 +3,8 @@ package my.examples.studymanager.controller;
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Study;
 import my.examples.studymanager.dto.CurriculumFormDto;
+import my.examples.studymanager.dto.StudyDto;
+import my.examples.studymanager.dto.StudyFormDto;
 import my.examples.studymanager.service.CurriculumService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +24,8 @@ public class CurriculumController {
 
     //스터디 커리큘럼 등록페이지
     @GetMapping("/curriculumregister")
-    public String curriculumregister(@RequestParam("study") Study study, Model model){
-
-        model.addAttribute("study", study);
+    public String curriculumregister(@RequestParam("study") StudyDto studyDto, Model model){
+        model.addAttribute("study", studyDto);
         return "curriculum/curriculumregister";
     }
 

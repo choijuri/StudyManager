@@ -3,6 +3,10 @@
 <html lang="ko"><head>
 
     <meta charset="UTF-8">
+    <meta name="_csrf_param" th:content="${_csrf.parameterName}"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 
     <title>index</title>
 
@@ -13,8 +17,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript">
 
+    <script type="text/javascript">
+        function studyregister(){
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var studyName = document.getElementById("studyname").value;
+            var studyInformation = document.getElementById("studyinformation").value;
+            var categorysel = document.getElementById("categoryId");
+            var categoryId = categorysel.options[categorysel.selectedIndex].value;
+            categoryId = Number(categoryId);
+
+            var JSONObject = {'studyName': studyName, 'studyInformation' : studyInformation, 'categoryId' : categoryId};
+            var jsonData = JSON.stringify(JSONObject);
+
+            $.ajax({
+                url: '/api/studies',
+                method: 'post',
+                data: jsonData,
+                async: true,
+                contentType: "application/json",
+                beforeSend: function( xhr ) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (data) {
+                    alert(data.toString());
+                    setAttributes("study",data);
+                    location.href='/curriculum/curriculumregister';
+                },
+                error: function (err) {
+                    console.log(err.toString());
+                }
+            });
+        }
     </script>
 
 
@@ -41,9 +77,6 @@
                 <input type="checkbox" id="click" class="tog">
                 <label for="click" class="ham"><img src="/images/menu.png"></label>
 
-
-
-
                 <nav class="clickmenu">
                     <ul>
                         <li class="fir"><h3>000님 환영합니다</h3><a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a></li>
@@ -60,7 +93,7 @@
     <div id="cbox" style="width:100%;height:100%;margin:10% auto;">
             <form method="post" action="/study/add" style="width:80%;margin: 0 auto;font-size:0.8em;font-weight:bold;">
                 category :
-                <select name="categoryId" style="margin-left:7%;">
+                <select name="categoryId" id="categoryId" style="margin-left:7%;">
                     <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
                 </select>
                 </br></br>
@@ -77,10 +110,8 @@
                         th:name="${_csrf.parameterName}"
                         th:value="${_csrf.token}" />
 
-                <input id="next" type="submit" value="다음" style="width:30%; float:right; color:#666; border:1px solid #f2cc32;background-color:#fff;">
+                <input th:onclick="studyregister()" id="next" type="button" value="다음" style="width:30%; float:right; color:#666; border:1px solid #f2cc32;background-color:#fff;">
             </form>
-
-
 
     </div>
 
