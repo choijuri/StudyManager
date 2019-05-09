@@ -7,6 +7,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurriculumDetailDTO {
+public class CurriculumDetailDto {
     private Long curriculumId;
 }

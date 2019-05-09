@@ -55,7 +55,7 @@
                 } else {
                     return $.ajax({
                         type: 'post',
-                        url: '/api/emailCheck',
+                        url: '/api/users/emailCheck',
                         data: jsonData,
                         async: false,
                         contentType: "application/json",
@@ -135,13 +135,41 @@
             var r3 = tocheckpw();
             var r4 = tocheckPhone();
 
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
             if ((r1 == 0) && r2 && r3 && r4) {
+                var joinData = {'email':email, 'passwd1':document.getElementById("userPWD").value, 'passwd2':document.getElementById("userPWD1").value,
+                    'phone':document.getElementById("phone").value,'name':document.getElementById("name").value};
+                var json = JSON.stringify(joinData);
+                $.ajax({
+                    type: 'post',
+                    url: '/api/users/join',
+                    data: json,
+                    async: true,
+                    contentType: "application/json",
+                    error: function (error) {
+                        console.log(error.toString());
+                        alert("서버가 응답하지 않습니다. \n 다시 시도해주시기 바랍니다.");
+                        return false;
+                    },
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function (data) {
+                        join();
+
+                    }
+                });
                 return true;
             }
             alert("다시 입력해주세요.");
             return false;
         }
 
+        function join() {
+            location.href='/index';
+        }
 
     </script>
 </head>
@@ -152,7 +180,7 @@
 
     <div class="bord"></div>
 
-    <form action="/users/join" method="post">
+    <!--<form action="/users/join" method="post">-->
 
         <fieldset id="sec">
             <legend>정보</legend>
@@ -193,12 +221,12 @@
         <!----------------------버튼------------------------------------------>
         <div class="bt">
             <div class="before button"><a href="/index">취소</a></div>
-            <input type="submit" value="JOIN" id="btnjoin" onclick="return tocheck()"/>
+            <input th:type="button" th:value="JOIN" id="btnjoin" th:onclick="'tocheck()'"/>
         </div>
 
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-    </form>
+    <!--</form>-->
 </div>
 
 

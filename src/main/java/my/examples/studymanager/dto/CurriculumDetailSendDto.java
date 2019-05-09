@@ -9,7 +9,7 @@ import javax.persistence.Lob;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurriculumDetailSendDTO {
+public class CurriculumDetailSendDto {
     private Long curriculumDetailId;
     @Lob
     private String curriculumDetailContent;

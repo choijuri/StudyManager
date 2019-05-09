@@ -34,7 +34,7 @@
                 document.getElementById("myDIV2"+curriculumId).style.display = 'block';
                 if ($('#curriculumDetails' + curriculumId).empty()) {
                     $.ajax({
-                        url: '/api/curriculumDetail',
+                        url: '/api/curriculumDetails',
                         method: 'post',
                         // data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
                         data: jsonData,
