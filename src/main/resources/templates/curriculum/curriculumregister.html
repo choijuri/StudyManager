@@ -69,7 +69,7 @@
             var jsonData = JSON.stringify(arr);
 
             $.ajax({
-                url: "/api/curriculum",
+                url: "/api/curriculums",
                 type: 'POST',
                 data:jsonData,
                 async: true,
@@ -79,7 +79,7 @@
                     xhr.setRequestHeader(header, token);
                 },
                 success: function (data) {
-                    location.href='/study/';
+                    location.href='/study/studyDetail/'+data;
                 },
                 error: function (err) {
                     console.log(err.toString());
