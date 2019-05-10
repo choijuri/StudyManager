@@ -38,22 +38,4 @@ public class MessageController {
         messageService.updateReadCount(messageId);
         return "message/messagedetail";
     }
-
-
-
-
-//    @GetMapping("/receivemessageform")
-//    public String receivemessageform(){
-//        return "message/receiveform";
-//    }
-
-
-//    @PostMapping("/receive")
-//    public String receivemessage(
-//            @RequestParam(name = "messagecontent") String messagecontent,
-//            @RequestParam(name = "user") String userEmail){
-//        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        messageService.addMessage(securityUser.getId(),messagecontent,userService.getUserIdByEmail(userEmail));
-//        return "message/receive";
-//    }
 }

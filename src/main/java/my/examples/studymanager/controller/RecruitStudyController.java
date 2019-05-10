@@ -7,7 +7,6 @@ import my.examples.studymanager.dto.RecruitStudyDto;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
 import my.examples.studymanager.service.CategoryService;
 import my.examples.studymanager.service.RecruitStudyService;
-import my.examples.studymanager.service.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,17 +54,17 @@ public class RecruitStudyController {
     }
 
 
-    //recruitStudy 등록
-    @PostMapping("/register")
-    public String recruitstudy(@Valid RecruitStudyDto recruitStudyDto, BindingResult bindingResult){
-
-        if(bindingResult.hasErrors()){
-            throw new IllegalArgumentException(bindingResult.toString());
-        }
-        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        recruitStudyService.addRecruitStudy(recruitStudyDto, securityUser.getId());
-        return "recruitstudy/recruitstudydetail";
-    }
+//    //recruitStudy 등록
+//    @PostMapping("/register")
+//    public String recruitstudy(@Valid RecruitStudyDto recruitStudyDto, BindingResult bindingResult){
+//
+//        if(bindingResult.hasErrors()){
+//            throw new IllegalArgumentException(bindingResult.toString());
+//        }
+//        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        recruitStudyService.addRecruitStudy(recruitStudyDto, securityUser.getId());
+//        return "recruitstudy/recruitstudydetail";
+//    }
 
 
     //recruitStudyDetail 페이지 모집스터디 한건 보기

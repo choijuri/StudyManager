@@ -42,9 +42,8 @@
                     xhr.setRequestHeader(header, token);
                 },
                 success: function (data) {
-                    alert(data.toString());
-                    setAttributes("study",data);
-                    location.href='/curriculum/curriculumregister';
+                    alert(data)
+                    location.href='/curriculum/curriculumregister?studyId='+data;
                 },
                 error: function (err) {
                     console.log(err.toString());

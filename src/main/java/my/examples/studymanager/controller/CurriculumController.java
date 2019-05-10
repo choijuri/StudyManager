@@ -6,6 +6,7 @@ import my.examples.studymanager.dto.CurriculumFormDto;
 import my.examples.studymanager.dto.StudyDto;
 import my.examples.studymanager.dto.StudyFormDto;
 import my.examples.studymanager.service.CurriculumService;
+import my.examples.studymanager.service.StudyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,29 +22,14 @@ import java.util.List;
 public class CurriculumController {
 
     private final CurriculumService curriculumService;
+    private final StudyService studyService;
 
     //스터디 커리큘럼 등록페이지
     @GetMapping("/curriculumregister")
-    public String curriculumregister(@RequestParam("study") StudyDto studyDto, Model model){
-        model.addAttribute("study", studyDto);
+    public String curriculumregister(@RequestParam("studyId") Long studyId, Model model){
+        model.addAttribute("study",studyService.getStudy(studyId));
         return "curriculum/curriculumregister";
     }
-
-    //커리큘럼 등록하기
-    @PostMapping("/curriculumregister")
-    public String addcurriculum(@Valid @RequestBody CurriculumFormDto curriculumFormDto, BindingResult bindingResult, Model model){
-        System.out.println(curriculumFormDto.getCurriculumContent());
-        if(bindingResult.hasErrors()){
-            throw new IllegalArgumentException(bindingResult.toString());
-        }
-        List<CurriculumFormDto> curriculumFormDtoList= new ArrayList<>();
-        curriculumFormDtoList.add(curriculumFormDto);
-
-        curriculumService.addCurriculum(curriculumFormDtoList);
-
-        return "curriculum/adddetail";
-    }
-
 
     //디테일 커리큘럼 등록페이지
     @GetMapping("/curriculumdetailregister")

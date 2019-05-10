@@ -1,8 +1,6 @@
 package my.examples.studymanager.controller.api;
 
 import lombok.RequiredArgsConstructor;
-import my.examples.studymanager.domain.Study;
-import my.examples.studymanager.dto.StudyDto;
 import my.examples.studymanager.dto.StudyFormDto;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
 import my.examples.studymanager.service.StudyService;
@@ -26,20 +24,17 @@ public class StudyApiController {
     private final StudyService studyService;
     private final StudyUserService studyUserService;
 
+    //스터디 등록하기, 스터디유저 추가
     @PostMapping
-    public ResponseEntity<StudyDto> addStudy(@Valid @RequestBody StudyFormDto studyFormDto, BindingResult bindingResult){
+    public ResponseEntity<Long> addStudy(@Valid @RequestBody StudyFormDto studyFormDto, BindingResult bindingResult){
         System.out.println(studyFormDto.getCategoryId());
 
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
         }
         Long studyId = studyService.addStudy(studyFormDto);
-        StudyDto studyDto = new StudyDto();
-        studyDto.setStudyId(studyId);
-        studyDto.setStudyInformation(studyFormDto.getStudyInformation());
-        studyDto.setStudyName(studyFormDto.getStudyName());
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         studyUserService.addStudyUser(studyId,securityUser.getId());
-        return new ResponseEntity<>(studyDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(studyId, HttpStatus.CREATED);
     }
 }
