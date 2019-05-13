@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +22,11 @@ public class RecruitStudyApiController {
     private final RecruitStudyService recruitStudyService;
 
     //recruitStudy 등록
+    @PostMapping
     public ResponseEntity addRecruitStudy(@Valid @RequestBody RecruitStudyDto recruitStudyDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             throw new IllegalArgumentException(bindingResult.toString());
+            //return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         recruitStudyService.addRecruitStudy(recruitStudyDto, securityUser.getId());
@@ -31,18 +34,4 @@ public class RecruitStudyApiController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-
-
-//    //recruitStudy 등록
-//        StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        recruitStudyService.addRecruitStudy(recruitStudyDto, securityUser.getId());
-//        return "recruitstudy/recruitstudydetail";
-//    }
-
-//    private String recruitName;
-//    private String sido1;
-//    private String gugun1;
-//    private int recruitNumber;
-//    private String recruitContent;
-//    private Long categoryId;
 }

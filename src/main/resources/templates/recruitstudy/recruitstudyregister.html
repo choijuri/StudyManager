@@ -3,6 +3,11 @@
 <html lang="ko">
 <head>
     <meta charset='utf-8'>
+    <meta name="_csrf_param" th:content="${_csrf.parameterName}"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
     <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
     <title>recruitStudyRegister</title>
 
@@ -51,58 +56,91 @@
                 $("option", $gugun).remove(); // 구군 초기화
 
                 if (area == "area0")
-                    $gugun.append("<option value=''>구/군 선택</option>");
+                    $gugun.append("<option th:value=''>구/군 선택</option>");
                 else {
                     $.each(eval(area), function () {
-                        $gugun.append("<option value='" + this + "'>" + this + "</option>");
+                        $gugun.append("<option th:value='" + this + "'>" + this + "</option>");
                     });
                 }
             });
 
+            //function addrecruitstudy(){
+            $('#next').click(function () {
+                var token = $("meta[name='_csrf']").attr("content");
+                var header = $("meta[name='_csrf_header']").attr("content");
+
+                var recruitName = document.getElementById("recruitName").value;
+                var recruitNumberV = document.getElementById("recruitNumber").value;
+                var recruitNumber= Number(recruitNumberV);
+
+                var recruitContent = document.getElementById("recruitContent").value;
+
+                var sido1 = document.getElementById("sido1").value;
+                // var sido1 = sidosel.options[sidosel.selectedIndex].value;
+                var gugun1 = document.getElementById("gugun1").value;
+                // var gugun1 = gugunsel.options[gugunsel.selectedIndex].value;
+
+                // var sido1 = $("#sido1 option:selected").val;
+                // var gugun1 = $("#gugun1 option:selected").val;
+
+                var categorysel = document.getElementById("categoryId");
+                var categoryId = Number(categorysel.options[categorysel.selectedIndex].value);
+
+
+                var JSONObject = {'recruitName': recruitName, 'sido1' : sido1, 'gugun1' : gugun1,
+                    'recruitNumber' : recruitNumber, 'recruitContent' : recruitContent,
+                    'categoryId' : categoryId};
+                var jsonData = JSON.stringify(JSONObject);
+                alert(jsonData);
+
+                $.ajax({
+                    url: '/api/recruitstudies',
+                    method: 'post',
+                    data: jsonData,
+                    async: false,
+                    contentType: "application/json",
+                    beforeSend: function( xhr ) {
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function (data) {
+                        alert(data);
+                        location.href='/recruitstudy/list';
+                    },
+                    error: function (err) {
+                        alert(err.toString());
+                    }
+                });
+            })
 
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-        //    private String recruitName;
-        //    private String sido1;
-        //    private String gugun1;
-        //    private int recruitNumber;
-        //    private String recruitContent;
-        //    private Long categoryId;
     </script>
+
+
+
 </head>
 <body>
 <div class='main-content' id='main'>
     <div class='section'>
     <div class="form_recruitstudy">
-        <form method="post" action="/recruitstudy/register">
+        <form >
             <label class="recruitname" for="recruitName" style="font-size: 1.3em; display: block; text-align: left; margin-top:3%;">모집 스터디 이름 : </label>
             <input type="text" id="recruitName" name="recruitName"
                    style="padding:2% 1%;margin: 1% auto;width:85%; float: left;"
                    placeholder="모집 스터디의 이름을 입력해주세요" autofocus required>
 
             <p class="recruit_text"> category를 선택해 주세요</p>
-            <select name="categoryId" style="margin-left:7%;">
+            <select name="categoryId"  id="categoryId" style="margin-left:7%;">
                 <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
             </select>
 
             <p class="recruit_text"> 위치를 선택해주세요</p>
-            <select name="sido1" id="sido1"></select>
-            <select name="gugun1" id="gugun1"></select>
+            <select th:name="sido1" id="sido1"></select>
+            <select th:name="gugun1" id="gugun1"></select>
 
             <p class="recruit_text">참여 인원을 설정해주세요</p>
-            <input type="number"  name="recruitNumber" min="1" max="100" value="1" />
+            <input type="number" id="recruitNumber"  name="recruitNumber" min="1" max="100" value="1" />
 
             <textarea name="recruitContent"  id="recruitContent"  style="padding:2% 1%;margin: 1% auto;width:100%;" cols="40" rows="10" placeholder="스터디에 대한 설명을 입력해주세요" required ></textarea>
             <br>
@@ -111,10 +149,8 @@
                     th:name="${_csrf.parameterName}"
                     th:value="${_csrf.token}" />
 
-            <input  id="next" type="submit" value="등록" style="width:30%; float:right; color:#666; border:1px solid #f2cc32;background-color:#fff;">
-
-
-
+            <input  id="next" type="button" value="등록" style="width:30%; float:right; color:#666; border:1px solid #f2cc32;background-color:#fff;"/>
+            <!--th:onclick="'addrecruitstudy()'"-->
         </form>
 
 
@@ -195,7 +231,11 @@
                 }
             })
         })
+
+
+
     </script>
+
 
 </body>
 </html>
