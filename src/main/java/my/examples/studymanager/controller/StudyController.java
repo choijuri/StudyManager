@@ -26,7 +26,7 @@ public class StudyController {
         model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
         model.addAttribute("studyList",studyService.getStudiesByUser(securityUser.getId()));
         model.addAttribute("categories",categoryService.getCategories());
-        return "/study/main_";
+        return "study/main_";
     }
 
     @GetMapping("/list/{categoryId}")
@@ -35,7 +35,7 @@ public class StudyController {
         model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
         model.addAttribute("studyList",studyService.getStudiesByUserIdAndCategoryId(securityUser.getId(),categoryId));
         model.addAttribute("categories",categoryService.getCategories());
-        return "/study/main_";
+        return "study/main_";
     }
 
     //스터디 한건 보기
@@ -43,7 +43,7 @@ public class StudyController {
     public String getStudy(@PathVariable(name = "studyId") Long studyId,
                           Model model){
         model.addAttribute("study", studyService.getStudy(studyId));
-        return "/study/";
+        return "study/";
     }
 
     //스터디등록하는 페이지로 가기
