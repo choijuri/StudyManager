@@ -18,16 +18,16 @@ import java.util.List;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DataJpaTest
 public class MessageRepositoryTest {
-//    @Autowired
-//    MessageRepository messageRepository;
-//    @Autowired
-//    UserRepository userRepository;
-//
-//    //메시지 상세 내용 조회(한 건)
-//    @Test
-//    public void getMessage(){
-//        System.out.println(messageRepository.findById(1L).get().getMessageContent());
-//    }
+    @Autowired
+    MessageRepository messageRepository;
+    @Autowired
+    UserRepository userRepository;
+
+    //메시지 상세 내용 조회(한 건)
+    @Test
+    public void getMessage(){
+        System.out.println(messageRepository.findById(1L).get().getMessageContent());
+    }
 //
 //    //메시지 삭제
 //    @Test

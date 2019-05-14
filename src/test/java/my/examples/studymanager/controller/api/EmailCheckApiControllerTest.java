@@ -23,31 +23,31 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = {EmailCheckApiController.class },includeFilters = @ComponentScan.Filter(classes = {EnableWebSecurity.class}))
 public class EmailCheckApiControllerTest {
-//    @Autowired
-//    MockMvc mockMvc;
-//
-//    @Autowired
-//    ObjectMapper objectMapper;
-//
-//    @MockBean
-//    UserService userService;
-//
-//    @Test
-//    public void EmailCheck() throws Exception{
-//        EmailCheckDto emailCheckDto = EmailCheckDto.builder()
-//                                        .email("urstory@gamil.com")
-//                                        .build();
-//
-//        Mockito.when(userService.emailChk(emailCheckDto.getEmail())).thenReturn(0);
-//        mockMvc.perform(post("/api/emailCheck")
-//                .with(csrf())
-//                .contentType(MediaType.APPLICATION_JSON_UTF8)
-//                .accept(MediaType.APPLICATION_JSON_UTF8)
-//                .content(objectMapper.writeValueAsString(emailCheckDto))
-//        )
-//                .andDo(print()); // 값출력
-//    }
-//
-//
+    @Autowired
+    MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @MockBean
+    UserService userService;
+
+    @Test
+    public void EmailCheck() throws Exception{
+        EmailCheckDto emailCheckDto = EmailCheckDto.builder()
+                                        .email("urstory@gamil.com")
+                                        .build();
+
+        Mockito.when(userService.emailChk(emailCheckDto.getEmail())).thenReturn(0);
+        mockMvc.perform(post("/api/emailCheck")
+                .with(csrf())
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .content(objectMapper.writeValueAsString(emailCheckDto))
+        )
+                .andDo(print()); // 값출력
+    }
+
+
 
 }
