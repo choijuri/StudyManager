@@ -3,17 +3,13 @@ package my.examples.studymanager.controller;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.RecruitStudy;
-import my.examples.studymanager.dto.RecruitStudyDto;
-import my.examples.studymanager.security.StudyManagerSecurityUser;
 import my.examples.studymanager.service.CategoryService;
 import my.examples.studymanager.service.RecruitStudyService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller

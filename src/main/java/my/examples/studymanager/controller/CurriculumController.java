@@ -1,20 +1,11 @@
 package my.examples.studymanager.controller;
 
 import lombok.RequiredArgsConstructor;
-import my.examples.studymanager.domain.Study;
-import my.examples.studymanager.dto.CurriculumFormDto;
-import my.examples.studymanager.dto.StudyDto;
-import my.examples.studymanager.dto.StudyFormDto;
 import my.examples.studymanager.service.CurriculumService;
 import my.examples.studymanager.service.StudyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor

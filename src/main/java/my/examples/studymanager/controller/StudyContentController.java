@@ -2,10 +2,7 @@ package my.examples.studymanager.controller;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.StudyContent;
-import my.examples.studymanager.dto.StudyContentDto;
 import my.examples.studymanager.service.StudyContentService;
-import net.sf.json.JSON;
-import net.sf.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

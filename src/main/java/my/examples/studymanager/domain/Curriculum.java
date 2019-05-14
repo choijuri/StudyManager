@@ -1,5 +1,6 @@
 package my.examples.studymanager.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Curriculum {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_id")
+    @JsonIgnore
     private Study study;
 
     @OneToMany(mappedBy = "curriculum", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})

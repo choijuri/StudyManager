@@ -5,11 +5,11 @@ INSERT INTO category(category_id, category_name) VALUES(3,'취업');
 INSERT INTO category(category_id, category_name) VALUES(4,'기타');
 
 -- user
-INSERT INTO user( email, passwd, phone, name) VALUES('urstory@gmail.com', '1234' , '01022523645', '토토');
-INSERT INTO user( email, passwd, phone, name) VALUES('mj123@gmail.com', '1234' , '01022458562', '민준');
-INSERT INTO user( email, passwd, phone, name) VALUES('sj123@gmail.com', '1234' , '01036158562', '서준');
-INSERT INTO user( email, passwd, phone, name) VALUES('jh123@gmail.com', '1234' , '01022457562', '지훈');
-INSERT INTO user( email, passwd, phone, name) VALUES('yw123@gmail.com', '1234' , '01022457545', '연우');
+INSERT INTO user( email, passwd, phone, name) VALUES('urstory@gmail.com', '{bcrypt}$2a$10$NTBRmbStBAZ/ErbZFoWquOqeCKIKaRNRVvU./GOMQ.SnmxZs1dVuG' , '01022523645', '토토');
+INSERT INTO user( email, passwd, phone, name) VALUES('mj123@gmail.com', '{bcrypt}$2a$10$NTBRmbStBAZ/ErbZFoWquOqeCKIKaRNRVvU./GOMQ.SnmxZs1dVuG' , '01022458562', '민준');
+INSERT INTO user( email, passwd, phone, name) VALUES('sj123@gmail.com', '{bcrypt}$2a$10$NTBRmbStBAZ/ErbZFoWquOqeCKIKaRNRVvU./GOMQ.SnmxZs1dVuG' , '01036158562', '서준');
+INSERT INTO user( email, passwd, phone, name) VALUES('jh123@gmail.com', '{bcrypt}$2a$10$NTBRmbStBAZ/ErbZFoWquOqeCKIKaRNRVvU./GOMQ.SnmxZs1dVuG' , '01022457562', '지훈');
+INSERT INTO user( email, passwd, phone, name) VALUES('yw123@gmail.com', '{bcrypt}$2a$10$NTBRmbStBAZ/ErbZFoWquOqeCKIKaRNRVvU./GOMQ.SnmxZs1dVuG' , '01022457545', '연우');
 
 
 -- study

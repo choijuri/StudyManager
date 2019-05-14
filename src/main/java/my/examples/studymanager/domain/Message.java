@@ -18,8 +18,8 @@ public class Message {
     @Lob
     private String messageContent;
     private Date regdate;
-    private int readCount;
 
+    private int readCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id")
@@ -31,6 +31,7 @@ public class Message {
 
     public Message(){
         regdate = new Date();
+        this.readCount = 0;
     }
 }
 /*
