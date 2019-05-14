@@ -30,44 +30,44 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = {CurriculumDetailApiController.class },includeFilters = @ComponentScan.Filter(classes = {EnableWebSecurity.class}))
 public class CurriculumDetailApiControllerTest {
-    @Autowired
-    MockMvc mockMvc;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
 //    @Autowired
-//    CurriculumRepository curriculumRepository;
-
-    @MockBean
-    CurriculumDetailService curriculumDetailService;
+//    MockMvc mockMvc;
+//
+//    @Autowired
+//    ObjectMapper objectMapper;
+//
+////    @Autowired
+////    CurriculumRepository curriculumRepository;
 //
 //    @MockBean
-//    MessageController messageController;
-
-    @Test
-    public void createCurriculumDetail() throws Exception{
-        List<CurriculumDetailFormDto> list = new ArrayList<>();
-        CurriculumDetailFormDto curriculumDetailFormDto = CurriculumDetailFormDto.builder()
-                                                                    .curriculumId(1L)
-                                                                    .curriculumDetailContent("안녕하세요")
-                                                                    .build();
-
-        list.add(curriculumDetailFormDto);
-
-//        List<CurriculumDetailFormDto> curriculumDetailList = JSONArray.fromObject(list);
-//        Mockito.when(curriculumDetailService.addCurriculumDetail(curriculumDetailList)).thenReturn(true);
-
-        mockMvc.perform(post("/api/curriculumDetail")
-                        .with(csrf())
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                        .accept(MediaType.APPLICATION_JSON_UTF8)
-                        .content(objectMapper.writeValueAsString(list))
-                ).andExpect(status().is(200))
-//        )
-                .andDo(print()); // 값을 출력할 수 있다.
-//                .andExpect(status().isCreated());
-//                .andExpect(jsonPath("curriculumDetailId").exists());
-    }
+//    CurriculumDetailService curriculumDetailService;
+////
+////    @MockBean
+////    MessageController messageController;
+//
+//    @Test
+//    public void createCurriculumDetail() throws Exception{
+//        List<CurriculumDetailFormDto> list = new ArrayList<>();
+//        CurriculumDetailFormDto curriculumDetailFormDto = CurriculumDetailFormDto.builder()
+//                                                                    .curriculumId(1L)
+//                                                                    .curriculumDetailContent("안녕하세요")
+//                                                                    .build();
+//
+//        list.add(curriculumDetailFormDto);
+//
+////        List<CurriculumDetailFormDto> curriculumDetailList = JSONArray.fromObject(list);
+////        Mockito.when(curriculumDetailService.addCurriculumDetail(curriculumDetailList)).thenReturn(true);
+//
+//        mockMvc.perform(post("/api/curriculumDetail")
+//                        .with(csrf())
+//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+//                        .accept(MediaType.APPLICATION_JSON_UTF8)
+//                        .content(objectMapper.writeValueAsString(list))
+//                ).andExpect(status().is(200))
+////        )
+//                .andDo(print()); // 값을 출력할 수 있다.
+////                .andExpect(status().isCreated());
+////                .andExpect(jsonPath("curriculumDetailId").exists());
+//    }
 
 }

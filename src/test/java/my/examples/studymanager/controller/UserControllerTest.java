@@ -27,45 +27,45 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = {UserController.class},includeFilters = @ComponentScan.Filter(classes = {EnableWebSecurity.class}))
 public class UserControllerTest {
-    @Autowired
-    MockMvc mockMvc;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
-    @MockBean
-    UserService userService;
-
-    @Test
-    public void joinTest() throws Exception{
-        JoinFormDto joinFormDto = JoinFormDto.builder()
-                .email("hong@gmail.com")
-                .passwd1("12341234")
-                .passwd2("12341234")
-                .phone("01011113333")
-                .name("홍이장")
-                .build();
-
-        User user = User.builder()
-                .email(joinFormDto.getEmail())
-                .name(joinFormDto.getName())
-                .passwd(joinFormDto.getPasswd1())
-                .phone(joinFormDto.getPhone())
-                .build();
-
-        Mockito.when(userService.addUser(user)).thenReturn(user);
-
-        mockMvc.perform(put("/users/join")
-                        .with(csrf())
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .accept(MediaType.APPLICATION_JSON_UTF8)
-                        .content(objectMapper.writeValueAsString(joinFormDto))
-                ).andExpect(status().is(200))
-//        )
-                .andDo(print()); // 값을 출력할 수 있다.
-//                .andExpect(status().isCreated())
-//                .andExpect(jsonPath("userId").exists()); // id가존재한다.
-    }
+//    @Autowired
+//    MockMvc mockMvc;
+//
+//    @Autowired
+//    ObjectMapper objectMapper;
+//
+//    @MockBean
+//    UserService userService;
+//
+//    @Test
+//    public void joinTest() throws Exception{
+//        JoinFormDto joinFormDto = JoinFormDto.builder()
+//                .email("hong@gmail.com")
+//                .passwd1("12341234")
+//                .passwd2("12341234")
+//                .phone("01011113333")
+//                .name("홍이장")
+//                .build();
+//
+//        User user = User.builder()
+//                .email(joinFormDto.getEmail())
+//                .name(joinFormDto.getName())
+//                .passwd(joinFormDto.getPasswd1())
+//                .phone(joinFormDto.getPhone())
+//                .build();
+//
+//        Mockito.when(userService.addUser(user)).thenReturn(user);
+//
+//        mockMvc.perform(put("/users/join")
+//                        .with(csrf())
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+//                        .accept(MediaType.APPLICATION_JSON_UTF8)
+//                        .content(objectMapper.writeValueAsString(joinFormDto))
+//                ).andExpect(status().is(200))
+////        )
+//                .andDo(print()); // 값을 출력할 수 있다.
+////                .andExpect(status().isCreated())
+////                .andExpect(jsonPath("userId").exists()); // id가존재한다.
+//    }
 }
 /*
  private String email;

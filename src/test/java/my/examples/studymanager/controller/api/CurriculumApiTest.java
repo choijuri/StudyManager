@@ -25,44 +25,44 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = {CurriculumApiController.class },includeFilters = @ComponentScan.Filter(classes = {EnableWebSecurity.class}))
 public class CurriculumApiTest {
-    @Autowired
-    MockMvc mockMvc;
-
-    @Autowired
-    ObjectMapper objectMapper;
-
-    @MockBean
-    CurriculumService curriculumService;
-
-    @Test
-    public void addCurriculum() throws Exception{
-        CurriculumFormDto curriculumFormDto1 = CurriculumFormDto.builder()
-                .curriculumContent("테스트 커리큘럼")
-                .studyId(2L)
-                .build();
-
-        CurriculumFormDto curriculumFormDto2 = CurriculumFormDto.builder()
-                .curriculumContent("테스트 커리큘럼2")
-                .studyId(2L)
-                .build();
-
-        CurriculumFormDto curriculumFormDto3 = CurriculumFormDto.builder()
-                .curriculumContent("테스트 커리큘럼3")
-                .studyId(2L)
-                .build();
-
-        List<CurriculumFormDto> list = new ArrayList<>();
-        list.add(curriculumFormDto1);
-        list.add(curriculumFormDto2);
-        list.add(curriculumFormDto3);
-
-        mockMvc.perform(post("/api/curriculum")
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON_UTF8)
-                    .accept(MediaType.APPLICATION_JSON_UTF8)
-                    .content(objectMapper.writeValueAsString(list))
-            ).andExpect(status().is(200))
-                .andDo(print());
-    }
+//    @Autowired
+//    MockMvc mockMvc;
+//
+//    @Autowired
+//    ObjectMapper objectMapper;
+//
+//    @MockBean
+//    CurriculumService curriculumService;
+//
+//    @Test
+//    public void addCurriculum() throws Exception{
+//        CurriculumFormDto curriculumFormDto1 = CurriculumFormDto.builder()
+//                .curriculumContent("테스트 커리큘럼")
+//                .studyId(2L)
+//                .build();
+//
+//        CurriculumFormDto curriculumFormDto2 = CurriculumFormDto.builder()
+//                .curriculumContent("테스트 커리큘럼2")
+//                .studyId(2L)
+//                .build();
+//
+//        CurriculumFormDto curriculumFormDto3 = CurriculumFormDto.builder()
+//                .curriculumContent("테스트 커리큘럼3")
+//                .studyId(2L)
+//                .build();
+//
+//        List<CurriculumFormDto> list = new ArrayList<>();
+//        list.add(curriculumFormDto1);
+//        list.add(curriculumFormDto2);
+//        list.add(curriculumFormDto3);
+//
+//        mockMvc.perform(post("/api/curriculum")
+//                    .with(csrf())
+//                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+//                    .accept(MediaType.APPLICATION_JSON_UTF8)
+//                    .content(objectMapper.writeValueAsString(list))
+//            ).andExpect(status().is(200))
+//                .andDo(print());
+//    }
 
 }
