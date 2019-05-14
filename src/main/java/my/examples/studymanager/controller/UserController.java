@@ -20,9 +20,6 @@ public class UserController {
     @GetMapping("/join")
     public String joinform(JoinFormDto joinFormDto, ModelMap modelMap){
         modelMap.addAttribute("joinDto", joinFormDto);
-        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
-            return "redirect:/study/list";
-        }
         return "users/joinform";
     }
 
