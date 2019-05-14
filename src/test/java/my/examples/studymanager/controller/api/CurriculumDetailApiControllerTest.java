@@ -6,7 +6,6 @@ import my.examples.studymanager.domain.CurriculumDetail;
 import my.examples.studymanager.dto.CurriculumDetailFormDto;
 import my.examples.studymanager.repository.CurriculumRepository;
 import my.examples.studymanager.service.CurriculumDetailService;
-import net.sf.json.JSONArray;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -56,8 +55,8 @@ public class CurriculumDetailApiControllerTest {
 
         list.add(curriculumDetailFormDto);
 
-        List<CurriculumDetailFormDto> curriculumDetailList = JSONArray.fromObject(list);
-        Mockito.when(curriculumDetailService.addCurriculumDetail(curriculumDetailList)).thenReturn(true);
+//        List<CurriculumDetailFormDto> curriculumDetailList = JSONArray.fromObject(list);
+//        Mockito.when(curriculumDetailService.addCurriculumDetail(curriculumDetailList)).thenReturn(true);
 
         mockMvc.perform(post("/api/curriculumDetail")
                         .with(csrf())

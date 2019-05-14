@@ -13,16 +13,16 @@ INSERT INTO user( email, passwd, phone, name) VALUES('yw123@gmail.com', '{bcrypt
 
 
 -- study
-INSERT INTO study(study_name, study_information, category_id)
-VALUES('JAVA 스터디', 'JAVA 기본 개념에 대해 공부하는 스터디', 1);
-INSERT INTO study(study_name, study_information, category_id)
-VALUES('알고리즘 스터디', '알고리즘 문제를 풀고 공부하는 스터디', 1);
-INSERT INTO study(study_name, study_information, category_id)
-VALUES('토익 스터디', '토익 공부를 같이 하는 스터디', 2);
-INSERT INTO study(study_name, study_information, category_id)
-VALUES('면접 스터디', '면접을 대비하는 스터디', 3);
-INSERT INTO study(study_name, study_information, category_id)
-VALUES('1일 1시간 운동하기', '하루에 한 시간 씩 같이 운동하는 스터디', 4);
+INSERT INTO study(study_name, study_information, category_id, code)
+VALUES('JAVA 스터디', 'JAVA 기본 개념에 대해 공부하는 스터디', 1, '2Wq8D6s8');
+INSERT INTO study(study_name, study_information, category_id, code)
+VALUES('알고리즘 스터디', '알고리즘 문제를 풀고 공부하는 스터디', 1, 'Q8sd8z5C');
+INSERT INTO study(study_name, study_information, category_id, code)
+VALUES('토익 스터디', '토익 공부를 같이 하는 스터디', 2, '6E8xz9Vh');
+INSERT INTO study(study_name, study_information, category_id, code)
+VALUES('면접 스터디', '면접을 대비하는 스터디', 3, '3DfGb6Mf');
+INSERT INTO study(study_name, study_information, category_id, code)
+VALUES('1일 1시간 운동하기', '하루에 한 시간 씩 같이 운동하는 스터디', 4, '5N0Mg6Gd');
 
 -- curriculum
 INSERT INTO curriculum(study_id, curriculum_content) VALUES(4,'객체지향');

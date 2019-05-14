@@ -1,6 +1,7 @@
 package my.examples.studymanager.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class Study {
     @Column(columnDefinition = "TEXT")
     private String studyInformation;
     private String code;
+    @ColumnDefault("CURRENT_TIMESTAMP()")
     private Date regdate;
 
     @OneToMany(mappedBy = "study", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})

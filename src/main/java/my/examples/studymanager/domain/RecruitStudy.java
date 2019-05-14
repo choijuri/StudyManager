@@ -1,6 +1,7 @@
 package my.examples.studymanager.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,6 +22,7 @@ public class RecruitStudy {
     private int recruitNumber;
     @Lob
     private String recruitContent;
+    @ColumnDefault("CURRENT_TIMESTAMP()")
     private Date regdate;
 
     @ManyToOne(fetch = FetchType.LAZY)

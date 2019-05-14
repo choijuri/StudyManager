@@ -1,6 +1,7 @@
 package my.examples.studymanager.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Comment {
     private Long commentId;
     @Lob
     private String commentContent;
+    @ColumnDefault("CURRENT_TIMESTAMP()")
     private Date regdate;
 
     @ManyToOne(fetch = FetchType.LAZY)

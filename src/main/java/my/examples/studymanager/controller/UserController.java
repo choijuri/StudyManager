@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import my.examples.studymanager.dto.JoinFormDto;
 import my.examples.studymanager.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,9 @@ public class UserController {
     @GetMapping("/join")
     public String joinform(JoinFormDto joinFormDto, ModelMap modelMap){
         modelMap.addAttribute("joinDto", joinFormDto);
+        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            return "redirect:/study/list";
+        }
         return "users/joinform";
     }
 
@@ -51,7 +55,6 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(){
-
         return"/study/list";
     }
 

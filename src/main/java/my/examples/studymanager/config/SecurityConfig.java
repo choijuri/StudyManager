@@ -72,7 +72,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/study/list")
-                .failureUrl("/users/login?fail=true").and().csrf().ignoringAntMatchers("/**");
+                .failureUrl("/users/login?fail=true").and().csrf().ignoringAntMatchers("/**")
+                .and()
+                .headers().frameOptions().sameOrigin();
+
+
     }
 
 

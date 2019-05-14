@@ -1,6 +1,7 @@
 package my.examples.studymanager.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,8 +18,10 @@ public class Message {
     private Long messageId;
     @Lob
     private String messageContent;
+    @ColumnDefault("CURRENT_TIMESTAMP()")
     private Date regdate;
 
+    @ColumnDefault("0")
     private int readCount;
 
     @ManyToOne(fetch = FetchType.LAZY)

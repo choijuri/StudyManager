@@ -2,6 +2,7 @@ package my.examples.studymanager.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,6 +25,7 @@ public class User {
     private String name;
     @Column(length = 11)
     private String phone;
+    @ColumnDefault("CURRENT_TIMESTAMP()")
     private Date regdate;
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
