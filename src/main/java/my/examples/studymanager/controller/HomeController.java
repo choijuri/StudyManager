@@ -16,7 +16,7 @@ public class HomeController {
         if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
             return "redirect:/study/list";
         }
-        return "/index";
+        return "index";
     }
 
 }
