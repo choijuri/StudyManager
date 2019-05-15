@@ -10,5 +10,4 @@ public interface UserService {
     public User getUserById(Long userId);
     public int emailChk(String email);
     public Long getUserIdByEmail(String email);
-
 }
