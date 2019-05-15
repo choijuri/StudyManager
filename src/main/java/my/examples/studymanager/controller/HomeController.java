@@ -12,11 +12,9 @@ public class HomeController {
 
     @GetMapping("/index")
     public String index( ){
-
         if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
             return "redirect:/study/list";
         }
         return "index";
     }
-
 }

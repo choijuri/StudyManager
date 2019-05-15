@@ -53,7 +53,6 @@ public class StudyController {
         return "study/studyregister";
     }
 
-
     @GetMapping("/addcode")
     public String addcode(){
         return "study/addcode";
