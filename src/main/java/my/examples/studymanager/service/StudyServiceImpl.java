@@ -53,7 +53,6 @@ public class StudyServiceImpl implements StudyService {
         study.setStudyName(studyDto.getStudyName());
         study.setStudyInformation(studyDto.getStudyInformation());
         studyRepository.save(study);
-
     }
 
     @Override
