@@ -38,23 +38,95 @@
 </head>
 <body>
 <div class='main-content' id='main'>
-    <div class='section'>
 
-        <div class="recruitstudy_box" th:each="recruitstudy : ${recruitStudyList}">
+
+    <div class='section' th:switch="${recruitstudy.category.categoryId}" th:each="recruitstudy : ${recruitStudyList}">
+        <div class="recruitstudy_box" th:case="1" style="border-left :5px solid #ffcd00;" >
             <div class = "recruitstudy_box2">
-                <p class="cate_text" th:text="${recruitstudy.category.categoryName}">recruitContent</p>
-                <span style="font-size: 0.8em; margin-top: 20px;" th:text="${recruitstudy.user.email}">recruitContent</span>
+                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
             </div>
             <div class = "recruitstudy_box3">
                 <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
                 </h4>
                 <div class = "recruitstudy_box3-1">
-                    <p th:text="'모집인원 : '+${recruitstudy.recruitNumber}">recruitNumber</p>
-                    <p th:text="'모임장소 : '+${recruitstudy.location}">recruitContent</p>
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
+                    </div>
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
+                    </div>
                 </div>
             </div>
-
         </div>
+        <div class="recruitstudy_box" th:case="2" style="border-left: 5px solid green;" >
+            <div class = "recruitstudy_box2">
+                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
+            </div>
+            <div class = "recruitstudy_box3">
+                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
+                </h4>
+                <div class = "recruitstudy_box3-1">
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
+                    </div>
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recruitstudy_box" th:case="3" style="border-left: 5px solid rebeccapurple;" >
+            <div class = "recruitstudy_box2">
+                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
+            </div>
+            <div class = "recruitstudy_box3">
+                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
+                </h4>
+                <div class = "recruitstudy_box3-1">
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
+                    </div>
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recruitstudy_box" th:case="4" style="border-left: 5px solid darkblue;" >
+            <div class = "recruitstudy_box2">
+                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
+            </div>
+            <div class = "recruitstudy_box3">
+                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
+                </h4>
+                <div class = "recruitstudy_box3-1">
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
+                    </div>
+                    <div class ="recruitstudy_box3-2">
+                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
+                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
     </div>
 </div>
 
