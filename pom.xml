@@ -207,6 +207,7 @@
                 </executions>
             </plugin>
 
+            <!--docker를 위한 plugin-->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
@@ -226,5 +227,4 @@
 
         </plugins>
     </build>
-
 </project>
