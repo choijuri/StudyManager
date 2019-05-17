@@ -7,7 +7,7 @@ div.recruitstudy_box {
     margin: 3% auto;
     overflow: hidden;
     border: 1px solid lightgray;
-    border-left: 5px solid #ffcd00;
+    /*border-left: 5px solid #ffcd00;*/
     border-radius: 5px;
     padding:2%;
     background-color: #fff;
@@ -15,7 +15,7 @@ div.recruitstudy_box {
 }
 
 div.recruitstudy_box div.recruitstudy_box2{
-    width:30%;
+    width:20%;
     float: left;
     overflow: hidden;
     box-sizing: border-box;
@@ -28,7 +28,7 @@ div.recruitstudy_box div.recruitstudy_box2 span{
 }
 
 div.recruitstudy_box div.recruitstudy_box3{
-    width:70%;
+    width:80%;
     float: left;
     overflow: hidden;
     box-sizing: border-box;
@@ -37,19 +37,21 @@ div.recruitstudy_box div.recruitstudy_box3{
     text-align: center;
 }
 
-div.recruitstudy_box div.recruitstudy_box3 div.recruitstudy_box3-1{
-    box-sizing: border-box;
-    margin-top: 15px;
-
+div.recruitstudy_box div.recruitstudy_box3 h4{
+    text-align: left;
+    margin-left: 10px;
 }
 
-div.recruitstudy_box div.recruitstudy_box3 div.recruitstudy_box3-1 p{
+div.recruitstudy_box div.recruitstudy_box3 div.recruitstudy_box3-1{
+    width:100%;
+    box-sizing: border-box;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+div.recruitstudy_box div.recruitstudy_box3 div.recruitstudy_box3-1 div.recruitstudy_box3-2{
     float: left;
     width: 50%;
     text-align: center;
     display: block;
-}
-
-div.recruitstudy_box p.cate_text{
-
 }

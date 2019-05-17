@@ -30,7 +30,8 @@ public class StudyApiController {
         System.out.println(studyFormDto.getCategoryId());
 
         if(bindingResult.hasErrors()){
-            throw new IllegalArgumentException(bindingResult.toString());
+//            throw new IllegalArgumentException(bindingResult.toString());
+             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Long studyId = studyService.addStudy(studyFormDto);
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
