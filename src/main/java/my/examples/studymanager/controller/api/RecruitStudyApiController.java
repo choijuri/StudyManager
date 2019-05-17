@@ -25,8 +25,7 @@ public class RecruitStudyApiController {
     @PostMapping
     public ResponseEntity addRecruitStudy(@Valid @RequestBody RecruitStudyDto recruitStudyDto, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            throw new IllegalArgumentException(bindingResult.toString());
-            //return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         recruitStudyService.addRecruitStudy(recruitStudyDto, securityUser.getId());
