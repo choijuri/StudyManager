@@ -76,4 +76,9 @@ public class StudyController {
         model.addAttribute("curriculums",curriculumService.getCurriculumByStudyId(studyId));
         return "study/studyDetail";
     }
+
+    @GetMapping("/studyContentInsert")
+    public String studyContent(){
+        return "studyContentRegiter";
+    }
 }
