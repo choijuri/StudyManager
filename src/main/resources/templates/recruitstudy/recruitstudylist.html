@@ -31,6 +31,13 @@
                     console.log(err.toString());
                 }
             });
+
+            function search() {
+                var searchStr = document.getElementsByName('searchStr').values();
+                var searchKind = document.getElementsByName('searchKind').values();
+                // var gugun1 = gugunsel.options[gugunsel.selectedIndex].value;
+                location.href='/recruitstudy/list?searchKind='+searchKind+',searchStr='+searchStr;
+            }
         })
 
 
@@ -45,6 +52,7 @@
             <option value="RECRUITSTUDYLOCATION_SEARCH">위치</option>
         </select>
         <input name="searchStr" type="text">
+        <input type="button" th:onclick="search()" value="search" >
     </div>
 
     <div class='section' th:switch="${recruitstudy.category.categoryId}" th:each="recruitstudy : ${recruitStudyList}">
