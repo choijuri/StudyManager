@@ -38,6 +38,9 @@
                 // var gugun1 = gugunsel.options[gugunsel.selectedIndex].value;
                 location.href='/recruitstudy/list?searchKind='+searchKind+',searchStr='+searchStr;
             }
+            function register() {
+                location.href='/recruitstudy/recruitstudyregister';
+            }
         })
 
 
@@ -53,6 +56,7 @@
         </select>
         <input name="searchStr" type="text">
         <input type="button" th:onclick="search()" value="search" >
+        <input type="button" th:onclick='register()' value="모집스터디 등록">
     </div>
 
     <div class='section' th:switch="${recruitstudy.category.categoryId}" th:each="recruitstudy : ${recruitStudyList}">
