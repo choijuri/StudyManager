@@ -14,9 +14,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $('document').ready(function () {
             $.ajax({
-                url: '/api/message',
+                url: '/api/messages',
                 method: 'get',
                 async: true,
                 contentType: "application/json",
@@ -31,17 +31,19 @@
                     console.log(err.toString());
                 }
             });
+        });
 
-            function search() {
-                var searchStr = document.getElementsByName('searchStr').values();
-                var searchKind = document.getElementsByName('searchKind').values();
-                // var gugun1 = gugunsel.options[gugunsel.selectedIndex].value;
-                location.href='/recruitstudy/list?searchKind='+searchKind+',searchStr='+searchStr;
-            }
-            function register() {
-                location.href='/recruitstudy/recruitstudyregister';
-            }
-        })
+
+        function search() {
+            var searchStr = document.getElementById('searchStr').value();
+            var searchKind = document.getElementById('searchKind').value();
+            // var gugun1 = gugunsel.options[gugunsel.selectedIndex].value;
+            alert(searchStr+" , "+ searchKind);
+            location.href='/recruitstudy/list?searchKind='+searchKind+',searchStr='+searchStr;
+        }
+        function register() {
+            location.href='/recruitstudy/recruitstudyregister';
+        }
 
 
     </script>
@@ -50,13 +52,13 @@
 <div class='main-content' id='main'>
 
     <div class = 'type'>
-        <select name="searchKind">
+        <select name="searchKind" id="searchKind">
             <option value="RECRUITSTUDYNAME_SEARCH">제목</option>
             <option value="RECRUITSTUDYLOCATION_SEARCH">위치</option>
         </select>
-        <input name="searchStr" type="text">
-        <input type="button" th:onclick="search()" value="search" >
-        <input type="button" th:onclick='register()' value="모집스터디 등록">
+        <input name="searchStr" id="searchStr" type="text">
+        <input type="button" id="search" th:onclick="'search()'" value="search" >
+        <input type="button" id="register" th:onclick="'register()'" value="모집스터디 등록">
     </div>
 
     <div class='section' th:switch="${recruitstudy.category.categoryId}" th:each="recruitstudy : ${recruitStudyList}">

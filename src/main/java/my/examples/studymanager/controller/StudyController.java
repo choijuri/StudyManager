@@ -79,6 +79,6 @@ public class StudyController {
 
     @GetMapping("/studyContentInsert")
     public String studyContent(){
-        return "studyContentRegiter";
+        return "study/studyContentRegiter";
     }
 }

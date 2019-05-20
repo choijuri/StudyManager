@@ -13,6 +13,7 @@
     <title>recruitStudyDetail</title>
 
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/recruitstudylist.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
@@ -49,20 +50,22 @@
             });
         }
 
+        function beforepage() {
+            location.href='/recruitstudy/list';
+        }
+
 
     </script>
     <style>
         body {
             display: block;
             margin: 0 auto;
-            font-size: 16px;
             color: #999;
         }
 
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 30px;
-            color: #216182;
+        h3 {
+            font-family: 'Nanum Gothic', sans-serif;
+            color: #333;
         }
 
         label {
@@ -80,7 +83,6 @@
             width: 90%;
             height: 27px;
             background-color: #efefef;
-            border-radius: 6px;
             border: 1px solid #dedede;
             padding: 10px;
             margin-top: 3px;
@@ -181,18 +183,23 @@
     <div class='section'>
 
         <div class="recruitstudy_detail">
-            <h3 th:text="${recruitstudy.recruitName}" style="margin-left:1%; margin-top: .5em;"></h3>
-            <h3 th:text="${recruitstudy.user.email}" style="margin-left:1%; margin-top: .5em;"></h3>
-            <p th:text="${recruitstudy.location}"
-               style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
-            <p th:text="${recruitstudy.recruitContent}"
-               style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
-            <p th:text="${recruitstudy.recruitNumber}" style="margin-left:1%; "></p>
-            <p th:text="${recruitstudy.category.categoryName}" style="margin-left:1%; "></p>
-            <p th:text="${recruitstudy.regdate}" style="margin-left:1%; "></p>
+            <h3 th:text="${recruitstudy.category.categoryName} +' ) ' +${recruitstudy.recruitName}" style="margin-left:1%; margin-top: .5em;"></h3><br>
+            <div class="recruitstudy_detail_box1">
+                <p class="email" th:text="${recruitstudy.user.email}"></p>
+                <p class="location" th:text="${recruitstudy.location}" ></p>
+            </div>
+
+            <p th:text="'모집인원 : '+${recruitstudy.recruitNumber}" style="margin-left: 3%;"></p>
+
+
+            <p class="date" th:text="${recruitstudy.regdate}" style="float: right; color:lightgray"></p>
+            <br>
+            <div class="rcontent" th:text="${recruitstudy.recruitContent}"></div><br>
+
+
 
         </div>
-        <input type="button" id="list_button" value="목록">
+        <input type="button" th:onclick="'beforepage()'" id="list_button" value="목록">
     </div>
 
     <!--모달창-->
@@ -203,7 +210,7 @@
         <div class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
-                <h1 class="title">메시지 보내기</h1>
+                <h3 class="title">메시지 보내기</h3>
                 <form action="#post.php" method="POST">
                     <label for="receiver">받는사람</label>
                     <p th:text="${recruitstudy.user.email}"></p>

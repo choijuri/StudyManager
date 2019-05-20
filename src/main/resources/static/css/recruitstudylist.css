@@ -2,6 +2,32 @@ body{
     /*background-color: #fefaea;*/
 }
 
+div#main {}
+
+div#main div.type {
+    width: 80%; margin: 0 auto;
+    overflow: hidden;
+}
+div#main div.type select{
+    background-color: #fff;
+}
+
+div#main div.type input#search{
+    background-color: #fff;
+    border: 1px solid lightgray;
+    color:#333;
+    float: right;
+    padding: 1px 10px;
+}
+div#main div.type input#register{
+    margin-top: 20px;
+    padding: 1px 10px;
+    background-color: #fff;
+    color:#333333;
+    border: 1px solid lightgray;
+    float: right;
+}
+
 div.recruitstudy_box {
     width:90%;
     margin: 3% auto;
@@ -54,4 +80,65 @@ div.recruitstudy_box div.recruitstudy_box3 div.recruitstudy_box3-1 div.recruitst
     width: 50%;
     text-align: center;
     display: block;
+}
+
+
+
+
+/*---------detail----------------------*/
+div.recruitstudy_detail{
+    width:90%;
+    margin: 0 auto;
+    overflow: hidden;
+    color:#000;
+    /*border: 1px solid #000;*/
+}
+
+div.recruitstudy_detail div.recruitstudy_detail_box1{
+    width:100%;
+    overflow: hidden;
+    padding:0 3%;
+}
+
+div.recruitstudy_detail div.recruitstudy_detail_box1 p.email{
+    float: left;
+}
+
+div.recruitstudy_detail div.recruitstudy_detail_box1 p.location{
+    float: right;
+    font-size: .9em;
+    color: #c2c2c2;
+}
+
+div.recruitstudy_detail div.rcontent{
+    width:95%;
+    margin: 0 auto;
+    height: 200px;
+    border-bottom: 1px solid #ebebeb;
+    border-top: 1px solid #ebebeb;
+    padding:3%;
+}
+
+input#list_button{
+    width:20%;
+    padding: 0;
+    float: right;
+    background: #f2cc32;
+    font-weight: bold;
+    border: 1px solid #f2cc32;
+    color:#fff;
+    border-radius: 0;
+    margin-right: 5%;
+}
+
+button.trigger{
+    width:30%;
+    height: 27px;
+    padding: 0;
+    float: right;
+    background: #fff;
+    border: 1px solid #f2cc32;
+    color:#333;
+    border-radius: 0;
+    margin-right: 5%;
 }
