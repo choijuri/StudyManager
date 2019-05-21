@@ -13,15 +13,6 @@
     <link rel="stylesheet" type="text/css" href="/css/studyContent.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
-    <!--<script src="/tui-editor/node_modules/jquery/dist/jquery.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/markdown-it/dist/markdown-it.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/to-mark/dist/to-mark.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/tui-code-snippet/dist/tui-code-snippet.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/codemirror/lib/codemirror.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/highlight.js/highlight.pack.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/squire-rte/build/squire-raw.js"></script>-->
-    <!--<link rel="stylesheet" href="/tui-editor/node_modules/codemirror/lib/codemirror.css">-->
-    <!--<link rel="stylesheet" href="/tui-editor/node_modules/highlight.js/styles/github.css">-->
 
     <script src="/tui-editor/node_modules/jquery/dist/jquery.js"></script>
     <script src="/tui-editor/node_modules/tui-code-snippet/dist/tui-code-snippet.js"></script>
@@ -36,15 +27,6 @@
     <link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor.css">
     <link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor-contents.css">
 
-    <!--<script src="/tui-editor/node_modules/jquery/dist/jquery.js"></script>-->
-    <!--<script src='/tui-editor/node_modules/markdown-it/dist/markdown-it.js'></script>-->
-    <!--<script src="/tui-editor/node_modules/to-mark/dist/to-mark.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/tui-code-snippet/dist/tui-code-snippet.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/codemirror/lib/codemirror.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/highlight.js/lib/highlight.js"></script>-->
-    <!--<script src="/tui-editor/node_modules/squire-rte/build/squire-raw.js"></script>-->
-    <!--<link rel="stylesheet" href="/node_modules/tui-editor/codemirror/lib/codemirror.css">-->
-    <!--<link rel="stylesheet" href="/node_modules/tui-editor/highlight.js/styles/github.css">-->
 
 </head>
 <body>
@@ -57,6 +39,7 @@
 <div class="code-html">
     <div id="editSection"></div>
 </div>
+
     <script>
         $('#editSection').tuiEditor({
             initialEditType: 'markdown',
@@ -66,58 +49,10 @@
         });
     </script>
 
-
-
-<!--<div>-->
-
-    <!--<form method="POST">-->
-        <!--<label>title</label>-->
-        <!--<input type="text" name="title">-->
-
-        <!--<label>contents</label>-->
-        <!--<input type="text" name="contents">-->
-
-        <!-- tui-editor input -->
-        <!--<input type="text" name="contents" id="contents" hidden>-->
-        <!-- tui-editor view -->
-        <!--<div class="code-html">-->
-            <!--<script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Editor.js"></script>-->
-            <!--<link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor.css">-->
-            <!--<link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor-contents.css">-->
-
-            <!--<div id="editSection"></div>-->
-            <!--<script>-->
-                <!--$('#editSection').tuiEditor({-->
-                    <!--initialEditType: 'markdown',-->
-                    <!--previewStyle: 'vertical',-->
-                    <!--height: 300-->
-                <!--});-->
-            <!--</script>-->
-
-        <!--</div>-->
-        <!--<script class="code-js">-->
-            <!--var editor = new tui.Editor({-->
-                <!--el: document.querySelector('#editSection'),-->
-                <!--initialEditType: 'markdown',-->
-                <!--previewStyle: 'vertical',-->
-                <!--height: '300px'-->
-            <!--});-->
-        <!--</script>-->
-        <!--<div id="editSection"></div>-->
-        <!--<script>-->
-            <!--$('#editSection').tuiEditor({-->
-                <!--initialEditType: 'markdown',-->
-                <!--previewStyle: 'vertical',-->
-                <!--height: 300-->
-            <!--});-->
-        <!--</script>-->
 </div>
         <div class="bt">
-            <!--<input type="button" value="OK" id="btnlist" onclick=""/>-->
             <input type="button" value="OK" id="form-submit" onclick=""/>
         </div>
-    <!--</form>-->
-<!--</div>-->
 
 <script>
     var formSubmitButton = document.querySelector("#form-submit");

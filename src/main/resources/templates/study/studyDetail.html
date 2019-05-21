@@ -12,6 +12,7 @@
     <!--<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>-->
     <!-- default header name is X-CSRF-TOKEN -->
     <!--<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/studyDetail.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
@@ -101,6 +102,8 @@
     </script>
 </head>
 <body>
+<div class="studyDetail">
+<div th:replace="fragments/header :: header">...</div>
 <div class="info">
     <h3 th:text="${study.studyName}" style="margin-left:1%; margin-top: .5em;"></h3>
     <p th:text="${study.code}" style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
@@ -119,7 +122,7 @@
                     <span th:type="text" th:name="'curriculumContent'" th:id="'curriculumContent'"
                           th:value="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}"
                           th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}"
-                          style="display: block; width:90%; float:left;"></span>
+                          style="display: block; width:90%; float:left;"><img src="/images/edit.png"></span>
                 <img th:id="myDIV+${curriculum.curriculumId}" src="/images/down.png"
                      th:onclick="'curriculumDetail('+${curriculum.curriculumId}+')'">
                 <img th:id="myDIV2+${curriculum.curriculumId}" style="display: none;" src="/images/up.png"
@@ -142,7 +145,7 @@
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </div>
-
+</div>
 
 </body>
 </html>
