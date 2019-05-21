@@ -43,6 +43,7 @@ public class RecruitStudyRepositoryImpl extends QuerydslRepositorySupport implem
     }
 
     private void searchWhere(String searchKind, String searchStr, QRecruitStudy qRecruitStudy, JPQLQuery<RecruitStudy> jpqlQuery) {
+
         if ("RECRUITSTUDYNAME_SEARCH".equals(searchKind)) {
             jpqlQuery.where(qRecruitStudy.recruitName.like("%" + searchStr + "%"));
         } else if ("RECRUITSTUDYLOCATION_SEARCH".equals(searchKind)) {

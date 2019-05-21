@@ -31,7 +31,9 @@ public class RecruitStudyController {
     ){
         model.addAttribute("isLogin",(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser"))? true : false);
 
+
         List<RecruitStudy> recruitStudyList = recruitStudyService.searchRecruitStudy(page, categoryId, searchKind, searchStr);
+
         model.addAttribute("recruitStudyList", recruitStudyList);
         model.addAttribute("categories", categoryService.getCategories());
         return "recruitstudy/recruitstudylist";

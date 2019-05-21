@@ -40,11 +40,11 @@
         });
 
         function search() {
-            var searchStr = document.getElementById('searchStr').value();
-            var searchKind = document.getElementById('searchKind').value();
-            // var gugun1 = gugunsel.options[gugunsel.selectedIndex].value;
-            alert(searchStr+" , "+ searchKind);
-            location.href='/recruitstudy/list?searchKind='+searchKind+',searchStr='+searchStr;
+            var searchKindsel = document.getElementById('searchKind');
+            var searchKind = searchKindsel.options[searchKindsel.selectedIndex].value;
+            var searchStr = document.getElementById('searchStr').value;
+
+            location.href='/recruitstudy/list?searchKind='+searchKind+'&searchStr='+searchStr;
         }
         function register() {
             location.href='/recruitstudy/recruitstudyregister';
@@ -61,7 +61,7 @@
             <option value="RECRUITSTUDYNAME_SEARCH">제목</option>
             <option value="RECRUITSTUDYLOCATION_SEARCH">위치</option>
         </select>
-        <input name="searchStr" id="searchStr" type="text">
+        <input name="searchStr" id="searchStr" type="text"/>
         <input type="button" id="search" th:onclick="'search()'" value="search" >
         <input type="button" id="register" th:onclick="'register()'" value="모집스터디 등록">
     </div>
