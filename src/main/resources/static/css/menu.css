@@ -14,16 +14,15 @@ img, figure {
   height: auto;
   line-height: 0; }
 
-ul {
-  margin: 0;
+#main-sidebar ul, #main-navbar ul {
   padding: 0;
   list-style-type: none; }
 
-li {
+#main-sidebar li, #main-navbar li {
   margin: 8px 0;
   display: block; }
 
-li a {
+#main-sidebar li a, #main-navbar li a {
   display: block; }
 
 /**************로고 메뉴바******************/
@@ -69,35 +68,10 @@ li a {
 	background-color:#fff;
 	}
 
-.main-navbar-content nav.categorymenu ul{width:90%;margin:0 auto; overflow:hidden;}
+.main-navbar-content nav.categorymenu ul{width:90%; margin:0 auto; overflow:hidden;}
 .main-navbar-content nav.categorymenu ul li{width:25%; float:left; margin:0;}	
 .main-navbar-content nav.categorymenu ul li a{
- line-height:2;	display:block;}
-
- 
-/*************스터디 박스****************/ 
-.main-content {
-  position: relative;
-    font-size:0.8em;
-  width:100%;
-  margin-top: 90px;
-  }
-
-.section {
-  width:90%;
-  margin: 1% auto; }
-
-  
-.section #contents .box{
-	padding:2%;
-	margin-bottom:20px;
-	width:100%;
-	height:100%;
-	border:1px solid lightgray;
-	overflow:hidden;
-}
-
-div#contents .box h4{margin-bottom:10px;}
+ line-height:1;	display:block;}
 
 
 /*************전체설정****************/  
