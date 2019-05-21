@@ -9,14 +9,24 @@ ul li{list-style:disc;}
 body{font-family: 'Nanum Gothic', sans-serif;
     font-size:2em;}
 
-div#wrap{width:100%; margin:0 auto;}
+div#wrap{width:100%; margin:0 auto; }
 
 /*********************form*****************************/
 
 /*h2 {*/
     /*margin-top:1%;*/
 /*}*/
+.main-navbar {
+    font-size: 1em;
 
+}
+.main-navbar ul{
+    list-style: none;
+}
+
+.main-navbar ul li{
+    list-style: none;
+}
 
 div.info{width:90%; margin:0 auto;
     border:1px solid #e1e1e1;

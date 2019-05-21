@@ -13,6 +13,7 @@
     <!-- default header name is X-CSRF-TOKEN -->
     <!--<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>-->
     <link rel="stylesheet" type="text/css" href="/css/studyContent.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
 
@@ -22,13 +23,13 @@
     function gotolist() {
         history.go(-1);
     }
-    function gotoRegister() {
-        location.href='/studyContent/register';
+    function gotoRegister(id) {
+        location.href='/studyContent/register?curriculumDetailId='+id;
     }
     
 </script>
 <body>
-
+<div class="header" th:replace="fragments/header :: header">...</div>
 <div class="info">
     <h3 th:text="${curriculumContent}" style="margin-left:1%; margin-top: .5em;"></h3>
     <p th:text="${curriculumDetailContent}" style="margin-left:1%; "></p>
@@ -46,7 +47,7 @@
 
 
     <div class="bt">
-        <input type="button" value="작성" class="btn" id="register" onclick="gotoRegister()"/>
+        <input type="button" value="작성" class="btn" id="register" th:onclick="'gotoRegister('+${curriculumDetailId}+')'"/>
         <input type="button" value="목록" class="btn" id="list" onclick="gotolist()"/>
     </div>
 

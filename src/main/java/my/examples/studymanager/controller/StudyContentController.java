@@ -30,13 +30,13 @@ public class StudyContentController {
         }
         model.addAttribute("curriculumContent", curriculumContent);
         model.addAttribute("curriculumDetailContent",curriculumDetailContent);
-
+        model.addAttribute("curriculumDetailId",curriculumDetailId);
 
         return "study/studyContent";
     }
 
     @GetMapping("/register")
-    public String studyContent(@RequestParam(name = "curriculumDetailId") Long curriculumDetailId,Model model){
+    public String studyContent(@RequestParam(name = "curriculumDetailId") Long curriculumDetailId, Model model){
         model.addAttribute("curriculumDetailId",curriculumDetailId);
         return "study/studyContentRegister";
     }

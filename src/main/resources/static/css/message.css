@@ -1,0 +1,65 @@
+*{margin:0; padding:0; box-sizing:border-box;}
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+div.section_messagelist{
+    margin: 100px auto;
+    width: 90%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+div.section_messagelist .message_box{
+    border: 1px solid #ebebeb;
+    padding: 2%;
+    margin-bottom: 3%;
+
+}
+
+div.section_messagelist .message_box p{
+    font-size: 0.8em;
+}
+
+div.section_messagelist .message_box p.mcontent{
+    display: block;
+    width:60%;
+    font-size: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+
+/*---메시지 디테일------------------*/
+div.message_detail{
+    padding-top: 100px;
+    margin: 0 auto;
+    width:90%;
+    overflow: hidden;
+}
+
+input#list_button{
+    width:20%;
+    padding: 0;
+    float: right;
+    background: #f2cc32;
+    font-weight: bold;
+    border: 1px solid #f2cc32;
+    color:#fff;
+    border-radius: 0;
+    margin-right: 5%;
+    margin-top: 5px;
+}
+
+button.trigger{
+    width:20%;
+    height: 27px;
+    padding: 0;
+    float: right;
+    background: #fff;
+    border: 1px solid #f2cc32;
+    color:#333;
+    border-radius: 0;
+    margin-right: 5%;
+    margin-top: 5px;
+}

@@ -2,7 +2,6 @@
 <html lang="ko">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
@@ -17,12 +16,10 @@
 
             <nav class="categorymenu">
                 <ul>
-                    <li>
-                        <a th:href="'/study/list/'+1" th:text="IT"></a>
-                        <a th:href="'/study/list/'+2" th:text="어학"></a>
-                        <a th:href="'/study/list/'+3" th:text="취업"></a>
-                        <a th:href="'/study/list/'+4" th:text="기타"></a>
-                    </li>
+                    <li><a th:href="'/study/list/'+1" th:text="IT"></a> </li>
+                    <li><a th:href="'/study/list/'+2" th:text="어학"></a></li>
+                    <li><a th:href="'/study/list/'+3" th:text="취업"></a></li>
+                    <li><a th:href="'/study/list/'+4" th:text="기타"></a></li>
                 </ul>
             </nav>
         </div>
@@ -33,7 +30,8 @@
         <div class='main-sidebar-wrapper'>
             <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
                 <h3 th:text="${#authentication.principal.name}+'님'"  style="margin-bottom: 5px;">님</h3>
-                <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a>
+                <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
+                <a href="/message/list" id="messageimg"> MESSAGE &nbsp;&nbsp;</a>
             </div>
 
             <div class='section click_menu' style="text-align: left;">

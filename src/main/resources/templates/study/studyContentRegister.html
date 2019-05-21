@@ -11,6 +11,7 @@
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 
     <link rel="stylesheet" type="text/css" href="/css/studyContent.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
 
@@ -30,39 +31,43 @@
 
 </head>
 <body>
-<h4><label>title</label></h4>
-<input type="text" name="title">
-<h4><label style="width: 100%;">contents</label></h4>
-<input type="text" name="contents" id="contents" hidden>
-<!--tui-editor view -->
-<div style="margin-bottom: 3em;">
-<div class="code-html">
-    <input type="hidden" id="curriculumDetailId" th:value="${curriculumDetailId}">
-    <div id="editSection"></div>
-</div>
+<!--<div class="header" th:replace="fragments/header :: header">...</div>-->
 
+<div style="margin-top: 200px;">
+    <h4><label>title</label></h4>
+    <input type="text" name="title">
+    <h4><label style="width: 100%;">contents</label></h4>
+    <input type="text" name="contents" id="contents" hidden>
+    <!--tui-editor view -->
+    <div style="margin-bottom: 3em;">
+        <div class="code-html">
+            <input type="hidden" id="curriculumDetailId" th:value="${curriculumDetailId}">
+            <div id="editSection"></div>
+        </div>
+
+        <script>
+            $('#editSection').tuiEditor({
+                initialEditType: 'markdown',
+                previewStyle: 'vertical',
+                height: 300,
+                codeBlockLanguages: ['ruby', 'PHP', 'javascript']
+            });
+        </script>
+
+    </div>
+    <div class="bt">
+        <input type="button" value="OK" id="form-submit" onclick=""/>
+    </div>
+</div>
     <script>
-        $('#editSection').tuiEditor({
-            initialEditType: 'markdown',
-            previewStyle: 'vertical',
-            height: 300,
-            codeBlockLanguages: ['ruby', 'PHP', 'javascript']
+        var formSubmitButton = document.querySelector("#form-submit");
+        formSubmitButton.addEventListener('click', function () {
+            var contents = document.querySelector("#contents");
+            // contents.value = editor.getMarkdown(); //markdown 저장
+            contents.value = editor.getHtml(); //html 저장
+            alert(contents.value);
         });
     </script>
 
-</div>
-        <div class="bt">
-            <input type="button" value="OK" id="form-submit" onclick=""/>
-        </div>
-
-<script>
-    var formSubmitButton = document.querySelector("#form-submit");
-    formSubmitButton.addEventListener('click', function() {
-        var contents = document.querySelector("#contents");
-        // contents.value = editor.getMarkdown(); //markdown 저장
-        contents.value = editor.getHtml(); //html 저장
-        alert(contents.value);
-    });
-</script>
 </body>
 </html>

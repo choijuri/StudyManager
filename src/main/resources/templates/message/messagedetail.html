@@ -10,27 +10,61 @@
 
     <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'
           name='viewport'>
-    <title>MessageDetail</title>
+    <title>messagedatail</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/message.css">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
 
     <script type="text/javascript">
+
+        function sendmessage() {
+            var receiver = document.getElementById("receiver").value;
+            var sender = document.getElementById("sender").value;
+            var messageContent = document.getElementById("messageContent").value;
+
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var JSONObject = {'receiver': receiver, 'sender' : sender, 'messageContent' : messageContent};
+            var jsonData = JSON.stringify(JSONObject);
+
+            $.ajax({
+                url: '/api/messages',
+                method: 'post',
+                data: jsonData,
+                async: false,
+                contentType: "application/json",
+                beforeSend: function( xhr ) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (data) {
+                    toggleModal();
+                },
+                error: function (err) {
+                    console.log(err.toString());
+                }
+            });
+        }
+
+        function beforepage() {
+            location.href='/message/list';
+        }
+
+
     </script>
     <style>
         body {
             display: block;
             margin: 0 auto;
-            font-size: 16px;
             color: #999;
         }
 
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 30px;
-            color: #216182;
+        h3 {
+            font-family: 'Nanum Gothic', sans-serif;
+            color: #333;
         }
 
         label {
@@ -48,7 +82,6 @@
             width: 90%;
             height: 27px;
             background-color: #efefef;
-            border-radius: 6px;
             border: 1px solid #dedede;
             padding: 10px;
             margin-top: 3px;
@@ -105,7 +138,7 @@
             background-color: rgba(0, 0, 0, 0.5);
             opacity: 0;
             visibility: hidden;
-            /*transform: scale(1.1);*/
+            transform: scale(1.1);
             transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
         }
 
@@ -141,99 +174,59 @@
             visibility: visible;
             transform: scale(1.0);
             transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-            
         }
     </style>
 </head>
 <body>
+<div class="header" th:replace="fragments/header :: header">...</div>
 <div class='main-content' id='main'>
     <div class='section'>
 
         <div class="message_detail">
-            <h3 th:text="${message.messageContent}" style="margin-left:1%; margin-top: .5em;"></h3>
-            <h3 th:text="${message.user.email}" style="margin-left:1%; margin-top: .5em;"></h3>
-            <h3 th:text="${message.user1.email}" style="margin-left:1%; margin-top: .5em;"></h3>
+            <p th:text="'보낸사람 : '+${message.user1.email}" style="margin-left:1%; margin-top: .5em;"></p>
             <p th:text="${message.regdate}"
-               style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
-            <p th:text="${message.readCount}"
-               style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
-
-
+               style="margin-left:1%; margin-top:.5%; font-size: .em; color: #c2c2c2;"></p><br>
+            <hr>
+            <p th:text="${message.messageContent}" style="margin-left:1%; margin-top: .5em;"></p>
+            <br><hr>
         </div>
-        <input type="button" id="list_button" value="목록">
+        <input type="button" id="list_button" th:onclick="'beforepage()'" value="목록">
     </div>
 
+    <!--모달창-->
+    <div>
+        <button class="trigger">답장</button>
 
+        <!-- 팝업 될 레이어 -->
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 class="title">메시지 보내기</h3>
+                <form action="#post.php" method="POST">
+                    <label for="receiver">받는사람</label>
+                    <p th:text="${message.user1.email}"></p>
+                    <input type="hidden" name="email" id="receiver" th:value="${message.user1.userId}">
+                    <input type="hidden" name="email" id="sender" th:value="${message.user.userId}">
+                    <label></label>
+                    <textarea name="messageContent" id="messageContent" placeholder="Test Message" required="required"></textarea><br>
+                    <input type="button" id="cancel" value="취소">
+                    <input th:onclick="sendmessage()" type="button" id="submit" value="보내기">
 
-
-
-</div>
-
-
-<!-- div#main -->
-<div class='main-navbar main-navbar-fixed-top' id='main-navbar'>
-    <div class='main-navbar-content'>
-        <div class="logo"><img src="/images/logo.png"></div>
-        <div class='icon right' id='toggle-sidebar'>
-            <img alt='menu' height='24px' src='/images/menu.png' width='24px'>
-        </div>
-
-        <nav class="categorymenu">
-            <ul>
-                <li><a href="#">IT </a></li>
-                <li><a href="#">어학</a></li>
-                <li><a href="#">취업</a></li>
-                <li><a href="#">기타</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
-<!-- div#main-navbar -->
-<div class='main-sidebar main-sidebar-right' id='main-sidebar'>
-    <div class='main-sidebar-wrapper'>
-        <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
-            <h3 th:text="${#authentication.principal.name}+'님'" style="margin-bottom: 5px;">님</h3>
-            <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a>
-        </div>
-
-        <div class='section click_menu' style="text-align: left;">
-            <nav>
-                <ul>
-                    <li><a href="/study/list" style="font-size: 1.2em; font-weight: bold;">MY STUDY</a>
-                        <a href="/study/add" style=" margin-left: 0;  ">&nbsp; - 새 스터디 만들기</a>
-                        <a href="/study/addcode" style=" ">&nbsp; - 스터디 등록하기</a></li>
-                    <li><a href="/recruitstudy/list" style="font-size: 1.2em; font-weight: bold;">STUDY 찾기</a></li>
-                    <li><a href="/study/" style="font-size: 1.2em; font-weight: bold;">STUDY 일정</a></li>
-                </ul>
-            </nav>
+                </form>
+            </div>
         </div>
 
 
     </div>
 </div>
+
+
+
 <!-- div#main-sidebar -->
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
 <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
 <script src='/js/jquery.simple-sidebar.js'></script>
 <script>
-    $(document).ready(function () {
-        $('#main-sidebar').simpleSidebar({
-            opener: '#toggle-sidebar',
-            wrapper: '#main',
-            animation: {
-                easing: 'easeOutQuint'
-            },
-            sidebar: {
-                align: 'right',
-                closingLinks: '.close-sb'
-            },
-            sbWrapper: {
-                display: true
-            }
-        })
-    })
 
 
     // 모달창

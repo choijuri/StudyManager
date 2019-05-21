@@ -107,11 +107,11 @@ div.bt div.before a{
     float:left;
 }
 
-div.bt input.btn #list:hover{
+div.bt input #list:hover{
     background-color:#F6E34D;
 }
 
-div.bt input.btn  {
+div.bt input  {
     width:45%;
     background:#f2cc32;
     padding:4% 5%;
@@ -123,7 +123,7 @@ div.bt input.btn  {
 }
 
 
-div.button div.bt input.btn{
+div.button div.bt input{
     float:right;
 }
 

@@ -4,8 +4,8 @@
 	img{vertical-align:bottom;}
 	ul {list-style-position:inside;}
 	ul li{list-style:none;}
-body{font-family: 'Nanum Gothic', sans-serif;
-	/*font-size:0.8em;*/}
+
+body{font-family: 'Nanum Gothic', sans-serif;}
 
 img, figure {
   margin: 0;
@@ -14,15 +14,15 @@ img, figure {
   height: auto;
   line-height: 0; }
 
-#main-sidebar ul, #main-navbar ul {
+#main-sidebar ul{
   padding: 0;
   list-style-type: none; }
 
-#main-sidebar li, #main-navbar li {
+#main-sidebar li{
   margin: 8px 0;
   display: block; }
 
-#main-sidebar li a, #main-navbar li a {
+#main-sidebar li a {
   display: block; }
 
 /**************로고 메뉴바******************/
@@ -44,14 +44,14 @@ img, figure {
   
 .main-navbar-content div.logo{
 	margin: 3% auto;
-	width:150px;
+	width:50%;
 }
 .main-navbar-content div.logo img{
 	width:100%;
 }
 
 .icon img {
-	width:32px;
+    width:32px;
   position: absolute;
   top: 10px;
   right:8px; }
@@ -69,9 +69,9 @@ img, figure {
 	}
 
 .main-navbar-content nav.categorymenu ul{width:90%; margin:0 auto; overflow:hidden;}
-.main-navbar-content nav.categorymenu ul li{width:25%; float:left; margin:0;}	
+nav.categorymenu ul li{width:25%; float:left; margin:0;}
 .main-navbar-content nav.categorymenu ul li a{
- line-height:1;	display:block;}
+ line-height:2;	display:block;}
 
 
 /*************전체설정****************/  
