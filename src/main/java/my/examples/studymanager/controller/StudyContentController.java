@@ -23,10 +23,21 @@ public class StudyContentController {
 
 
         StudyContent studyContent = studyContentService.getStudyContentByCurriculumDetailId(curriculumDetailId);
-        model.addAttribute("studyContent", studyContent);
+        if(studyContent == null){
+            model.addAttribute("studyContent",new StudyContent());
+        }else {
+            model.addAttribute("studyContent", studyContent);
+        }
         model.addAttribute("curriculumContent", curriculumContent);
         model.addAttribute("curriculumDetailContent",curriculumDetailContent);
 
+
         return "study/studyContent";
+    }
+
+    @GetMapping("/register")
+    public String studyContent(@RequestParam(name = "curriculumDetailId") Long curriculumDetailId,Model model){
+        model.addAttribute("curriculumDetailId",curriculumDetailId);
+        return "study/studyContentRegister";
     }
 }

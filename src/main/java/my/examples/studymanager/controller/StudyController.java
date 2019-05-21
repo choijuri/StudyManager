@@ -77,8 +77,5 @@ public class StudyController {
         return "study/studyDetail";
     }
 
-    @GetMapping("/studyContentInsert")
-    public String studyContent(){
-        return "study/studyContentRegiter";
-    }
+
 }

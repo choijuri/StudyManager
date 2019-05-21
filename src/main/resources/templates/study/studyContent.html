@@ -22,6 +22,9 @@
     function gotolist() {
         history.go(-1);
     }
+    function gotoRegister() {
+        location.href='/studyContent/register';
+    }
     
 </script>
 <body>
@@ -43,7 +46,8 @@
 
 
     <div class="bt">
-        <input type="button" value="목록" id="btnlist" onclick="gotolist()"/>
+        <input type="button" value="작성" class="btn" id="register" onclick="gotoRegister()"/>
+        <input type="button" value="목록" class="btn" id="list" onclick="gotolist()"/>
     </div>
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
