@@ -5,7 +5,7 @@
 	ul {list-style-position:inside;}
 	ul li{list-style:none;}
 body{font-family: 'Nanum Gothic', sans-serif;
-	font-size:0.8em;}
+	/*font-size:0.8em;*/}
 
 img, figure {
   margin: 0;
@@ -29,6 +29,7 @@ li a {
 /**************로고 메뉴바******************/
 .main-navbar {
   position: relative;
+    font-size:0.8em;
   height: 73px;
   width:100%;
   color: #999;
@@ -77,6 +78,7 @@ li a {
 /*************스터디 박스****************/ 
 .main-content {
   position: relative;
+    font-size:0.8em;
   width:100%;
   margin-top: 90px;
   }
@@ -112,6 +114,7 @@ div#contents .box h4{margin-bottom:10px;}
 .main-sidebar {
   position: fixed;
   top: 0;
+    font-size:0.8em;
   bottom: 0;
   background-color: #f2cc32;
   color: white;

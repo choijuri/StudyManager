@@ -14,6 +14,12 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
 
     <script type="text/javascript">
+        window.onload = function () {
+            if (window.Notification) {
+                Notification.requestPermission();
+            }
+        }
+
         $('document').ready(function () {
             $.ajax({
                 url: '/api/messages',
@@ -23,8 +29,8 @@
                 success: function (count) {
                     if(count != 0){
                         $('#messageimg').append(
-                            '<img src="/images/885612-64.png" style="width:10%;" />'
-                        );
+                            '<img src="/images/461369-24.png" style="width:10%;" />'
+                        )
                     }
                 },
                 error: function (err) {
@@ -32,7 +38,6 @@
                 }
             });
         });
-
 
         function search() {
             var searchStr = document.getElementById('searchStr').value();
@@ -178,7 +183,7 @@
             <h3 th:text="${#authentication.principal.name}+'님'" style="margin-bottom: 5px;">님</h3>
             <!--<h3 th:text="${#authentication.principal.newMessageCount}" style="margin-bottom: 5px;"></h3>-->
             <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
-            <a href="/message/list" id="messageimg"> MESSAGE</a>
+            <a href="/message/list" id="messageimg"> MESSAGE &nbsp;&nbsp;</a>
         </div>
 
         <div class='section click_menu' style="text-align: left;">
