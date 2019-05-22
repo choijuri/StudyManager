@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class HomeController {
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index( ){
         if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
             return "redirect:/study/list";

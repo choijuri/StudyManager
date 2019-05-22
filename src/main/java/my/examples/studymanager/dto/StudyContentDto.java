@@ -12,7 +12,5 @@ import javax.persistence.Lob;
 public class StudyContentDto {
     private Long curriculumDetailId;
     @Lob
-    private String curriculumContent;
-    @Lob
-    private String curriculumDetailContent;
+    private String content;
 }

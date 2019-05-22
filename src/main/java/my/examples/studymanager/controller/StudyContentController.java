@@ -15,7 +15,6 @@ public class StudyContentController {
 
     @PostMapping
     public String studyContent(
-//            @RequestBody StudyContentDto studyContentDto,
             @RequestParam(name = "curriculumDetailContent") String curriculumDetailContent,
                                @RequestParam(name = "curriculumContent") String curriculumContent,
                                @RequestParam(name = "curriculumDetailId") Long curriculumDetailId,
@@ -31,7 +30,6 @@ public class StudyContentController {
         model.addAttribute("curriculumContent", curriculumContent);
         model.addAttribute("curriculumDetailContent",curriculumDetailContent);
         model.addAttribute("curriculumDetailId",curriculumDetailId);
-
         return "study/studyContent";
     }
 
