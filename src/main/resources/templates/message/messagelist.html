@@ -1,24 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="ko">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
 <head>
-    <meta charset='utf-8'>
-    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'
-          name='viewport'>
-    <title>messageList</title>
-
-    <link rel="stylesheet" type="text/css" href="/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="/css/message.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
-
-    <script type="text/javascript">
-
-    </script>
+    <th:block layout:fragment="css"><link href="/css/message.css" rel = "stylesheet"></th:block>
 </head>
 <body>
-<div class="header" th:replace="fragments/header :: header">...</div>
+
 <div class='main-content' id='main'>
     <div class='section_messagelist'>
         <div class="message_box" th:each="message : ${messageList}">

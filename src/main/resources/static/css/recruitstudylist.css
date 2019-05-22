@@ -1,5 +1,5 @@
 body{
-    /*background-color: #fefaea;*/
+
 }
 
 div#main {}
@@ -80,8 +80,9 @@ div.recruitstudy_box div.recruitstudy_box3 div.recruitstudy_box3-1 div.recruitst
 
 /*---------detail----------------------*/
 div.recruitstudy_detail{
+    font-size: 0.9em;
     width:90%;
-    margin: 0 auto;
+    margin: 100px auto 0;
     overflow: hidden;
     color:#000;
     /*border: 1px solid #000;*/
@@ -122,6 +123,7 @@ input#list_button{
     color:#fff;
     border-radius: 0;
     margin-right: 5%;
+    margin-top: 0;
 }
 
 button.trigger{

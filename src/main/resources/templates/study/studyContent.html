@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
 <head>
-    <meta charset="UTF-8">
-    <title>STUDY CONTENT</title>
+    <th:block layout:fragment="css">
+        <link href="/css/studyContent.css" rel = "stylesheet">
+        <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor.css">
+        <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor-contents.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link rel="stylesheet" href="/tui-editor/node_modules/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="/tui-editor/node_modules/highlight.js/styles/github.css">
 
-    <meta name="_csrf_param" th:content="${_csrf.parameterName}"/>
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <!-- default header name is X-CSRF-TOKEN -->
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-
-    <!--<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>-->
-    <!-- default header name is X-CSRF-TOKEN -->
-    <!--<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>-->
-    <link rel="stylesheet" type="text/css" href="/css/studyContent.css">
-    <link rel="stylesheet" type="text/css" href="/css/menu.css">
-    <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor.css"></link>
-    <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor-contents.css"></link>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.css"></link>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"></link>
+        <link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor.css">
+        <link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor-contents.css">
+    </th:block>
     <script src="https://uicdn.toast.com/tui-editor/latest/tui-editor-Editor-full.js"></script>
     <script src="/tui-editor/node_modules/jquery/dist/jquery.js"></script>
     <script src="/tui-editor/node_modules/tui-code-snippet/dist/tui-code-snippet.js"></script>
@@ -27,8 +25,6 @@
     <script src="/tui-editor/node_modules/highlight.js/lib/highlight.js"></script>
     <script src="/tui-editor/node_modules/squire-rte/build/squire-raw.js"></script>
     <script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Editor-all.min.js"></script>
-    <link rel="stylesheet" href="/tui-editor/node_modules/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" href="/tui-editor/node_modules/highlight.js/styles/github.css">
 
     <script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Viewer.js"></script>
     <script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Viewer.min.js"></script>
@@ -36,27 +32,10 @@
     <script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Viewer-full.min.js"></script>
     <script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Viewer-full.js"></script>
     <script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Editor.js"></script>
-    <link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor.css">
-    <link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor-contents.css">
-
-
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
 
 </head>
-
-<script>
-    function gotolist() {
-        history.go(-1);
-    }
-
-    function gotoRegister(id) {
-        location.href = '/studyContent/register?curriculumDetailId=' + id;
-    }
-
-</script>
 <body>
-<div class="header" th:replace="fragments/header :: header">...</div>
+
 <div class="info">
     <h3 th:text="${curriculumContent}" style="margin-left:1%; margin-top: .5em;"></h3>
     <p th:text="${curriculumDetailContent}" style="margin-left:1%; "></p>
@@ -92,5 +71,18 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 </div>
+
+
+<script>
+    function gotolist() {
+        history.go(-1);
+    }
+
+    function gotoRegister(id) {
+        location.href = '/studyContent/register?curriculumDetailId=' + id;
+    }
+
+</script>
+
 </body>
 </html>

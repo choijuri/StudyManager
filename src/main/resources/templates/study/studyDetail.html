@@ -1,109 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
 <head>
-    <title>STUDY DETAIL</title>
-    <meta charset="utf-8">
-
-    <meta name="_csrf_param" th:content="${_csrf.parameterName}"/>
-    <meta name="_csrf" th:content="${_csrf.token}"/>
-    <!-- default header name is X-CSRF-TOKEN -->
-    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-
-    <!--<meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>-->
-    <!-- default header name is X-CSRF-TOKEN -->
-    <!--<meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>-->
-    <link rel="stylesheet" type="text/css" href="/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="/css/studyDetail.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
-    <script>
-        function gotolist() {
-            location.href = "/study/list";
-        }
-
-        function curriculumDetail(curriculumId) {
-
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
-
-            var JSONObject = {'curriculumId': curriculumId};
-            var jsonData = JSON.stringify(JSONObject);
-            var curriculumDetailDiv = "";
-
-            if (document.getElementById("myDIV2"+curriculumId).style.display == 'none') {
-                document.getElementById("myDIV"+curriculumId).style.display = 'none';
-                document.getElementById("myDIV2"+curriculumId).style.display = 'block';
-                if ($('#curriculumDetails' + curriculumId).empty()) {
-                    $.ajax({
-                        url: '/api/curriculumDetails',
-                        method: 'post',
-                        // data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
-                        data: jsonData,
-                        async: false,
-                        contentType: "application/json",
-                        beforeSend: function( xhr ) {
-                            xhr.setRequestHeader(header, token);
-                        },
-                        success: function (data) {
-                            for (var i = 0; i < data.length; i++) {
-                                curriculumDetailDiv = $('<li style="margin-left: 5%; margin-bottom:1%;" onclick="gotoContent('+ curriculumId +','+data[i].curriculumDetailId+')" value="' + data[i].curriculumDetailContent + '">' + data[i].curriculumDetailContent + '</li> ' +
-                                    '<input type="hidden" id="curriculumDetailContent'+data[i].curriculumDetailId+'" value="' + data[i].curriculumDetailContent + '"/>' +
-                                    '<input type="hidden" id="curriculumDetailId'+data[i].curriculumDetailId+'" value="' + data[i].curriculumDetailId + '"/>');
-                                curriculumDetailDiv.appendTo($('#curriculumDetails' + curriculumId));
-                            }
-                        },
-                        error: function (err) {
-                            console.log(err.toString());
-                        }
-                    });
-                }
-                $('#curriculumDetails' + curriculumId).show();
-            } else {
-                document.getElementById("myDIV"+curriculumId).style.display = 'block';
-                document.getElementById("myDIV2"+curriculumId).style.display = 'none'
-                $('#curriculumDetails' + curriculumId).hide();
-            }
-        }
-
-        function gotoContent(curriculumId,curriculumDetailId) {
-            var token = $("meta[name='_csrf']").attr("content");
-            var header = $("meta[name='_csrf_header']").attr("content");
-            var curriculumDetailContent = $('#curriculumDetailContent'+curriculumDetailId).val();
-            var curriculumDetailId = $('#curriculumDetailId'+curriculumDetailId).val();
-            var curriculumContent = $('input[id=curriculumContent'+curriculumId+']').val();
-
-            var form = document.createElement("form");
-            form.setAttribute("charset", "UTF-8");
-            form.setAttribute("method", "Post"); // Get 또는 Post 입력
-            form.setAttribute("action", "/studyContent");
-
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", "curriculumDetailId");
-            hiddenField.setAttribute("value", curriculumDetailId);
-            form.appendChild(hiddenField);
-
-            hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", "curriculumDetailContent");
-            hiddenField.setAttribute("value", curriculumDetailContent);
-            form.appendChild(hiddenField);
-
-            hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", "curriculumContent");
-            hiddenField.setAttribute("value", curriculumContent);
-            form.appendChild(hiddenField);
-
-            document.body.appendChild(form);
-            form.submit();
-        }
-
-    </script>
+    <th:block layout:fragment="css"><link href="/css/studyDetail.css" rel = "stylesheet"></th:block>
 </head>
 <body>
 <div class="studyDetail">
-<div class="header" th:replace="fragments/header :: header">...</div>
 <div class="info">
     <h3 th:text="${study.studyName}" style="margin-left:1%; margin-top: .5em;"></h3>
     <p th:text="${study.code}" style="margin-left:1%; margin-top:.5%; font-size: .9em; color: #c2c2c2;"></p><br>
@@ -123,9 +27,9 @@
                           th:value="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}"
                           th:text="'STEP '+ ${iter.count}+': '+ ${curriculum.curriculumContent}"
                           style="display: block; width:90%; float:left;"><img src="/images/edit.png"></span>
-                <img th:id="myDIV+${curriculum.curriculumId}" src="/images/down.png"
+                <img class="updown" th:id="myDIV+${curriculum.curriculumId}" src="/images/down.png"
                      th:onclick="'curriculumDetail('+${curriculum.curriculumId}+')'">
-                <img th:id="myDIV2+${curriculum.curriculumId}" style="display: none;" src="/images/up.png"
+                <img class="updown" th:id="myDIV2+${curriculum.curriculumId}" style="display: none;" src="/images/up.png"
                      th:onclick="'curriculumDetail('+${curriculum.curriculumId}+')'">
             </div>
 
@@ -146,6 +50,91 @@
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </div>
 </div>
+
+<script>
+    function gotolist() {
+        location.href = "/study/list";
+    }
+
+    function curriculumDetail(curriculumId) {
+
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        var JSONObject = {'curriculumId': curriculumId};
+        var jsonData = JSON.stringify(JSONObject);
+        var curriculumDetailDiv = "";
+
+        if (document.getElementById("myDIV2"+curriculumId).style.display == 'none') {
+            document.getElementById("myDIV"+curriculumId).style.display = 'none';
+            document.getElementById("myDIV2"+curriculumId).style.display = 'block';
+            if ($('#curriculumDetails' + curriculumId).empty()) {
+                $.ajax({
+                    url: '/api/curriculumDetails',
+                    method: 'post',
+                    // data: 'curriculumDetailId='+ encodeURIComponent(curriculumId),
+                    data: jsonData,
+                    async: false,
+                    contentType: "application/json",
+                    beforeSend: function( xhr ) {
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            curriculumDetailDiv = $('<li style="margin-left: 5%; margin-bottom:1%;" onclick="gotoContent('+ curriculumId +','+data[i].curriculumDetailId+')" value="' + data[i].curriculumDetailContent + '">' + data[i].curriculumDetailContent + '</li> ' +
+                                '<input type="hidden" id="curriculumDetailContent'+data[i].curriculumDetailId+'" value="' + data[i].curriculumDetailContent + '"/>' +
+                                '<input type="hidden" id="curriculumDetailId'+data[i].curriculumDetailId+'" value="' + data[i].curriculumDetailId + '"/>');
+                            curriculumDetailDiv.appendTo($('#curriculumDetails' + curriculumId));
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err.toString());
+                    }
+                });
+            }
+            $('#curriculumDetails' + curriculumId).show();
+        } else {
+            document.getElementById("myDIV"+curriculumId).style.display = 'block';
+            document.getElementById("myDIV2"+curriculumId).style.display = 'none'
+            $('#curriculumDetails' + curriculumId).hide();
+        }
+    }
+
+    function gotoContent(curriculumId,curriculumDetailId) {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        var curriculumDetailContent = $('#curriculumDetailContent'+curriculumDetailId).val();
+        var curriculumDetailId = $('#curriculumDetailId'+curriculumDetailId).val();
+        var curriculumContent = $('input[id=curriculumContent'+curriculumId+']').val();
+
+        var form = document.createElement("form");
+        form.setAttribute("charset", "UTF-8");
+        form.setAttribute("method", "Post"); // Get 또는 Post 입력
+        form.setAttribute("action", "/studyContent");
+
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "curriculumDetailId");
+        hiddenField.setAttribute("value", curriculumDetailId);
+        form.appendChild(hiddenField);
+
+        hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "curriculumDetailContent");
+        hiddenField.setAttribute("value", curriculumDetailContent);
+        form.appendChild(hiddenField);
+
+        hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "curriculumContent");
+        hiddenField.setAttribute("value", curriculumContent);
+        form.appendChild(hiddenField);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+</script>
 
 </body>
 </html>

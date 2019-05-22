@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="ko">
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-</head>
 
-<body>
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
 <header th:fragment="headerFragment">
     <!-- div#main -->
     <div class='main-navbar main-navbar-fixed-top' id='main-navbar'>
         <div class='main-navbar-content'>
-            <div class ="logo"><img src="/images/logo.png" th:onclick="'gotolist()'"></div>
+            <div class ="logo"><img src='/images/logo.png' th:onclick="'gotolist()'"></div>
             <div class='icon right' id='toggle-sidebar'>
                 <img alt='menu' height='24px' src='/images/menu.png' width='24px'>
             </div>
@@ -29,8 +29,8 @@
     <div class='main-sidebar main-sidebar-right' id='main-sidebar'>
         <div class='main-sidebar-wrapper'>
             <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
-                <h3 th:text="${#authentication.principal.name}+'님'"  style="margin-bottom: 5px;">님</h3>
-                <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
+                <h4 th:text="${#authentication.principal.name}+'님'"  style="margin-bottom: 5px;">님</h4>
+                <a href="/users/mypage">MY</a> / <a href="@{/logout}">LOGOUT</a><br>
                 <a href="/message/list" id="messageimg"> MESSAGE &nbsp;&nbsp;</a>
             </div>
 
@@ -70,6 +70,12 @@
                 }
             })
         })
+
+
+
+        function gotolist() {
+            location.href = "/study/list";
+        }
     </script>
 </header>
 </body>

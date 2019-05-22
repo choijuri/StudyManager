@@ -1,23 +1,66 @@
-/*************스터디 박스****************/
-.main-content {
-    position: relative;
-    font-size:0.8em;
-    width:100%;
-    margin-top: 90px;
+
+
+@media ( min-width: 482px ) {
+    /*************스터디 박스****************/
+    .main-content {
+        position: relative;
+        font-size: 0.8em;
+        width: 100%;
+        margin-top: 170px;
+    }
+
+    .section {
+        width: 90%;
+        margin: 1% auto;
+    }
+
+
+    .section #contents .box {
+        padding: 2%;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid lightgray;
+        overflow: hidden;
+    }
+
+    div#contents .box h4 {
+        margin-bottom: 10px;
+    }
 }
 
-.section {
-    width:90%;
-    margin: 1% auto; }
 
 
-.section #contents .box{
-    padding:2%;
-    margin-bottom:20px;
-    width:100%;
-    height:100%;
-    border:1px solid lightgray;
-    overflow:hidden;
+
+
+
+
+
+@media ( max-width: 481px ) {
+    /*************스터디 박스****************/
+    .main-content {
+        position: relative;
+        font-size: 0.8em;
+        width: 100%;
+        margin-top: 90px;
+    }
+
+    .section {
+        width: 90%;
+        margin: 1% auto;
+    }
+
+
+    .section #contents .box {
+        padding: 2%;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid lightgray;
+        overflow: hidden;
+    }
+
+    div#contents .box h4 {
+        margin-bottom: 10px;
+    }
 }
-
-div#contents .box h4{margin-bottom:10px;}

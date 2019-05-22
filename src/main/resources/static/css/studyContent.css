@@ -6,10 +6,9 @@ img{vertical-align:bottom;}
 ul {list-style-position:inside;}
 ul li{list-style:none;}
 
-body{font-family: 'Nanum Gothic', sans-serif;
-    font-size:2em;}
+body{font-family: 'Nanum Gothic', sans-serif;}
 
-div#wrap{width:100%; margin:0 auto;}
+div#wrap{width:100%; margin:0 auto;  font-size:2em;}
 
 
 /*********************form*****************************/
@@ -22,7 +21,7 @@ div#wrap{width:100%; margin:0 auto;}
 div.info{width:90%; margin:0 auto;
     border:1px solid #e1e1e1;
     box-sizing:border-box;
-    margin-top:10em;
+    margin-top:7em;
     padding:2%;
     margin-bottom:100px;}
 

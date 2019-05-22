@@ -1,55 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="ko">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
 <head>
-    <meta charset="utf-8">
-    <meta content='width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0'
-          name='viewport'>
-    <title>recruitStudyList</title>
-
-    <link rel="stylesheet" type="text/css" href="/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="/css/recruitstudylist.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700&amp;subset=korean" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Telex" rel="stylesheet">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js"></script>
-
-    <script type="text/javascript">
-
-        $('document').ready(function () {
-            $.ajax({
-                url: '/api/messages',
-                method: 'get',
-                async: true,
-                contentType: "application/json",
-                success: function (count) {
-                    if(count != 0){
-                        $('#messageimg').append(
-                            '<img src="/images/461369-24.png" style="width:10%;" />'
-                        )
-                    }
-                },
-                error: function (err) {
-                    console.log(err.toString());
-                }
-            });
-        });
-
-        function search() {
-            var searchKindsel = document.getElementById('searchKind');
-            var searchKind = searchKindsel.options[searchKindsel.selectedIndex].value;
-            var searchStr = document.getElementById('searchStr').value;
-
-            location.href='/recruitstudy/list?searchKind='+searchKind+'&searchStr='+searchStr;
-        }
-        function register() {
-            location.href='/recruitstudy/recruitstudyregister';
-        }
-
-
-    </script>
+    <th:block layout:fragment="css"><link href="/css/recruitstudylist.css" rel = "stylesheet"></th:block>
 </head>
 <body>
-<!--<div th:replace="fragments/header :: header">...</div>-->
+
+
 <div class='main-content' id='main' style="margin-top: 100px; font-size: 0.8em;">
 
     <div class = 'type'>
@@ -57,7 +16,7 @@
             <option value="RECRUITSTUDYNAME_SEARCH">제목</option>
             <option value="RECRUITSTUDYLOCATION_SEARCH">위치</option>
         </select>
-        <input name="searchStr" id="searchStr" type="text"/>
+        <input name="searchStr" id="searchStr" type="text" style="vertical-align: top;"/>
         <input type="button" id="search" th:onclick="'search()'" value="search" >
         <input type="button" id="register" th:onclick="'register()'" value="모집스터디 등록">
     </div>
@@ -153,71 +112,41 @@
 </div>
 
 
-<!-- div#main -->
-<div class='main-navbar main-navbar-fixed-top' id='main-navbar'>
-    <div class='main-navbar-content'>
-        <div class="logo"><img src="/images/logo.png"></div>
-        <div class='icon right' id='toggle-sidebar'>
-            <img alt='menu' height='24px' src='/images/menu.png' width='24px'>
-        </div>
 
-        <nav class="categorymenu">
-            <ul>
-                <li th:each="category : ${categories}">
-                    <a th:href="'/recruitstudy/list?categoryId='+${category.categoryId}" th:text="${category.categoryName}" ></a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
-<!-- div#main-navbar -->
-<div class='main-sidebar main-sidebar-right' id='main-sidebar'>
-    <div class='main-sidebar-wrapper'>
-        <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
-            <h3 th:text="${#authentication.principal.name}+'님'" style="margin-bottom: 5px;">님</h3>
-            <!--<h3 th:text="${#authentication.principal.newMessageCount}" style="margin-bottom: 5px;"></h3>-->
-            <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
-            <a href="/message/list" id="messageimg"> MESSAGE &nbsp;&nbsp;</a>
-        </div>
-
-        <div class='section click_menu' style="text-align: left;">
-            <nav>
-                <ul>
-                    <li><a href="/study/list" style="font-size: 1.2em; font-weight: bold;">MY STUDY</a>
-                        <a href="/study/add" style=" margin-left: 0;  ">&nbsp; - 새 스터디 만들기</a>
-                        <a href="/study/addcode" style=" ">&nbsp; - 스터디 등록하기</a></li>
-                    <li><a href="/recruitstudy/list" style="font-size: 1.2em; font-weight: bold;">STUDY 찾기</a></li>
-                    <li><a href="/study/" style="font-size: 1.2em; font-weight: bold;">STUDY 일정</a></li>
-                </ul>
-            </nav>
-        </div>
-
-
-    </div>
-</div>
-<!-- div#main-sidebar -->
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js'></script>
-<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
-<script src='/js/jquery.simple-sidebar.js'></script>
 <script>
-    $(document).ready(function() {
-        $('#main-sidebar').simpleSidebar({
-            opener: '#toggle-sidebar',
-            wrapper: '#main',
-            animation: {
-                easing: 'easeOutQuint'
-            },
-            sidebar: {
-                align: 'right',
-                closingLinks: '.close-sb'
-            },
-            sbWrapper: {
-                display: true
-            }
-        })
-    })
+
+        $('document').ready(function () {
+            $.ajax({
+                url: '/api/messages',
+                method: 'get',
+                async: true,
+                contentType: "application/json",
+                success: function (count) {
+                    if(count != 0){
+                        $('#messageimg').append(
+                            '<img src="/images/461369-24.png" style="width:10%;" />'
+                        )
+                    }
+                },
+                error: function (err) {
+                    console.log(err.toString());
+                }
+            });
+        });
+
+    function search() {
+        var searchKindsel = document.getElementById('searchKind');
+        var searchKind = searchKindsel.options[searchKindsel.selectedIndex].value;
+        var searchStr = document.getElementById('searchStr').value;
+
+        location.href='/recruitstudy/list?searchKind='+searchKind+'&searchStr='+searchStr;
+    }
+    function register() {
+        location.href='/recruitstudy/recruitstudyregister';
+    }
+
+
+
 </script>
 </body>
 </html>
