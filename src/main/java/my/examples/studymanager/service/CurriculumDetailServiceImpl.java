@@ -52,14 +52,15 @@ public class CurriculumDetailServiceImpl implements CurriculumDetailService {
 //    }
     @Override
     @Transactional
-    public boolean addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList) {
+    public Long addCurriculumDetail(List<CurriculumDetailFormDto> curriculumDetailFormDtoList) {
         for (CurriculumDetailFormDto c : curriculumDetailFormDtoList) {
             CurriculumDetail curriculumDetail = new CurriculumDetail();
 
             curriculumDetail.setCurriculum(curriculumRepository.getOne(c.getCurriculumId()));
             curriculumDetail.setCurriculumDetailContent(c.getCurriculumDetailContent());
             curriculumDetailRepository.save(curriculumDetail);
+
         }
-        return true;
+        return curriculumDetailFormDtoList.get(0).getCurriculumId();
     }
 }

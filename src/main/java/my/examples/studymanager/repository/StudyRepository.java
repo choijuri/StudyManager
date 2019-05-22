@@ -33,4 +33,6 @@ public interface StudyRepository extends JpaRepository<Study, Long> {
     @Query("SELECT s FROM Study s WHERE s.code = :code")
     public Study getStudyByCode(@Param("code") String code);
 
+    @Query("SELECT s FROM Study s INNER JOIN s.curriculumList cl WHERE cl.curriculumId =:curriculumId")
+    public Study getStudynameByCurriculumId(Long curriculumId);
 }

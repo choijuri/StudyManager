@@ -31,6 +31,13 @@ public class StudyRepositoryTest {
     }
 
     @Test
+    public void getStudyByCurriculumId(){
+        Study study = studyRepository.getStudynameByCurriculumId(10L);
+        System.out.println(study.getStudyName());
+    }
+
+
+    @Test
     public void getStudiesByUserIdAndCategoryId(){
         List<Study> studiesByUserIdAndCategoryId = studyRepository.getStudiesByUserIdAndCategory(1L,1L);
         for(Study s : studiesByUserIdAndCategoryId){

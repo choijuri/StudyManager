@@ -13,7 +13,9 @@
     <div id="cbox" style="width:100%;height:100%;margin:10% auto; text-align: center;">
         <form style="width:80%;margin: 0 auto;font-size:0.8em;font-weight:bold;">
 
-
+            <p th:text="${study.studyName}"></p>
+            <p th:text="${curriculum.curriculumContent}"></p>
+            <input type="hidden" id="curriculumId" name="curriculumId" th:value="${curriculum.curriculumId}">
             </br></br>
             <div class="aa" style="overflow: hidden;">
                 <div class="aaa" style="overflow: hidden;">
@@ -72,6 +74,46 @@
             num--;
         });
     });
+
+    function curriculumdetaillist() {
+        var curriculumDetailContent = $('#curriculumDetailContent').val();
+        var curriculumId = $('#curriculumId').val();
+
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        var contentlength = $('input[name="curriculumDetailContent"]').length;
+
+        var arr = new Array();
+        $("input[name=curriculumDetailContent]").each(function (index, item) {
+            var obj = new Object();
+            obj.curriculumId = $('#curriculumId').val();
+            obj.curriculumDetailContent = $(item).val();
+            arr.push(obj);
+        });
+
+
+        var jsonData = JSON.stringify(arr);
+
+
+        $.ajax({
+            url: "/api/curriculumDetails/add",
+            type: 'POST',
+            data:jsonData,
+            async: true,
+
+            contentType: "application/json",
+            beforeSend: function( xhr ) {
+                xhr.setRequestHeader(header, token);
+            },
+            success: function (data) {
+                location.href='/study/studyDetail/'+data;
+            },
+            error: function (err) {
+                console.log(err.toString());
+            }
+        });
+    }
 
 </script>
 

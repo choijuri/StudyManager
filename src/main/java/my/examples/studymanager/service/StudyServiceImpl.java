@@ -36,6 +36,12 @@ public class StudyServiceImpl implements StudyService {
 
     @Override
     @Transactional(readOnly = true)
+    public Study getStudyNameByCurriculumId(Long curriculumId){
+        return studyRepository.getStudynameByCurriculumId(curriculumId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Study getStudy(Long studyId) {
         return studyRepository.getOne(studyId);
     }

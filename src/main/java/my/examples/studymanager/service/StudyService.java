@@ -14,4 +14,5 @@ public interface StudyService {
     public void modifyStudy(StudyDto studyDto);
     public Long addStudy(StudyFormDto studyFormDto);
     public Long getStudyByCode(String code);
+    public Study getStudyNameByCurriculumId(Long curriculumId);
 }

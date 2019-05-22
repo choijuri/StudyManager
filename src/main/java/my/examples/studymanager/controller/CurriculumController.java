@@ -24,7 +24,9 @@ public class CurriculumController {
 
     //디테일 커리큘럼 등록페이지
     @GetMapping("/curriculumdetailregister")
-    public String curriculumdetailregister(){
+    public String curriculumdetailregister(@RequestParam("curriculumId") Long curriculumId, Model model){
+        model.addAttribute("curriculum",curriculumService.getcurriculum(curriculumId));
+        model.addAttribute("study" , studyService.getStudyNameByCurriculumId(curriculumId));
         return "curriculum/curriculumdetailregister";
     }
 }

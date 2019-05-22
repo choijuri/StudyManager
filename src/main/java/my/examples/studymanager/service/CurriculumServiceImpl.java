@@ -23,6 +23,12 @@ public class CurriculumServiceImpl implements CurriculumService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Curriculum getcurriculum(Long curriculumId){
+        return curriculumRepository.getOne(curriculumId);
+    }
+
+    @Override
     @Transactional
     public void deleteCurriculum(Long curriculumId) {
         curriculumRepository.deleteById(curriculumId);
