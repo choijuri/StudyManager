@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
@@ -9,14 +8,14 @@
     <!-- div#main -->
     <div class='main-navbar main-navbar-fixed-top' id='main-navbar'>
         <div class='main-navbar-content'>
-            <div class ="logo"><img src='/images/logo.png' th:onclick="'gotolist()'"></div>
+            <div class="logo"><img src='/images/logo.png' th:onclick="'gotolist()'"></div>
             <div class='icon right' id='toggle-sidebar'>
                 <img alt='menu' height='24px' src='/images/menu.png' width='24px'>
             </div>
 
             <nav class="categorymenu">
                 <ul>
-                    <li><a th:href="'/study/list/'+1" th:text="IT"></a> </li>
+                    <li><a th:href="'/study/list/'+1" th:text="IT"></a></li>
                     <li><a th:href="'/study/list/'+2" th:text="어학"></a></li>
                     <li><a th:href="'/study/list/'+3" th:text="취업"></a></li>
                     <li><a th:href="'/study/list/'+4" th:text="기타"></a></li>
@@ -28,18 +27,19 @@
     <!-- div#main-navbar -->
     <div class='main-sidebar main-sidebar-right' id='main-sidebar'>
         <div class='main-sidebar-wrapper'>
-            <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
-                <h4 th:text="${#authentication.principal.name}+'님'"  style="margin-bottom: 5px;">님</h4>
+            <div sec:authorize="isAuthenticated()" class='section'  style="font-size: 1.4em; text-align:left; margin-left: 20px;">
+                <h4 th:text="${#authentication.principal.name} +'님'" style="margin-bottom: 5px;">username</h4>
                 <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
                 <a href="/message/list" id="messageimg"> MESSAGE &nbsp;&nbsp;</a>
             </div>
+
 
             <div class='section click_menu' style="text-align: left;">
                 <nav>
                     <ul>
                         <li><a href="/study/list" style="font-size: 1.2em; font-weight: bold;">MY STUDY</a>
                             <a href="/study/add" style=" margin-left: 0;  ">&nbsp; - 새 스터디 만들기</a>
-                            <a href="/study/addcode" style=" ">&nbsp;  - 스터디 등록하기</a></li>
+                            <a href="/study/addcode" style=" ">&nbsp; - 스터디 등록하기</a></li>
                         <li><a href="/recruitstudy/list" style="font-size: 1.2em; font-weight: bold;">STUDY 찾기</a></li>
                         <li><a href="/study/" style="font-size: 1.2em; font-weight: bold;">STUDY 일정</a></li>
                     </ul>
@@ -54,7 +54,7 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
     <script src='/js/jquery.simple-sidebar.js'></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#main-sidebar').simpleSidebar({
                 opener: '#toggle-sidebar',
                 wrapper: '#main',
@@ -70,7 +70,6 @@
                 }
             })
         })
-
 
 
         function gotolist() {
