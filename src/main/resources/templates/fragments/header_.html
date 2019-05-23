@@ -28,9 +28,9 @@
     <!-- div#main-navbar -->
     <div class='main-sidebar main-sidebar-right' id='main-sidebar'>
         <div class='main-sidebar-wrapper'>
-            <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
-                <h4 th:text="${#authentication.principal.name}+'님'"  style="margin-bottom: 5px;">님</h4>
-                <a href="/users/mypage">MY</a> / <a href="@{/logout}">LOGOUT</a><br>
+            <div sec:authorize="isAuthenticated()" class='section'  style="font-size: 1.4em; text-align:left; margin-left: 20px;">
+                <h4 th:text="${#authentication.principal.name} +'님'" style="margin-bottom: 5px;">username</h4>
+                <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
                 <a href="/message/list" id="messageimg"> MESSAGE &nbsp;&nbsp;</a>
             </div>
 
@@ -69,6 +69,30 @@
                     display: true
                 }
             })
+
+
+
+                $.ajax({
+                    url: '/api/messages',
+                    method: 'get',
+                    async: true,
+                    contentType: "application/json",
+                    success: function (count) {
+                        if (count != 0) {
+                            $('#messageimg').append(
+                                '<img src="/images/461369-24.png" style="width:10%;" />'
+                            )
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err.toString());
+                    }
+                });
+
+
+
+
+
         })
 
 

@@ -20,7 +20,8 @@ public class CurriculumApiController {
 
     //커리큘럼 등록
     @PostMapping
-    public ResponseEntity<Long> addCurriculum(@Valid @RequestBody List<CurriculumFormDto> curriculumFormDtoList){
+    public ResponseEntity<Long> addCurriculum(
+            @Valid @RequestBody List<CurriculumFormDto> curriculumFormDtoList){
         curriculumService.addCurriculum(curriculumFormDtoList);
         Long studyId = curriculumFormDtoList.get(0).getStudyId();
         return new ResponseEntity<>(studyId, HttpStatus.CREATED);

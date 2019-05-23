@@ -69,6 +69,28 @@
                     display: true
                 }
             })
+
+
+                $.ajax({
+                    url: '/api/messages',
+                    method: 'get',
+                    async: true,
+                    contentType: "application/json",
+                    success: function (count) {
+                        if (count != 0) {
+                            $('#messageimg').append(
+                                '<img src="/images/461369-24.png" style="width:10%;" />'
+                            )
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err.toString());
+                    }
+                });
+
+
+
+
         })
 
 

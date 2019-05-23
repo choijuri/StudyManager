@@ -225,6 +225,12 @@ VALUES(5 , 2, 3 , '이미 모집된 인원이 있어 위치변경은 힘들 것 
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
 VALUES(6, 3, 2 , '네 알겠습니다. ');
 
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
+VALUES(7, 2, 3 , '5N0Mg6Gd');
+
+INSERT INTO message(message_id , receiver_id, sender_id , message_content)
+VALUES(8, 2, 2 , '자신에게 보낸 메시지');
+
 
 --recruitStudy
 INSERT INTO recruit_study (recruit_id , recruit_name, location , recruit_number, recruit_content, user_id, category_id)
@@ -261,5 +267,4 @@ INSERT INTO study_user(user_id,study_id,user_role) VALUES(2,4,'user');
 INSERT INTO study_user(user_id,study_id,user_role) VALUES(4,5,'admin');
 INSERT INTO study_user(user_id,study_id,user_role) VALUES(1,5,'user');
 INSERT INTO study_user(user_id,study_id,user_role) VALUES(3,5,'user');
-INSERT INTO study_user(user_id,study_id,user_role) VALUES(2,5,'user');
 INSERT INTO study_user(user_id,study_id,user_role) VALUES(5,5,'user');

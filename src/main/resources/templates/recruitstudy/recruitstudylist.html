@@ -58,22 +58,7 @@
 <script>
 
     $('document').ready(function () {
-        $.ajax({
-            url: '/api/messages',
-            method: 'get',
-            async: true,
-            contentType: "application/json",
-            success: function (count) {
-                if (count != 0) {
-                    $('#messageimg').append(
-                        '<img src="/images/461369-24.png" style="width:10%;" />'
-                    )
-                }
-            },
-            error: function (err) {
-                console.log(err.toString());
-            }
-        });
+
 
         $('p#text_1').parent('.recruitstudy_box2').parent('.recruitstudy_box').css('border-left', '5px solid #ffcd00');
         $('p#text_2').parent('.recruitstudy_box2').parent('.recruitstudy_box').css('border-left', '5px solid green');
