@@ -220,16 +220,15 @@ INSERT INTO message(message_id , receiver_id, sender_id , message_content)
 VALUES(3, 4, 5 , '답장 기다릴게요');
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
 VALUES(4, 3, 2 , '안녕하세요! 스터디 내용 문의 드리고 싶어서 연락드려요! 혹시 위치는 그쪽 지역밖에 안되는 건가요??');
-INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(5 , 2, 3 , '이미 모집된 인원이 있어 위치변경은 힘들 것 같은데…저 혼자 바꾸고 통보하기 민감한 내용이라 어려울 것 같습니다~~');
+INSERT INTO message(message_id , receiver_id, sender_id , message_content, read_count)
+VALUES(5 , 2, 3 , '이미 모집된 인원이 있어 위치변경은 힘들 것 같은데…저 혼자 바꾸고 통보하기 민감한 내용이라 어려울 것 같습니다~~', 1);
+
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
 VALUES(6, 3, 2 , '네 알겠습니다. ');
 
 INSERT INTO message(message_id , receiver_id, sender_id , message_content)
 VALUES(7, 2, 3 , '5N0Mg6Gd');
 
-INSERT INTO message(message_id , receiver_id, sender_id , message_content)
-VALUES(8, 2, 2 , '자신에게 보낸 메시지');
 
 
 --recruitStudy
