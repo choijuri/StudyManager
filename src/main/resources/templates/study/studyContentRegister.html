@@ -10,9 +10,8 @@
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean" rel="stylesheet">    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/studyContent.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
 
     <script src="/tui-editor/node_modules/jquery/dist/jquery.js"></script>
     <script src="/tui-editor/node_modules/tui-code-snippet/dist/tui-code-snippet.js"></script>
@@ -30,13 +29,15 @@
 
 </head>
 <body>
-<h4><label>title</label></h4>
-<input type="text" name="title">
+<div style="width: 90%; ">
+<h3 th:text="${curriculumContent}" style="margin-left:1%; margin-top: .5em;"></h3>
+<p th:text="${curriculumDetailContent}" style="margin-left:1%; margin-top: 0.4em;"></p>
 <h4><label style="width: 100%;">contents</label></h4>
 <input type="text" name="contents" id="contents" hidden>
 <!--tui-editor view -->
 <div style="margin-bottom: 3em;">
     <div class="code-html">
+
         <input type="hidden" id="curriculumDetailId" th:value="${curriculumDetailId}">
         <script src="/tui-editor/node_modules/tui-editor/dist/tui-editor-Editor.js"></script>
         <link rel="stylesheet" href="/tui-editor/node_modules/tui-editor/dist/tui-editor.css">
@@ -61,7 +62,7 @@
 <div class="bt">
     <input type="button" id="form-submit" value="OK">
 </div>
-
+</div>
 <script>
     var formSubmitButton = document.querySelector("#form-submit");
     formSubmitButton.addEventListener('click', function() {

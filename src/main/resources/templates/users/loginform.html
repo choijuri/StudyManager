@@ -5,9 +5,9 @@
     <meta charset="utf-8">
 
 
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/login.css">
-    <link rel="stylesheet" type="text/css" href="/css/menu.css">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="/css/menu.css">-->
     <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
 
 </head>
@@ -28,7 +28,7 @@
                 <li><label class="email" for="email">E-Mail</label>
                     <input type="text" id="email" name="email" placeholder="email 입력" required>
                 </li>
-                <li><label class="password" for="password">비밀번호</label>
+                <li><label class="password" for="password" style="font-family: 'Nanum Gothic', sans-serif;">비밀번호</label>
                     <input type="password" id="password" name="password" placeholder="비밀번호 입력" required>
                 </li>
 
@@ -38,7 +38,7 @@
 
         <div class="bord"></div>
         <!----------------------버튼------------------------------------------>
-        <div class="bt">
+        <div class="bt" style="font-family: 'Nanum Gothic', sans-serif;">
             <div class="before button"><a href="/index">취소</a></div>
             <input type="submit" value="LOGIN" id="btnlogin" onclick="return tocheck()"/>
         </div>

@@ -2,6 +2,7 @@ package my.examples.studymanager.controller;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Curriculum;
+import my.examples.studymanager.domain.CurriculumDetail;
 import my.examples.studymanager.domain.Study;
 import my.examples.studymanager.domain.StudyContent;
 import my.examples.studymanager.service.CurriculumDetailService;
@@ -69,6 +70,11 @@ public class StudyContentController {
 
     @GetMapping("/register")
     public String studyContentRegister(@RequestParam(name = "curriculumDetailId") Long curriculumDetailId, Model model){
+        Curriculum curriculum = curriculumService.getCurriculumByCurriculumDetailId(curriculumDetailId);
+        CurriculumDetail curriculumDetail = curriculumDetailService.getCurriculumDetail(curriculumDetailId);
+
+        model.addAttribute("curriculumContent",curriculum.getCurriculumContent());
+        model.addAttribute("curriculumDetailContent",curriculumDetail.getCurriculumDetailContent());
         model.addAttribute("curriculumDetailId",curriculumDetailId);
         return "study/studyContentRegister";
     }
