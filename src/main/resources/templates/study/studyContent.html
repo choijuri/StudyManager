@@ -40,7 +40,7 @@
 
 <div class="info">
     <h3 th:text="${curriculumContent}" style="margin-left:1%; margin-top: .5em;"></h3>
-    <p th:text="${curriculumDetailContent}" style="margin-left:1%; "></p>
+    <p th:text="${curriculumDetailContent}" style="margin-left:1%; margin-top: 0.4em;"></p>
     <div class="bord"></div>
 
     <!--<form action="/users/join" method="post">-->
@@ -67,7 +67,7 @@
     <div class="bt">
         <input type="button" value="작성" class="btn" id="register"
                th:onclick="'gotoRegister('+${curriculumDetailId}+')'"/>
-        <input type="button" value="목록" class="btn" id="list" onclick="gotolist()"/>
+        <input type="button" value="목록" class="btn" id="list" th:onclick="'gotolist('+${studyId}+')'"/>
     </div>
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -76,8 +76,8 @@
 
 
 <script>
-    function gotolist() {
-        history.go(-1);
+    function gotolist(studyId) {
+        location.href = '/study/studyDetail/'+studyId;
     }
 
     function gotoRegister(id) {

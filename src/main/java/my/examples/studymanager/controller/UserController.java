@@ -50,11 +50,6 @@ public class UserController {
         return "users/loginform";
     }
 
-    @PostMapping("/login")
-    public String login(){
-        return"/study/list";
-    }
-
     @GetMapping("/logout")
     public String logout(){
         return "/index";

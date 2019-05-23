@@ -1,10 +1,14 @@
 package my.examples.studymanager.controller.api;
 
 import lombok.RequiredArgsConstructor;
+import my.examples.studymanager.domain.Curriculum;
+import my.examples.studymanager.domain.Study;
 import my.examples.studymanager.domain.StudyContent;
 import my.examples.studymanager.dto.StudyContentDto;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
+import my.examples.studymanager.service.CurriculumService;
 import my.examples.studymanager.service.StudyContentService;
+import my.examples.studymanager.service.StudyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class StudyContentApiController {
     private final StudyContentService studyContentService;
+    private final StudyService studyService;
+    private final CurriculumService curriculumService;
 
     @PostMapping
     public ResponseEntity<Long> studyContent(@RequestBody StudyContentDto studyContentDto, BindingResult bindingResult){
@@ -25,7 +31,9 @@ public class StudyContentApiController {
         }
         StudyManagerSecurityUser securityUser = (StudyManagerSecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long id = studyContentService.addStudyContent(studyContentDto,securityUser.getId());
-        return new ResponseEntity<>(id,HttpStatus.CREATED);
+        Curriculum curriculum = curriculumService.getCurriculumByCurriculumDetailId(studyContentDto.getCurriculumDetailId());
+        Study study = studyService.getStudyNameByCurriculumId(curriculum.getCurriculumId());
+        return new ResponseEntity<>(studyContentDto.getCurriculumDetailId(),HttpStatus.CREATED);
     }
 
 

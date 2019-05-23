@@ -60,4 +60,9 @@ public class UserApiController {
         // 저장된 유저 리턴 (201: CREATED)
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
+
+    @PostMapping("/login")
+    public String login(){
+        return"/study/list";
+    }
 }

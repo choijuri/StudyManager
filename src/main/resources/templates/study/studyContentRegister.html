@@ -68,7 +68,7 @@
         var contents = document.querySelector("#contents");
         // contents.value = editor.getMarkdown(); //markdown 저장
         contents.value = editor.getHtml(); //html 저장
-        alert(contents.value);
+        // alert(contents.value);
 
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
@@ -85,8 +85,7 @@
                 xhr.setRequestHeader(header, token);
             },
             success: function (data) {
-                alert(data);
-                location.href='/';
+                location.href='/studyContent/'+data;
             },
             error: function (err) {
                 console.log(err.toString());

@@ -33,6 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(new AntPathRequestMatcher("/static/fonts.icomoon/**"))
                 .requestMatchers(new AntPathRequestMatcher("/demo-files/**"))
                 .requestMatchers(new AntPathRequestMatcher("/fonts/**"))
+                .requestMatchers(new AntPathRequestMatcher("/css/**"))
+                .requestMatchers(new AntPathRequestMatcher("/images/**"))
+                .requestMatchers(new AntPathRequestMatcher("/tui-editor/**"))
+                .requestMatchers(new AntPathRequestMatcher("/js/**"))
                 .requestMatchers(new AntPathRequestMatcher("/scss/**"));
     }
 

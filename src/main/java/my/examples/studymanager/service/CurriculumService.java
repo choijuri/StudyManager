@@ -11,4 +11,5 @@ public interface CurriculumService {
     public void modifyCurriculum(Long curriculumId, String curriculumContent);
     public void addCurriculum(List<CurriculumFormDto> curriculumFormDtoList);
     public Curriculum getcurriculum(Long curriculumId);
+    public Curriculum getCurriculumByCurriculumDetailId(Long curriculumDetailId);
 }

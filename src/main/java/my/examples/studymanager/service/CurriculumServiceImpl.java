@@ -35,6 +35,13 @@ public class CurriculumServiceImpl implements CurriculumService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Curriculum getCurriculumByCurriculumDetailId(Long curriculumDetailId){
+        return curriculumRepository.getCurriculumBycurriculumDetailId(curriculumDetailId);
+//        return studyRepository.getStudynameByCurriculumId(curriculumId);
+    }
+
+    @Override
     @Transactional
     public void modifyCurriculum(Long curriculumId, String curriculumContent) {
         Curriculum curriculum = curriculumRepository.getOne(curriculumId);

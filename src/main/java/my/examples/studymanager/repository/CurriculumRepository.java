@@ -16,4 +16,7 @@ public interface CurriculumRepository extends JpaRepository<Curriculum, Long> {
     @Modifying
     @Query("UPDATE Curriculum c SET c.curriculumContent =:curriculumContent WHERE c.curriculumId =:curriculumId")
     public void modifyCurriculum(@Param("curriculumContent") String curriculumContent, @Param("curriculumId") Long curriculumId);
+
+    @Query("SELECT c FROM Curriculum c INNER JOIN c.curriculumDetails cd WHERE cd.curriculumDetailId= :curriculumDetailId")
+    public Curriculum getCurriculumBycurriculumDetailId(@Param("curriculumDetailId") Long curriculumDetailId);
 }
