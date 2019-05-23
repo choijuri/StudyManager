@@ -50,10 +50,10 @@ public class UserController {
         return "users/loginform";
     }
 
-    @GetMapping("/logout")
-    public String logout(){
-        return "/index";
-    }
+//    @GetMapping("/logout")
+//    public String logout(){
+//        return "/";
+//    }
 
 //    @GetMapping("/mypage")
 //    public String mypage(){

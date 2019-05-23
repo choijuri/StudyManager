@@ -30,7 +30,7 @@
         <div class='main-sidebar-wrapper'>
             <div class='section' th:if="${isLogin}" style="font-size: 1.4em; text-align:left; margin-left: 20px;">
                 <h4 th:text="${#authentication.principal.name}+'님'"  style="margin-bottom: 5px;">님</h4>
-                <a href="/users/mypage">MY</a> / <a href="@{/logout}">LOGOUT</a><br>
+                <a href="/users/mypage">MY</a> / <a href="/logout">LOGOUT</a><br>
                 <a href="/message/list" id="messageimg"> MESSAGE &nbsp;&nbsp;</a>
             </div>
 

@@ -17,4 +17,12 @@ public class HomeController {
         }
         return "index";
     }
+
+    @GetMapping("/index")
+    public String main( ){
+        if(!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            return "redirect:/study/list";
+        }
+        return "index";
+    }
 }
