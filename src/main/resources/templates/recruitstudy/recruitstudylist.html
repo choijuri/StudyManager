@@ -4,146 +4,97 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default_">
 <head>
-    <th:block layout:fragment="css"><link href="/css/recruitstudylist.css" rel = "stylesheet"></th:block>
+    <th:block layout:fragment="css">
+        <link href="/css/recruitstudylist.css" rel="stylesheet">
+    </th:block>
 </head>
 <body>
 
 
 <div class='main-content' id='main' style="margin-top: 100px; font-size: 0.8em;">
 
-    <div class = 'type'>
+    <div class='type'>
         <select name="searchKind" id="searchKind">
             <option value="RECRUITSTUDYNAME_SEARCH">제목</option>
             <option value="RECRUITSTUDYLOCATION_SEARCH">위치</option>
         </select>
         <input name="searchStr" id="searchStr" type="text" style="vertical-align: top;"/>
-        <input type="button" id="search" th:onclick="'search()'" value="search" >
+        <input type="button" id="search" th:onclick="'search()'" value="search">
         <input type="button" id="register" th:onclick="'register()'" value="모집스터디 등록">
     </div>
 
-    <div class='section' th:switch="${recruitstudy.category.categoryId}" th:each="recruitstudy : ${recruitStudyList}">
-        <div class="recruitstudy_box" th:case="1" style="border-left :5px solid #ffcd00;" >
-            <div class = "recruitstudy_box2">
-                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
-            </div>
-            <div class = "recruitstudy_box3">
-                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
-                </h4>
-                <div class = "recruitstudy_box3-1">
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
-                    </div>
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
-                    </div>
+
+<div class="p_recruit" th:each="recruitstudy : ${recruitStudyList}">
+    <div class="recruitstudy_box" >
+        <div th:switch="${recruitstudy.category.categoryId}" class="recruitstudy_box2">
+            <p th:case="1"  class="cate_text" id="text_1" th:text="${recruitstudy.category.categoryName}">recruitContent</p>
+            <p th:case="2"  class="cate_text" id="text_2" th:text="${recruitstudy.category.categoryName}">recruitContent</p>
+            <p th:case="3"  class="cate_text" id="text_3" th:text="${recruitstudy.category.categoryName}">recruitContent</p>
+            <p th:case="4"  class="cate_text" id="text_4" th:text="${recruitstudy.category.categoryName}">recruitContent</p>
+        </div>
+        <div class="recruitstudy_box3">
+            <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}"
+                   th:text="${recruitstudy.recruitName}">recruitstudyName</a>
+            </h4>
+            <div class="recruitstudy_box3-1">
+                <div class="recruitstudy_box3-2">
+                    <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
+                    <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
+                </div>
+                <div class="recruitstudy_box3-2">
+                    <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
+                    <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
                 </div>
             </div>
         </div>
-        <div class="recruitstudy_box" th:case="2" style="border-left: 5px solid green;" >
-            <div class = "recruitstudy_box2">
-                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
-            </div>
-            <div class = "recruitstudy_box3">
-                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
-                </h4>
-                <div class = "recruitstudy_box3-1">
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
-                    </div>
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="recruitstudy_box" th:case="3" style="border-left: 5px solid rebeccapurple;" >
-            <div class = "recruitstudy_box2">
-                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
-            </div>
-            <div class = "recruitstudy_box3">
-                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
-                </h4>
-                <div class = "recruitstudy_box3-1">
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
-                    </div>
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="recruitstudy_box" th:case="4" style="border-left: 5px solid darkblue;" >
-            <div class = "recruitstudy_box2">
-                <p class="cate_text" th:text="${recruitstudy.category.categoryName}" >recruitContent</p>
-            </div>
-            <div class = "recruitstudy_box3">
-                <h4><a style="font-size: 1.05em;" th:href="'/recruitstudy/recruitstudydetail/'+${recruitstudy.recruitId}" th:text="${recruitstudy.recruitName}">recruitstudyName</a>
-                </h4>
-                <div class = "recruitstudy_box3-1">
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모집인원 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.recruitNumber}+'명'">recruitNumber</p>
-                    </div>
-                    <div class ="recruitstudy_box3-2">
-                        <p th:text="'모임장소 : '" style="margin-bottom: 5px;"></p>
-                        <p th:text="${recruitstudy.location}" style="font-size: 0.9em;">recruitContent</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
     </div>
 
 
-    </div>
 </div>
 
+</div>
 
 
 <script>
 
-        $('document').ready(function () {
-            $.ajax({
-                url: '/api/messages',
-                method: 'get',
-                async: true,
-                contentType: "application/json",
-                success: function (count) {
-                    if(count != 0){
-                        $('#messageimg').append(
-                            '<img src="/images/461369-24.png" style="width:10%;" />'
-                        )
-                    }
-                },
-                error: function (err) {
-                    console.log(err.toString());
+    $('document').ready(function () {
+        $.ajax({
+            url: '/api/messages',
+            method: 'get',
+            async: true,
+            contentType: "application/json",
+            success: function (count) {
+                if (count != 0) {
+                    $('#messageimg').append(
+                        '<img src="/images/461369-24.png" style="width:10%;" />'
+                    )
                 }
-            });
+            },
+            error: function (err) {
+                console.log(err.toString());
+            }
         });
+
+        $('p#text_1').parent('.recruitstudy_box2').parent('.recruitstudy_box').css('border-left', '5px solid #ffcd00');
+        $('p#text_2').parent('.recruitstudy_box2').parent('.recruitstudy_box').css('border-left', '5px solid green');
+        $('p#text_3').parent('.recruitstudy_box2').parent('.recruitstudy_box').css('border-left', '5px solid rebeccapurple');
+        $('p#text_4').parent('.recruitstudy_box2').parent('.recruitstudy_box').css('border-left', '5px solid darkblue');
+
+
+    });
 
     function search() {
         var searchKindsel = document.getElementById('searchKind');
         var searchKind = searchKindsel.options[searchKindsel.selectedIndex].value;
         var searchStr = document.getElementById('searchStr').value;
 
-        location.href='/recruitstudy/list?searchKind='+searchKind+'&searchStr='+searchStr;
+        location.href = '/recruitstudy/list?searchKind=' + searchKind + '&searchStr=' + searchStr;
     }
+
     function register() {
-        location.href='/recruitstudy/recruitstudyregister';
+        location.href = '/recruitstudy/recruitstudyregister';
     }
+
 
 
 

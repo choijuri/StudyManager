@@ -4,26 +4,34 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default">
 <head>
-    <th:block layout:fragment="css"><link href="/css/message.css" rel = "stylesheet"></th:block>
+    <th:block layout:fragment="css">
+        <link href="/css/message.css" rel="stylesheet">
+    </th:block>
 </head>
 <body>
 
 <div class='main-content' id='main'>
     <div class='section_messagelist'>
-        <div class="message_box" th:each="message : ${messageList}">
-            <span th:if="${message.readCount}==0" style="color: red; float: right; font-size: 0.85em;" >읽지않음</span>
-            <span th:if="${message.readCount}!=0" style="color: blue; float: right; font-size: 0.85em;">읽음</span>
-            <p class="mcontent"><a th:href="'/message/messagedetail/'+${message.messageId}" th:text="${message.messageContent}">recruitstudyName</a>
+        <div class="message_box" th:each="message : ${messageList}" style="overflow: hidden;">
+            <div style="width:20%; padding:2%; float: left; text-align: center; border-right: 1px solid #ebebeb;">
+                <span th:if="${message.readCount}==0" style="color: red; width:100%; display: block; font-size: 0.8em;">
+                    <img style="text-align: center; margin: 0 auto; " src="/images/384888-32.png"> <br> 읽지않음</span>
+                <span th:if="${message.readCount}!=0" style="color: blue;  font-size: 0.8em;">
+                    <img style="text-align: center;" src="/images/iconfinder_letter_384888.png"><br>읽음</span>
+            </div>
+
+            <div style="width:75%; float: right; padding:2%; ">
+            <p class="mcontent"><a th:href="'/message/messagedetail/'+${message.messageId}"
+                                   th:text="${message.messageContent}">recruitstudyName</a>
             </p>
-            <p th:text="${message.user.email}">보낸사람</p>
+            <p th:text="${message.user1.email}">보낸사람</p>
             <p th:text="${#dates.format(message.regdate, 'yyyy-MM-dd')}">regDate</p>
             <!--${#dates.format(message.regdate, 'yyyy-MM-dd')}-->
-
+            </div>
 
         </div>
     </div>
 </div>
-
 
 
 </body>
