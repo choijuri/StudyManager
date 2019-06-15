@@ -183,6 +183,14 @@
         <!--<classifier>jdk15</classifier>-->
         <!--</dependency>-->
 
+        <!--슬랙봇-->
+        <dependency>
+            <groupId>net.gpedro.integrations.slack</groupId>
+            <artifactId>slack-webhook</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
