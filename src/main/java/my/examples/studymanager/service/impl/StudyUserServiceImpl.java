@@ -1,4 +1,4 @@
-package my.examples.studymanager.service;
+package my.examples.studymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.StudyUser;
@@ -7,6 +7,7 @@ import my.examples.studymanager.repository.StudyRepository;
 import my.examples.studymanager.repository.StudyUserRepository;
 import my.examples.studymanager.repository.UserRepository;
 import my.examples.studymanager.security.StudyManagerSecurityUser;
+import my.examples.studymanager.service.StudyUserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,8 +1,9 @@
-package my.examples.studymanager.service;
+package my.examples.studymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.User;
 import my.examples.studymanager.repository.UserRepository;
+import my.examples.studymanager.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

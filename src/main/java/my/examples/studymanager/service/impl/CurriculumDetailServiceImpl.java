@@ -1,10 +1,11 @@
-package my.examples.studymanager.service;
+package my.examples.studymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.CurriculumDetail;
 import my.examples.studymanager.dto.CurriculumDetailFormDto;
 import my.examples.studymanager.repository.CurriculumDetailRepository;
 import my.examples.studymanager.repository.CurriculumRepository;
+import my.examples.studymanager.service.CurriculumDetailService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

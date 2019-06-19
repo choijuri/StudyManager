@@ -1,4 +1,4 @@
-package my.examples.studymanager.service;
+package my.examples.studymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.Comment;
@@ -6,6 +6,7 @@ import my.examples.studymanager.dto.CommentDto;
 import my.examples.studymanager.repository.CommentRepository;
 import my.examples.studymanager.repository.StudyContentRepository;
 import my.examples.studymanager.repository.UserRepository;
+import my.examples.studymanager.service.CommentService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

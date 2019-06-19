@@ -1,8 +1,9 @@
-package my.examples.studymanager.service;
+package my.examples.studymanager.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import my.examples.studymanager.domain.ImageFile;
 import my.examples.studymanager.repository.ImageFileRepository;
+import my.examples.studymanager.service.ImageFileService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

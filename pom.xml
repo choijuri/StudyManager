@@ -25,6 +25,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
         <!-- view 템플릿 엔진 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,6 +57,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!--aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
         <!--<dependency>-->
@@ -189,7 +196,6 @@
             <artifactId>slack-webhook</artifactId>
             <version>1.4.0</version>
         </dependency>
-
 
     </dependencies>
 
