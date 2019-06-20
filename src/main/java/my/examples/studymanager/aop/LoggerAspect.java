@@ -11,6 +11,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Component
@@ -28,16 +32,18 @@ public class LoggerAspect {
         return result;
     }
 
-    @AfterThrowing(value = "execution(* my.examples.studymanager.controller.*.*(..))", throwing = "exception")
+    @AfterThrowing(value = "execution(* my.examples.studymanager.controller.api.*.*(..)) || execution(* my.examples.studymanager.service.impl.*.*(..))", throwing = "exception")
     public void writeFailLog(JoinPoint joinPoint, Exception exception) throws Throwable {
         //logging
         //exception 으로 해당 메서드에서 발생한 예외를 가져올 수 있다.
-        logger.error("Exception occurred : {} ", exception);
+        HttpServletRequest request =
+                ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        logger.error("Exception Occured at {} with {}", request.getRequestURI(), exception);
         SlackApi api = new SlackApi("https://hooks.slack.com/services/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");    //웹훅URL
         SlackMessage slackMessage = new SlackMessage();
         slackMessage.setChannel("#general");
         slackMessage.setUsername("study manager");
-        slackMessage.setText("error message = "+ exception);
+        slackMessage.setText("Exception 발생, url={"+request.getRequestURL()+"}, errorMessage={"+exception+"}");
         api.call(slackMessage);
     }
 }
