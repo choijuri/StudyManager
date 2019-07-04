@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
+import javax.jdo.annotations.Unique;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @Unique
     private String email;
     @JsonIgnore
     private String passwd;
